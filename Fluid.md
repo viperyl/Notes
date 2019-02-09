@@ -13,12 +13,12 @@ $u_{arg}={u_{max}\over 2}={-R^2\over 8\mu}*{dp\over  dx}$
 $Q={-\pi R^4\over8\mu}*{dp\over  dx}$
 
 **For Laminar Flow Between Stationary Parallel Plates**
-$u={1\over 2\mu}*{\partial p\over \partial x}*{(y^2-cy)}$
+$u={1\over 2\mu}*{\partial p\over \partial x}*{(y^2-dy)}$
 $u_{max}={-c^2\over 8}*{\partial p\over \partial x}$
 $u_{ave}={2\over 3}*u_{max}$
 $Q={-bc^3\over 12\mu}*{\partial p \over \partial x}$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwMTYyNDE4MF19
+eyJoaXN0b3J5IjpbMjE4NjMwODAzLDEyMDE2MjQxODBdfQ==
 -->
