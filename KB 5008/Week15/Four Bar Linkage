@@ -1,0 +1,62 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from math import sin, cos, radians
+from scipy.optimize import fsolve
+
+
+def cosin_matrix(q1,q2,q3):
+    
+    aCb = np.array([[cos(q1),-sin(q1)],[sin(q1),cos(q1)]])
+    aCc = np.array([[cos(q2),-sin(q2)],[sin(q2),cos(q2)]])
+    aCd = np.array([[cos(q3),-sin(q3)],[sin(q3),cos(q3)]])
+    
+    return aCb, aCc, aCd
+def Loop_equation(unknows, q1,length):
+    la, lb, lc, ld = length
+    q2, q3 = unknows
+    
+    aCb, aCc, aCd = cosin_matrix(q1,q2,q3)
+    
+    b2 = aCb[:,1]
+    c1 = aCc[:,0]
+    d2 = aCd[:,1]
+    a1 = np.array([1,0])
+    
+    sol = b2*lb + c1*lc - d2*ld - a1*la
+    return sol
+
+def plot_FBL(plot_data):
+    q1,q2,q3,length = plot_data
+    la, lb, lc, ld = length
+    aCb, aCc, aCd = cosin_matrix(q1,q2,q3)
+    
+    b2 = aCb[:,1]
+    c1 = aCc[:,0]
+    d2 = aCd[:,1]
+    
+    p1 = np.array([20,0])
+    p2 = p1 + b2 * lb
+    p3 = p2 + c1 * lc
+    p4 = p3 - d2 * ld
+    
+    plt.plot([p1[0],p2[0]],[p1[1],p2[1]],'o-')
+    plt.plot([p2[0],p3[0]],[p2[1],p3[1]],'o-')
+    plt.plot([p3[0],p4[0]],[p3[1],p4[1]],'o-')
+    plt.plot([p4[0],p1[0]],[p4[1],p1[1]],'o-')
+    plt.axis('equal')
+    plt.grid()
+    plt.show()
+    
+    
+length = (55, 20, 60, 70)
+la, lb, lc, ld = length
+q1 = radians(10)
+
+q2 = q1
+q3 = q1
+
+q2, q3 = fsolve(lambda unknowns: Loop_equation(unknowns, q1, length),(q2,q3))
+plot_data = q1, q2, q3, length
+print(Loop_equation((q2,q3),q1,length))
+plot_FBL(plot_data)
+    
