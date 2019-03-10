@@ -102,17 +102,35 @@ end
 
 
 %xlabel(['Reynolds number'])
-ylabel(['Darcy-Weisbach friction factor'],'fontsize',10)
+
 %h1 = xlabel('Re = ','fontsize',10)
 
 h1 = xlabel('$Re=\frac{\rho VD}{\mu}$','fontsize',18)
-h2 = ylabel('$Darcy-Weisbach friction factor$','fontsize',18)
+h2 = ylabel('$Darcy-Weisbach\thinspace\thinspace friction\thinspace\thinspace factor$',...
+    'fontsize',18)
+h3 = title('$Moody''s\thinspace\thinspace chart$','fontsize',22)
+
 set(h1,'Interpreter','latex')
 set(h2,'Interpreter','latex')
+set(h3,'Interpreter','latex')
+% vec_pos = get(get(gca, 'XLabel'), 'Position');
+% set(get(gca, 'XLabel'), 'Position', vec_pos + [0 0 0]);
 
+data = cell(1,3);
+sheet = {'34','24','16'};
+type = {'b--o','r--o','g--o'};
+%color = {[0,0,1],[0.8,0.4,0.2],[0 0.6 0.1]}
+for i = 1:3
+    data{i} = xlsread('data_zhang.xlsx',sheet{i});
+    data{i} = data{i}(:,end-2:end-1);
+    plot(data{i}(:,1),data{i}(:,2),type{i},'LineWidth',2)%,'color',color{i});
+    hold on 
+end
 
-text(1.9e8,0.028,['Relative roughness '],...
-  'rotation',90,'HorizontalAlignment','center','fontsize',18)
+text(1.9e8,0.028,'$Relative \thinspace\thinspace Roughness$','Interpreter',...
+    'latex','rotation',90,'HorizontalAlignment','center','fontsize',18)
+% text(1.9e8,0.028,['\fontname{times} Relative roughness'],...
+% 'rotation',90,'HorizontalAlignment','center','fontsize',18)
 index=find(T>=start(3)); T1=T(index(1));
 f1=colebrook(T1,5e-6);
 plot([1e6,T1],[f1,f1],'k')
