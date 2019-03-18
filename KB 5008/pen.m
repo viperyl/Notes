@@ -38,7 +38,7 @@ alpha2 = atan2(d,c) + th(3);
 dydt = [th(2);
     (-1/Izz1) * (a1 * k * x * cos(alpha1) + m1 * g * l1 * sin(th(1)));
     th(4);
-    (+1/Izz2) * (a2 * k * x * cos(alpha2) + m2 * g * l2 * sin(th(3)))];
+    (+1/Izz2) * (a2 * k * x * cos(alpha2) - m2 * g * l2 * sin(th(3)))];
 end
 
 
