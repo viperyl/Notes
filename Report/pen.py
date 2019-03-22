@@ -28,7 +28,7 @@ def cp(th,t):
     alpha2 = atan2(d,c) + th[2]
     
     ddth1 = (-1/Izz1) * (a1 * k * x * cos(alpha1) + m1 * g * l1 * sin(th[0]))
-    ddth2 = (-1/Izz2) * (a2 * k * x * cos(alpha2) + m2 * g * l1 * sin(th[2]))
+    ddth2 = (1/Izz2) * (a2 * k * x * cos(alpha2) - m2 * g * l1 * sin(th[2]))
     return [th[1], ddth1, th[3], ddth2]
 
     
