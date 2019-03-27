@@ -20,7 +20,7 @@ def parse_Second(line):
 def parse_A(line):
     pattern = re.compile('2019.*?:.*?:.*?,(.*?)(\d+)(.*?)(\d+)')
     items = re.findall(pattern, line)
-    if items[0][1] == '-':
+    if items[0][0] == '-':
         items = float(items[0][0] + items[0][1] + items[0][2] + items[0][3])
     else :
         items = float('+' + items[0][1] + items[0][2] + items[0][3])
@@ -30,17 +30,18 @@ def parse_A(line):
 name_1 = 'Acceler_sensor_log_ipx_'
 name_2 = 'Acceler_sensor_log_ipxs_'
 
-for i in range(1,13):
-    os.chdir(r'D:\New folder\Data')
-    ipx = name_1  + str(i)
-    ipxs = name_1 + str(i)
+for ii in range(1,13):
+    os.chdir(r'I:\Xu\5008\Parsed Data\Data')
+    ipx = name_1  + str(ii)
+    ipxs = name_2 + str(ii)
     os.chdir(ipx)
-    save_name = 'exp_' + str(i) + '.xlsx'
-    data = pd.DataFrame(columns = ['Hour','minute','second','a'])
-    writer = pd.ExcelWriter('D:\exp'+save_name)
+    save_name = 'exp_' + str(ii) + '.xlsx'
+    writer = pd.ExcelWriter(save_name, engine='xlsxwriter')
     for i in ['x','y','z']:
+        print('1')
         file = i + '.txt'
         with open(file) as f:
+            data = pd.DataFrame(columns = ['Hour','minute','second','a'])
             for line in f:
                 Hour = parse_Hour(line)
                 Minute = parse_Minute(line)
@@ -48,12 +49,14 @@ for i in range(1,13):
                 A = parse_A(line)
                 data = data.append(pd.DataFrame({'Hour':[Hour],'minute':[Minute],'second':[Second],'a':[A]}),\
                                    ignore_index = True)
-                data.to_excel(writer,'ipx_'+i)
-    os.chdir(r'D:\New folder\Data')
+        data.to_excel(writer,sheet_name = 'ipx_' + i,encoding='utf8')
+        print('2')
+    os.chdir(r'I:\Xu\5008\Parsed Data\Data')
     os.chdir(ipxs)
     for i in ['x','y','z']:
         file = i + '.txt'
         with open(file) as f:
+            data = pd.DataFrame(columns = ['Hour','minute','second','a'])
             for line in f:
                 Hour = parse_Hour(line)
                 Minute = parse_Minute(line)
@@ -61,9 +64,11 @@ for i in range(1,13):
                 A = parse_A(line)
                 data = data.append(pd.DataFrame({'Hour':[Hour],'minute':[Minute],'second':[Second],'a':[A]}),\
                                    ignore_index = True)
-                data.to_excel(writer,'ipxs_'+i)
+        data.to_excel(writer,sheet_name = 'ipxs_' + i,encoding='utf8')
+        print('3')
+    os.chdir(r'I:\Xu\5008\Parsed Data')
     writer.save()
-    writer.close
+    writer.close()
 
 
 
