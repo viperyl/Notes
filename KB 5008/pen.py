@@ -23,59 +23,17 @@ def pen_1(Z):
     Izz1 = (1/12) * m1 * (H**2 + W**2) + m1 * l1**2
     Izz2 = (1/12) * m2 * (H**2 + W**2) + m2 * l2**2
     c = w - a1 * sin(th1) + a2 * sin(th2)
-    d = a1 * cos(th1) - a2 * cos(th2)
+    d = 0 + a1 * cos(th1) - a2 * cos(th2)
     x = (c**2 + d**2)**0.5
     alpha1 = atan2(d,c) + th1
     alpha2 = atan2(d,c) + th2
     ddth1 = (-1/Izz1) * (a1 * k * x * cos(alpha1) + m1 * g * l1 * sin(th1))
-    ddth2 = (-1/Izz2) * (a2 * k * x * cos(alpha2) - m2 * g * l2 * sin(th2))
+    ddth2 = (+1/Izz2) * (a2 * k * x * cos(alpha2) - m2 * g * l2 * sin(th2))
     
     Zd = [dth1,ddth1,dth2,ddth2]
     return Zd
 
-def pen_2(Z):
-    th1 = Z[0]
-    th2 = Z[2]
-    dth1 = Z[1]
-    dth2 = Z[3]
-    m1 = 199e-3
-    m2 = 199e-3
-    l1 = 500e-3
-    l2 = 500e-3
-    a1 = 160e-3
-    a2 = 160e-3
-    k = 1.4526
-    w = 99e-3
-    H = 150e-3
-    W =80e-3
-    g = 9.81
-    Izz1 = (1/12) * m1 * (H**2 + W**2) + m1 * l1**2
-    Izz2 = (1/12) * m2 * (H**2 + W**2) + m2 * l2**2
-    c = w - a1 * sin(th1) + a2 * sin(th2)
-    d = a1 * cos(th1) - a2 * cos(th2)
-    x = (c**2 + d**2)**0.5
-    alpha1 = atan2(d,c) + th1
-    alpha2 = atan2(d,c) + th2
-    ddth1 = (-1/Izz1) * (a1 * k * x * cos(alpha1) + m1 * g * l1 * sin(th1))
-    ddth2 = (-1/Izz2) * (a2 * k * x * cos(alpha2) - m2 * g * l2 * sin(th2))
-    
-    Zd = [dth1,ddth1,dth2,ddth2]
-    return Zd
-def pen(Z):
-    m1 = 199e-3
-    l1 = 500e-3
-    H = 150e-3
-    W =80e-3
-    g = 9.81
-    th1 = Z[0]
-    dth1 = Z[1]
-    c = 0
-    Izz1 = (1/12) * m1 * (H**2 + W**2) + m1 * l1**2
-    
-    ddth1 = (-1/Izz1) * m1 * g * sin(th1) - (c/Izz1) * dth1
-    
-    Zd = [dth1, ddth1]
-    return Zd
+
 
 #t = np.linspace(0,20,2001)
 #Z0 = [radians(10),0]
@@ -85,11 +43,24 @@ def pen(Z):
 #plt. plot(t,data[1,:])
 
 t = np.linspace(0,20,2001)
-Z0 = [radians(-20),0,radians(20),0]
-sol = solve_ivp(lambda t,Z: pen_2(Z),[0, 20],Z0, t_eval = t, rtol = 1e-6)
+Z0 = [radians(20),0,radians(20),0]
+sol = solve_ivp(lambda t,Z: pen_1(Z),[0, 20],Z0, t_eval = t, rtol = 1e-6)
 
 data = sol.y
-plt. plot(t,data[0,:])
-plt. plot(t,data[2,:])
+#plt. plot(t,data[0,:])
+#plt. plot(t,data[2,:])
+plt.subplot(1,2,1)
+plt.plot(data[0,:],data[2,:])
+plt.subplot(1,2,2)
+plt.plot(t,data[0,:])
+plt.plot(t,data[2,:])
 
 
+omega1 = data[1,:];
+omega2 = data[3,:];
+
+velo1 = omega1 * 0.38;
+velo2 = omega2 * 0.38;
+
+plt.plot(t,velo1)
+plt.plot(t,velo2)
