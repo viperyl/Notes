@@ -1,0 +1,3 @@
+# What is the output of a GNN
+
+The goal of a GNN is to take an input graph $G = (\mathcal{V}, \mathcal{E})$, where each node $v_i \in \mathcal{V}$ has an input feature vector $X^{(0)}_{i}$. What we want to learn is a function $f \rightarrow \mathcal{V} \times\mathcal{R}^d$, a function that takes in a node and its feature vector, as well as the graph structure, and outputs an embedding, a vector that represents that node in a way that’s useful to our downstream task. Once we've mapped nodes and their initial features to their learned embeddings, we can use those embeddings to do a variety of different tasks including node-level, edge-level, or graph-level regression/classification.
