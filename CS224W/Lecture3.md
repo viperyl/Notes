@@ -1,6 +1,6 @@
 # 1. Node embedding
 
-![](./img/Screenshot 2021-11-20 154840.png)
+![](./Img/Screenshot 2021-11-20 154840.png)
 
 The idea behind graph representation learning is that we want alleviate manual feature engineering every single time or every single task. We want automatically learn the features.
 
@@ -8,7 +8,7 @@ The idea behind graph representation learning is that we want alleviate manual f
 
 Efficient task-independent feature learning for machine learning with graphs.
 
-![](./img/Screenshot 2021-11-20 155200.png)
+![](./Img/Screenshot 2021-11-20 155200.png)
 
 we want to learn how to map this node in a d-dimensional space and represent it as a vector of d numbers (embedding).
 
@@ -18,7 +18,7 @@ we want to learn how to map this node in a d-dimensional space and represent it 
 2. Encode network information
 3. Potentially used for many downstream predictions
 
-![](./img/Screenshot 2021-11-20 155550.png)
+![](./Img/Screenshot 2021-11-20 155550.png)
 
 # 2 Node Embedding: Encoders and Decoders
 
@@ -32,7 +32,7 @@ $A$ is the adjacency matrix (assume binary)
 
 For simplicity: no node features or extra information used
 
-![](./img/Screenshot 2021-11-20 160032.png)
+![](./Img/Screenshot 2021-11-20 160032.png)
 
 ## 2.2 Node Embedding Goal
 
@@ -40,7 +40,7 @@ Encode nodes so that similarity in the embedding space approximates similarity i
 
 we can use distance or dot product to approximate the similarity in the graph space.
 
-![](./img/Screenshot 2021-11-20 160246.png)
+![](./Img/Screenshot 2021-11-20 160246.png)
 $$
 similarity(u, v) \approx \bold{z}^T_v\bold{z}_u
 $$
@@ -81,7 +81,7 @@ $\large \bold{Z} \in \R^{d\cross |v|}$: Matrix, each column is a node embedding 
 
 $\large v \in \mathbb{I}^{|V|}$: Indicator vector, all zeros except a one in column indicating node v
 
-![](./img/Screenshot 2021-11-20 180721.png)
+![](./Img/Screenshot 2021-11-20 180721.png)
 
 example:
 $$
@@ -149,7 +149,7 @@ $$
 
 ## 3.2 Random Walk
 
-![](./img/Screenshot 2021-11-20 225743.png)
+![](./Img/Screenshot 2021-11-20 225743.png)
 
 Given a graph and a starting point, we select a neighbor of it at random, and move to this neighbor; then we select a neighbor of this point at random, and move to it, etc.
 
@@ -165,7 +165,7 @@ $\bold{z}_u^T\bold{z}_v \approx$ probability that $\bold{u}$ and $\bold{v}$ co-o
 
 2. Optimize embeddings to encode these random walk statics: 
 
-   ![](./img/Screenshot 2021-11-20 230549.png)
+   ![](./Img/Screenshot 2021-11-20 230549.png)
 
 Pros:
 
@@ -219,7 +219,7 @@ Parameterize the $p(v\mid \bold{z}_u)$
 $$
 \large P(v\mid \bold{z}_u) = \frac{e^{\bold{z}_u^T\bold{z}_v}}{\sum\limits_{n\in V}e^{\bold{z}^T_u\bold{z}_n}}
 $$
-![](./img/Screenshot 2021-11-21 144419.png)
+![](./Img/Screenshot 2021-11-21 144419.png)
 
 Optimize random walk embeddings = Finding embeddings $\bold{z}_u$ that minimize $\mathcal{L}$
 
@@ -294,7 +294,7 @@ Develop biased 2nd order random walk R to  generate network neighborhood $N_R(u)
 
 Use flexible, biased random walks that can trade off between local and global views of the network.
 
-![](./img/Screenshot 2021-11-21 161220.png)
+![](./Img/Screenshot 2021-11-21 161220.png)
 
 Two classic strategies to define a neighborhood $N_R(u)$ of a given node u:
 
@@ -326,13 +326,13 @@ Biased 2nd order random walks  explore network neighborhoods:
 1. Random walk just traversed edge $(s_1, w)$ and is now at w.
 2. Insight: Neighbors of w can go to $s_1, s_2, s_3$
 
-![](./img/Screenshot 2021-11-21 171841.png)
+![](./Img/Screenshot 2021-11-21 171841.png)
 
 
 
 for a new graph, walker came over edge $(s_1, w)$ and is at w. where to go next?
 
-![](./img/Screenshot 2021-11-21 172208.png)
+![](./Img/Screenshot 2021-11-21 172208.png)
 
 $\frac{1}{p}, \frac{1}{p}, 1$ are unnormalized probabilities.
 
@@ -406,13 +406,13 @@ $$
 
 Introduce a “virtual node to represent the subgraph and run a standard graph embedding technique. (using virtual node’s embedding to represent whole graph embedding, apply random walk etc.)
 
-![](./img/Screenshot 2021-11-21 174401.png)
+![](./Img/Screenshot 2021-11-21 174401.png)
 
 ### 5.1.3 Approach 3: Anonymous Walk Embeddings
 
 States in anonymous walks correspond to the index of the first time we visited the node in a random walk.
 
-![](./img/Screenshot 2021-11-21 174859.png)
+![](./Img/Screenshot 2021-11-21 174859.png)
 
 random walk 1: $A\rightarrow B \rightarrow C \rightarrow B \rightarrow C$
 
@@ -426,7 +426,7 @@ The next is B, but we met the B at the second movement, so we assign 2 to the an
 
 if walks of length 3: 111, 112, 121, 122, 123
 
-![](./img/Screenshot 2021-11-21 175732.png)
+![](./Img/Screenshot 2021-11-21 175732.png)
 
 It grows with exponential.
 

@@ -4,7 +4,7 @@
 
 1. Arbitrary size and complex topological structure. (No spatial locality like grids)
 2. No fixed point ordering or reference point, there is no fixed node ordering allow us to do. (left and right in sequence data, up and down in image data)
-3. Often dynamic and have multimodal features.
+3. Often dynamic and have multi modal features.
 
 
 

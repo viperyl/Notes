@@ -22,7 +22,7 @@ Page is more important if it has more link. (In-coming link or out-coming link)
 
 Links from important pages count more, so a “vote” form an important page is worth more.
 
-![](./img/Screenshot 2021-11-22 194955.png)
+![](./Img/Screenshot 2021-11-22 194955.png)
 
 Each link’s vote is proportional to the importance of its source page.
 
@@ -36,7 +36,7 @@ $$
 $$
 $d_i ...$ out-degree of node $i$
 
-![](./img/Screenshot 2021-11-22 195630.png)
+![](./Img/Screenshot 2021-11-22 195630.png)
 $$
 \large \begin{equation} \label{equation1}
 \begin{split}
@@ -147,7 +147,7 @@ where $L_1$ norm is applied for convergence justification.
 
 Example:
 
-![](./img/Screenshot 2021-11-22 195630.png)
+![](./Img/Screenshot 2021-11-22 195630.png)
 
 Initialize:
 $$
