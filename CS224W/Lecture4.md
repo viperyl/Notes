@@ -3,8 +3,8 @@
 Graph matrix allow us to:
 
 1. Determine node importance via random walk
-2. Obtain node embeddings via matrix factorization (MF)
-3. View other node embeddings (Node2Vec) as MF
+2. Obtain node embedding via matrix factorisation (MF)
+3. View other node embedding (Node2Vec) as MF
 
 ## 1. PageRank
 
@@ -13,7 +13,7 @@ All web pages are not equally “important”, there is large diversity in the w
 The commonly used to compute the importance of nodes in a graph:
 
 1. PageRank
-2. Personalized PageRank (PPR)
+2. Personalised PageRank (PPR)
 3. Random Walk with Restarts.
 
 ## 1.1 Idea of links as votes
@@ -51,7 +51,7 @@ $$
 
 ### 1.3.1 Stochastic adjacency matrix M
 
-$d_i$ is the outdegree of node $i$
+$d_i$ is the out degree of node $i$
 
 if $i\rightarrow j$, then $M_{ji} = \frac{1}{d_i}$, $M$ is a column stochastic matrix, columns sum to 1.
 
@@ -185,7 +185,7 @@ Two Problems:
 
 ### 1.6.1 Spider trap Problem
 
-![](./img/Screenshot 2021-11-23 103543.png)
+![](./Img/Screenshot 2021-11-23 103543.png)
 $$
 \bold{M} = \begin{bmatrix} 0 & 0\\ 1 & 1\end{bmatrix}
 $$
@@ -200,7 +200,7 @@ $$
 
 ### 1.6.2 Dead end Problem
 
-![](./img/Screenshot 2021-11-23 105149.png)
+![](./Img/Screenshot 2021-11-23 105149.png)
 $$
 \bold{M} = \begin{bmatrix} 0 & 0\\ 1 & 0\end{bmatrix}
 $$
@@ -225,9 +225,9 @@ Common value for $\beta$ is $0.8-0.9$
 
 Follow random teleport links with total probability 1.0 from dead-ends.
 
-![](./img/Screenshot 2021-11-23 112655.png)
+![](./Img/Screenshot 2021-11-23 112655.png)
 
-### 1.6.5 Random Teleports
+### 1.6.5 Random Teleport
 
 $$
 \large r_i = \sum\limits_{i\rightarrow j} \beta \frac{r_i}{d_i} + (1 - \beta) \frac{1}{N}
@@ -261,7 +261,7 @@ PPR: Personalized PageRank
 
 Given: A bipartite graph represent user and item interactions:
 
-![](./img/Screenshot 2021-11-23 121133.png)
+![](./Img/Screenshot 2021-11-23 121133.png)
 
 Goal: Proximity on graphs
 
