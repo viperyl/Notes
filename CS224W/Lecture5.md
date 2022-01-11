@@ -89,5 +89,159 @@ Learns a classifier to label one node based on the labels and/or attributes of i
 
 Apply relational classifier to each node iteratively, until the inconsistency between neighboring labels is minimized (or to reach maximum iteration loop). Network structure affects the final prediction.
 
+## Probabilistic Relational Classifier
 
+**Basic idea**
+
+Class probability $Y_v$ of node $v$ is a weighted average of class probabilities of tis neigbors.
+
+For labeled nodes $v$, initialize label $Y_v$ with ground-truth label $Y_v^*$. For unlabeled nodes, initialize label $Y_v = 0.5$.
+
+Update all nodes in a random order until convergence or maximum number of iteration is reached.
+
+Update for each node $v$ and label $c$.
+$$
+P(Y_v = c) = \frac{1}{\sum\limits_{(v, y)\in E}A_{v,u}}\sum\limits_{(v,u)\in E}A_{v,u}P(Y_u =c)
+$$
+$P(Y_v = c)$ is the probability of node $v$ having label $c$.
+
+If edges have stregth, $A_{v, u}$ can be tje edge weight between $v$ and $u$.
+
+### Example
+
+Initialize network. 
+
+![](./Img/Screenshot from 2022-01-11 16-54-48.png)
+
+Update for the first iteraiton.
+
+Randomly choose a Node update its probabiltiy, then iterative the rest nodes. A iteration indeicates update every nodes probability once.
+
+Update for Node 3. 
+
+![](./Img/Screenshot from 2022-01-11 17-00-05.png)
+
+Update for Node 4
+
+![](./Img/Screenshot from 2022-01-11 17-01-49.png)
+
+Update for Node 5
+
+![](./Img/Screenshot from 2022-01-11 17-02-31.png)
+
+The first Iteration result.
+
+![](./Img/Screenshot from 2022-01-11 17-03-16.png)
+
+After four iterations, we can get converged result.
+
+![](./Img/Screenshot from 2022-01-11 17-06-02.png)
+
+## Iteravtive classification
+
+Main idea of iterative classification is classify node $v$ based on its attributes $f_v$ as well as labels  $z_v$ of neighbor set $N_v$.
+
+### Question fomulation
+
+**Input**: Graph
+
+$f_v$ : feature vector for node $v$. Some nodes $v$ are labeled with $Y_v$
+
+**Task:** Predict label of unlabeled nodes.
+
+**Approach**: Train two classifiers.
+
+$\phi_1(f_v)$:  Predict node label based on node feature vector $f_v$
+
+$\phi_2(f_v)$: Predict label based on node feature vector $f_v$ and summary $z_v$ of labels of $v's$ neighbors.
+
+### Computing the summary $z_v$
+
+Ideas:
+
+1. $z_v$ as the vector histogram of the number of each label in $N_v$
+2. $z_v$ as the most common label in $N_v$
+3. $z_v$ as the number of different labels in $N_v$
+
+### Architecture of Iterative Classifier
+
+#### Phase 1
+
+classify based on node attributes alone.
+
+On a training set, train classifier $\phi_1(f_v)$ to predict $Y_v$ based on $f_v$. $\phi_2(f_v, z_v)$ to predict $Y_v$ based on $f_v$ and summary $z_v$ of labels of $v's$ neighbors.
+
+#### Phase 2
+
+On test set, set labels $Y_v$ based on the classifer $\phi_1$, compute $z_v$ and predict the labels with $\phi_2$.
+
+Repeat for each node $v$:
+
+1. Update $z_v$ based on $Y_u$ for all $u\in N_v$
+2. Update $Y_v$ based on the new $z_v$ by $\phi_2$
+
+Iterative until class lables stablize or max number of iteration is reached.
+
+#### Detailed step
+
+1. Assign $z_v$ for each nodes.
+2. train $\phi_1$ on training data.
+3. train $\phi_2$ on training data.
+4. using $\phi_1$ assign $Y_v$ for unlabled nodes.
+5. Update all nodes $z_v$.
+6. Re-classify each node with $\phi_2$
+7. Repeat following procedure until convergence
+
+		1. update all nodes $z_v$ based on its neighbors $Y_v$.
+		1. update all noeds $Y_v$ based on $\phi_2$
+
+
+
+## Belief Propagation
+
+### Messgae passing: Basics
+
+Task: count the number of nodes in a graph
+
+Condition: Each node can only interact(pass meassage) with its neighbors.
+
+Example: Straight line graph
+
+![](./Img/Screenshot from 2022-01-11 18-11-09.png)
+
+
+
+Solution: Each node listens to the message form its neighbors and passes it forward.
+
+![](./Img/Screenshot from 2022-01-11 18-13-13.png)
+
+
+
+We can also perform message passing on a tree-structured graph.
+
+### Loopy BP Algorithm
+
+**Label-Label potential matrix $\Psi$**
+
+Dependency between a node and its neighbor. $\psi (Y_i, Y_j)$ is proportional to the probability of a node $j$ being in class $Y_j$, given that it has neighbor $i$ in class $Y_i$.
+
+**Prior belief**   $\bold{\phi}$
+
+$\phi(Y_i)$ is proportional to the probability of node $i$ being in class $Y_i$.
+
+$m_{i\rightarrow j}(Y_j)$: is $i's$ message of $j$ being in class $Y_j$
+
+$\mathcal{L}$ is the set of all classes.
+$$
+m_{i\rightarrow j}(Y_j) = \sum\limits_{Y_i \in \mathcal{L}}\psi(Y_i, Y_j) \phi_i(Y_i)\prod\limits_{k\in N_i} m_{k\rightarrow i} (Y_i) \forall Y_j \in \mathcal{L}
+$$
+
+
+
+
+Iteravtively update probabilities of node belonging to a label class based on its neighbors
+
+Improve over collective classification to handle attribute/ feature informaiton
+
+Clasify node $i$ based on its features as well as labels of neighbors.
 
