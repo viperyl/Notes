@@ -47,12 +47,41 @@ $$
 \Large f_{ij} \rightarrow f(x_i, y_i)
 $$
 
-
 Each element of the array $f_{ij}$ is refereed to as a pixel.
 
+## 2.2 Sampling Theorem
+
+An analogue image/signal can be reconstructed exactly from its digital form as long as the sampling frequency is at least twice the highest frequency present in the image/signal.
+
+**sampling frequency**: number of samples per linear measure.
+
+**highest frequency present**: regular variation per linear measure.
 
 
-## 2.2 Sampling Theorum
+$$
+\Large Sampleing\;\;interval\;\leq \frac{1}{Nyquist\;frequency}
+$$
+Where Nyquist frequency  equal to 2 times of maximum frequency of image.
+
+**images**: $\Delta t$ in a scanning process / distribution of camera CCD cells.
+
+
+
+## 2.3 1D sampling
+
+**Under-sampled signal**: sampled at below the Nyquist frequency. will not reproduce the signal without aliasing artefacts.
+
+**Oversampled signal**: sampled significantly above the Nyquist frequency. will not contain more useful information than that sampled at just above the Nyquist frequency.
+
+
+
+## 2.4 2D sampling
+
+For images, to determine the presence of an object in an image its smallest dimension must be spanned by at least two pixels.
+
+In practice, the Nyquist frequency value for analogue image difficult to determine.  Sampling determined by suitable resolution camera for level of detailed required.
+
+
 
 
 
