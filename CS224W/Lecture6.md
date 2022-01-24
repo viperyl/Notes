@@ -80,7 +80,7 @@ Idea is transform information at the neighbors and combine it:
 
 ![](./Img/Screenshot from 2022-01-24 16-23-17.png)
 
-Graph convolution Network idea: Node’s neighborhood defines a computation graph. Learn how to propagate information across the graph to compute node features, how to create new message that then the next node up the chain can again aggreagte.
+Graph convolution Network idea: Node’s neighborhood defines a computation graph. Learn how to propagate information across the graph to compute node features, how to create new message that then the next node up the chain can again aggregate.
 
 Two step process:
 
@@ -89,11 +89,17 @@ Two step process:
 
 
 
+## 2.3 Aggregate Neighbors
+
+Key idea: Generate node embeddings based on local network neighborhoods.
+
+![](./Img/Screenshot from 2022-01-24 16-45-56.png)
 
 
 
+Network neighborhood defines a computation graph. Every node defines a computation graph based on its neighbors.
 
-
+![](./Img/Screenshot from 2022-01-24 16-49-10.png)
 
 
 
