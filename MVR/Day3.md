@@ -17,5 +17,7 @@ Transform space: Real or Fourier
 
 Real space filters: Linear processes which operate on the image data directly in real space (pixel)
 
-Fourier space filters: 
+Fourier space filters: Operate on the image transformed using the Discrete Fourier Transform (DFT)
+
+
 
