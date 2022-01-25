@@ -103,7 +103,60 @@ Network neighborhood defines a computation graph. Every node defines a computati
 
 
 
+## 2.4 Deep Model: many Layers
 
+Model can be of arbitrary depth
+
+Nodes have embedding at each layer: Layer-0 embedding of node $u$ is its input feature $x_u$. Layer-k embeddings gets information from nodes that are $K$ hops away.
+
+![](./Img/Screenshot from 2022-01-25 15-43-46.png)
+
+
+
+## 2.5 Neighborhood Aggregation
+
+Key distinctions are in how different approaches aggregate information across the layers
+
+The order of the node in the graph is arbitrary, our aggregation operator to be permutation invariant.
+
+Basic approach is Average information from neighbors and apply a neural network.
+
+$h_v^0$: embeddings, $v$ means the node, 0 means the level of the neural network.
+$$
+\Large 
+\begin{align}h_v^0 &= x_v\\
+h_v^{l+1} &= \sigma(W_l\sum\limits_{u\in N(v)}^{} \frac{h_u^{l}}{|N(v)|} + B_lh_v^{(l)}), \forall l \in \{0, 1,...,L-1\}\\
+z_v &= h_v^{L}
+\end{align}
+$$
+
+The initial 0-th layer embeddings are equal to node features.
+
+$h_v^{l}$: embeddings of the node $v$ from the previous layer. It need multiply with $B_l$
+
+$N(v)$: node $v$ neighbors, we take the previous level embedding of every node $u$.
+
+$|N(v)|$: Average of neighbor’s previous layer embeddings.
+
+$\sigma$: Non-linearity function
+
+$z_v$: Embeddings after L layers of neighborhood aggregation
+
+## 2.6 Model Training
+
+Recap the above equation, the Model parameters are $W_l$ and $B_l$. Different layer has different $W$ and $B$.
+
+We can feed these embeddings into any loss function and run SGD to train the weight parameters. 
+
+$h_v^l$: The hidden representation of node $v$ at layer $l$
+
+$W_k$: Weight matrix for neighborhood aggregation
+
+$B_k$: Weigh matrix for transforming hidden vector of self.
+
+
+
+## 2.7 Matrix Formulation
 
 
 
