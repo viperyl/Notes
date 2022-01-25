@@ -225,7 +225,9 @@ $s = p \bigotimes o + n$
 
 1. A mathematical operation with "smears" one function with another.
 
+## 7.1 Operation: Convolution
 
+Convolution in 1D 
 
 
 
