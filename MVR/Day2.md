@@ -91,7 +91,199 @@ For image sub-sampling, the "linear" method is fast and provide basic effects. "
 
 ## 5.2 Image Rotation
 
+input position $(c_1, r_1)$ to output image position $(c_2, r_2)$ as follows (rotation matrix):
+
+$$
+\Large c_2 = cos(\theta)(c_1 - c_{origin}) - sin(\theta)(r_1-r_{origin}) + c_{origin}\\
+\Large r_2 = sin(\theta)(c_1 - c_{origin}) + cos(\theta)(r_1-r_{origin}) + r_{origin}
+$$
+
+
+## 5.3 Image Translation
+
 input position $(c_1, r_1)$ to output image position $(c_2, r_2)$ as follows:
+$$
+\Large c_2 = c_1 + C_t\\
+\Large r_2 = r_1 + R_t
+$$
+
+## 5.4 Image  Reflection
+
+Reflection around a vertical axis with column co-ordinate $C_R$
+$$
+\Large c_2 = -c_1 + 2*C_R\\
+\Large r_2 = r_1
+$$
+Reflection around a horizontal axis with column co-ordinate $C_R$
+
+$$
+\Large c_2 = c_1\\
+\Large r_2 = -r_1 + 2 * R_R
+$$
+Reflection around an axis and passing through
+$$
+\Large c_2 = c_1 - 2\Delta sin(\theta)\\
+\Large r_2 = r_1 + 2\Delta cos(\theta)\\
+\Large \Delta = (c_1-C_R)sin(\theta) - (r_1 - r_R)cos(\theta)
+$$
+
+## 5.5 Image Information: formal
+
+Image: a discrete set of independent grey levels $g_k$, each occur in image with probability $p_k$
+
+The information represented by $g_k$ can be defined as
+$$
+\Large I_k = -log_2(p_k) bits\\
+\Large \sum\limits_{k=1}^{L}p_k = 1, p_k \leq 1, I_k \geq 0
+$$
+
+## 5.6 Image Entropy
+
+Entropy is another measurement of image information
+
+Entropy: minimum channel capacity required to encode the information in a binary form
+$$
+\Large E = -\sum\limits_{k=1}^{L}p_klog(p_k)
+$$
+From entropy, define **redundancy** of a given encoding as:
+$$
+\Large r = b - E
+$$
+b is minimum numbers of bits required for encoding.
+
+# 6. Types of image data
+
+## 6.1 Color/grayscale
+
+Pixel values contain: encoding wavelength (color) or intensity of light
+
+Issues: perspective projection (3D information in 2D form) is not invertible
+
+## 6.2 Infra-red
+
+Pixel values contain: Infra-red EM intensity
+
+Issues: near and infra-red (different wavelengths); visualization using color mapping.
+
+
+
+## 6.3 Medical CT/MRI
+
+Pixel values contain: Values proportional to the absorption characteristics of tissue in relation to a signal projected through the body
+
+Issues: Segmentation; visualization of volumetric data
+
+## 6.4 Radar
+
+Pixel values contain: Value proportional to target distance from the sensor and associated signal reflectivity
+
+Issues: calibrating values to determine distance; noise
+
+## 6.5 3D Imaging
+
+Pixel values contain: distance of object/ surface from sensor
+
+Issues:
+
+1. Explicit 3D information rathe than just a 2D projection
+2. partial view of the captured 3D object
+
+## 6.6  Scientific
+
+Pixel values contain: measurements from a given sensor
+
+
+
+
+
+# Mathematical background
+
+s: Data               p: Point Spread Function                o: Object function                  n: Noise
+
+$\bigotimes$: 1D convolution                  $\bigotimes\bigotimes$: 2D convolution             $\bigoplus$: 1D correlation              $\bigoplus\bigoplus$: 2D correlation
+
+Image data = (Point Spread Function) $\bigotimes$ (Object Function) + Noise
+
+$s = p \bigotimes o + n$
+
+**Point Spread Function**
+
+1. Information of the object function is spread when recoding the data
+2. Deterministic characteristic of the imaging instrument (camera)
+
+**Object Function**
+
+1. The object that is being imaged
+2. The way light is reflected from that structure to the imaging instrument
+
+**Noise**
+
+1. non-deterministic, stochastic function of all external disturbances
+2. best described in terms of a statistical noise distribution
+
+**Convolution Operator**
+
+1. A mathematical operation with "smears" one function with another.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
