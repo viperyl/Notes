@@ -227,7 +227,21 @@ $s = p \bigotimes o + n$
 
 ## 7.1 Operation: Convolution
 
-Convolution in 1D 
+Convolution in 1D (continuous)
+$$
+\Large 
+\begin{align}s &= p \bigotimes f + n\\
+& = \int_{-X}^{X} p(x -y)f(y)dy + n(x)
+\end{align}
+$$
+Convolution in 1D (discrete)
+$$
+\Large 
+\begin{align}s &= p_i \bigotimes f_i + n_i\\
+& = \sum\limits_{j}p_{i-j}f_j + n(x)
+\end{align}
+$$
+
 
 
 
