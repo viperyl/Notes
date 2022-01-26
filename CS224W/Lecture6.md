@@ -158,6 +158,86 @@ $B_k$: Weigh matrix for transforming hidden vector of self.
 
 ## 2.7 Matrix Formulation
 
+Many aggregations can be performed efficiently by sparse matrix operations
+
+Let  $\Large H^{l} = [h_1^{l}, h_2^{l},...,h_{|V|}^l]^T$
+
+Then  $\Large \sum\limits_{u\in N_v}h_u^l = A_{v,:} H^l$
+
+Let  $D$ be diagonal matrix where $D_{v,v} = Deg(v) = |N(v)|$
+
+ The inverse of $D$: $D^{-1}$ is also diagonal
+
+$\Large D_{v,v}^{-1} = \frac{1}{|N(v)|}$
+
+Therefore 
+$$
+\Large \sum\limits_{u\in N(v)} \frac{h_u^{l-1}}{|N(v)|} = H^{l+1} = D^{-1}AH^l
+$$
+
+
+Rewriting update function in matrix form:
+$$
+\Large H^{l+1} = \sigma(\tilde{A}H^lW_l^T + H^lB_l^T)\;\;\;\;\;\;\;\tilde{A} = D^{-1}A
+$$
+Left is neighborhood aggregation, right is self transformation
+
+In practice, this implies that efficient sparse matrix multiplication can be used ($\tilde{A}$ is sparse)
+
+Node embedding $z_v$ is a function of input graph.
+
+Supervised Learning: we want to minimize the loss $\mathcal{L}$
+$$
+\Large \min\limits_{\theta}\mathcal{L}(y, f(z_v))
+$$
+y is node label, $\mathcal{L}$ could be L2 if y is real number, or cross entropy if y is categorical.
+
+## 2.8 Unsupervised Learning
+
+For unsupervised Learning, No node label available.
+
+We can use the graph structure as the supervision.
+
+Similar nodes have similar embeddings:
+$$
+\Large \mathcal{L} =\sum\limits_{z_u,z_v} CE(y_{u,v}, DEC(z_u, z_v))
+$$
+where $y_{u,v} = 1$ when node $u$ and $v$ are similar.
+
+CE is cross entropy.
+
+DEC is the decoder such as inner product.
+
+Node similarity can be anything, such as Random walks, Matrix factorization, Node proximity in the graph.
+
+## 2.9 Supervised Learning
+
+Directly train the model for a supervised task (node classification)
+
+Safety or toxic drug.
+
+Using cross entropy
+$$
+\Large \mathcal{L} = \sum\limits_{v\in V} y_vlog(\sigma(z_v^T\theta) ) + (1-y_v)log(1-\sigma(z_v^T\theta))
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
