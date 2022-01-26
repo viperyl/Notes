@@ -226,9 +226,101 @@ FT can decompose the image into sine and cosine frequency components
 
 ### 2.6.1 Discrete Convolution Theorem
 
+Convolution in the frequency domain reduces to multiplication in the spatial domain
+
+Multiplication in the frequency domain reduces to convolution in the spatial domain
+$$
+\Large s_{ij} = \sum\limits_{c}\sum\limits_{r}p_{i-c, j-r}f_{cr} == DFT^{-1}(S_{ij} = P_{ij}F_{ij})
+$$
+Left is spatial and right is Frequency.
+
+If $p_{ij}$ is small, then we can compute convolution directly in real space.
+
+ if $p_{ij}$ is large, using Fast Fourier Transform is more efficient to obtain a Fourier space version the image $f_{ij}$. Then perform the convolution-based filtering as multiplication in Fourier space.
+
+2D formulations are separable to gain computational efficiency
+
+2D DFT can be expressed as a series of 2N 1D DFT. ordinary 1D DFT is O($N^2$). Fast Fourier Transforms is $O(Nlog_2N)$
+
+### 2.6.2 DFT inverse
+
+Image can always be transformed from Spatial to Frequency and back again using FFT.
+
+inverse examples:
+
+1. removing image blurring
+2. noise by establishing the noise function
 
 
 
+### 2.6.3 DFT compute
+
+The DFT of an 1D N-point vector is given by:
+$$
+\Large F_m = \sum\limits_{n=0}^{N-1}f_n e^{\frac{-2\pi inm}{N}}
+$$
+
+
+Extend to 2D:
+$$
+\Large F_m = \sum\limits_{n=0}W_N^{nm} f_n e^{\frac{-2\pi inm}{N}}\;\; W_N = e^{\frac{-2\pi i}{N}}
+$$
+DFT essentially multiplying an N-point vector $f_n$ by an $N\times N$ matrix of co-efficient given by a constant $W_n$ to the power of $nm$.
+
+Thus the standard DFT is $O(N^2)$
+
+FFT: recursive sub-division 
+
+### 2.6.4 Visualization
+
+DFT output
+$$
+\Large F_{nm} = G_{nm} + iH_{nm}
+$$
+Amplitude Spectrum: $|F_{nm}| = \sqrt{G_{nm}^2 + H_{nm}^2}$
+
+Phase Spectrum: $\phi_{nm} = tan^{-1}(\frac{H_{nm}}{G_{nm}})$
+
+Power Spectrum: $|F_{nm}|^2$
+
+## 2.7 Why Fourier 
+
+Enables complex operation in image space to be computed  as simple operations in Fourier Space such as:
+
+1. Convolution
+2. Correlation
+3. De-convolution
+
+In Fourier space above operation are computationally more efficient.
+
+## 2.8 High Pass Filtering
+
+remove low frequency components from the image. Set frequencies below a certain threshold to zero.
+$$
+\Large
+H(k_x, k_y) = 
+\begin{cases}
+0,\;\; \sqrt{k_x^2+k_y^2} \leq K\\
+1,\;\; \sqrt{k_x^2+k_y^2} > K
+\end{cases}
+$$
+frequency in map means the distance between the point and middle point.
+$$
+\Large S(k_x, k_y) = H(k_x, k_y) F(k_x, k_y)
+$$
+uses to detect edges or enhance the edges.
+
+## 2.9 Butterworth High pass filter
+
+Approximation to the ideal high pass filter because of computational cost.
+
+a piecewise continuous circularly symmetric filter given by:
+$$
+\Large B(k_x, k_y) = \frac{1}{1 + (\frac{K}{\sqrt{k_x^2 + k_y^2}})^{2n}}
+$$
+
+
+## 2.10 Low Pass Filtering
 
 
 
