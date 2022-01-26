@@ -361,6 +361,91 @@ $$
 
 A filter with two frequency thresholds that passes frequencies within a given range
 
+## 2.14 Fourier Space Correlation
+
+Operation: find all the regions with certain properties
+
+Process: transform image and mask into Fourier space and multiply. Frequencies in mask remain, whilst others set zero.
+
+# 3. Color 
+
+## 3.1 RGB
+
+Colors represented as Red, Green and Blue intensities.
+
+Lightness: average value of three R, G and B channels. $L = (R+G+B)/3$
+
+Chromaticity: Normalizes the current RGB values for differences in lighting. $(r,g,b) = (R/(R+G+B), G/(R+G+B), B/(R+G+B))$
+
+## 3.2 HSV
+
+Hue: dominant wavelength of colour
+
+Saturation: amount of Hue present
+
+Value: brightness of color
+
+Hue: $0^\circ \rightarrow 260^\circ$
+
+Saturation: $0\rightarrow 1$
+
+Value: $0\rightarrow 1$
+
+## 3.3 RGB to HSV
+
+$$
+\Large
+\begin{cases}
+R^{'} &= R/255\\
+G^{'} &= G/255\\
+B^{'} &= B/255\\
+C_{max} &= max(R^{'}, G^{'}, B^{'})\\
+C_{min}&= min(R^{'}, G^{'}, B^{'})\\
+\Delta& = C_{max} - C_{min}\\
+
+\end{cases}
+$$
+
+Hue calculation
+$$
+\Large H =
+\begin{cases}
+60^\circ (\frac{G^{'} - B^{'}}{\Delta}mod\;6), C_{max} = R^{'}\\
+60^\circ (\frac{B^{'} - R^{'}}{\Delta}+2), C_{max} = G^{'}\\
+60^\circ (\frac{R^{'} - G^{'}}{\Delta}+4), C_{max} = B^{'}
+\end{cases}
+$$
+Saturation Calculation
+$$
+\Large
+S = \begin{cases}
+0, \Delta = 0\\
+\frac{\Delta}{C_{max}}, \Delta \neq 0
+\end{cases}
+$$
+
+
+Value Calculation
+$$
+\Large
+V = C_{max}
+$$
+Easier to color threshold in HSV space than RGB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
