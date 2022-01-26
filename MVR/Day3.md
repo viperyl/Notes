@@ -322,13 +322,44 @@ $$
 
 ## 2.10 Low Pass Filtering
 
+Remove high frequency components from the image. Set frequencies above a certain threshold to zero.
+$$
+\Large
+H(k_x, k_y) = 
+\begin{cases}
+1,\;\; \sqrt{k_x^2+k_y^2} \leq K\\
+0,\;\; \sqrt{k_x^2+k_y^2} > K
+\end{cases}
+$$
+
+
+
+
+used to noise removal and image smoothing. but ringing effects. 
+
+Solution: LPF which are piecewise continuous functions in the spectral domain.
+
+## 2.11 Gaussian Low Pass Filter
+
+$$
+\Large G(k_x, k_y) = exp(-\frac{k_x^2 + k_y^2}{2\sigma^2})
+$$
+
+where $\alpha$ is the width of the filter
 
 
 
 
 
+## 2.12 Butterworth Low Pass Filter
 
+$$
+\Large B(k_x, k_y) = \frac{1}{1 + (\frac{k_x^2 + k_y^2}{\sqrt{K}})^{2n}}
+$$
 
+## 2.13 Band Pass Filtering
+
+A filter with two frequency thresholds that passes frequencies within a given range
 
 
 
