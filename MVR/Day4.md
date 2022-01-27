@@ -99,13 +99,13 @@ Use a monotonic, non-linear mapping so input pixels are mapped to an output imag
 
 
 
-**Cululative hisogram**
+**Cumulative histogram**
 
-each histogram entry is density of a given intensity vlaue. a normalized histogram is probability distribution of image intensity.
+each histogram entry is density of a given intensity value. a normalized histogram is probability distribution of image intensity.
 
 Assume histogram is  $g()$
 
-culumative histogram is  $\Large C(i) = \sum\limits_{i=0}^{k=i}g(k)$
+cumulative histogram is  $\Large C(i) = \sum\limits_{i=0}^{k=i}g(k)$
 
 $C(i)$ record the frequency of all grey levels upto and including $g(i)$
 
@@ -118,9 +118,9 @@ $$
 \Large C(i) = jN/L
 $$
 
-## 2 Homomorphic Filtering
+# 2. Homomorphic Filtering
 
-simulaneous dynamic range compression and contrast enhancement vai Fouier space filtering.
+simultaneous dynamic range compression and contrast enhancement via Fourier space filtering.
 
 Based on principle that image $f(x, y)$ is constituted of two primary components. 
 
@@ -131,7 +131,7 @@ $$
 \Large f(x,y) = i(x, y) r(x, y)
 $$
 
-Logiruthum allow us deal them seperately.
+Logarithm allow us deal them separately.
 $$
 \Large ln[f(x,y)] = ln[i(x,y)] + ln[r(x,y)]
 $$
