@@ -95,9 +95,102 @@ Solution: A robust method to select $c$ and $d$
 
 modifying an image dynamic range so its histogram conforms to a given shape.
 
+Use a monotonic, non-linear mapping so input pixels are mapped to an output image with a uniform hisogram distribution.
 
 
 
+**Cululative hisogram**
+
+each histogram entry is density of a given intensity vlaue. a normalized histogram is probability distribution of image intensity.
+
+Assume histogram is  $g()$
+
+culumative histogram is  $\Large C(i) = \sum\limits_{i=0}^{k=i}g(k)$
+
+$C(i)$ record the frequency of all grey levels upto and including $g(i)$
+
+$C$ is single valued and monotoincally increasing funciton. 
+
+**Idealized case**: resulting equalized image will contain an equal number of pixels at each intensity level.
+
+**General case**: mapping between input pixel value $i$, and output pixel value $j$, as follows.
+$$
+\Large C(i) = jN/L
+$$
+
+## 2 Homomorphic Filtering
+
+simulaneous dynamic range compression and contrast enhancement vai Fouier space filtering.
+
+Based on principle that image $f(x, y)$ is constituted of two primary components. 
+
+1. illumination: the amount of light incident onto the scene $i(x, y)$
+2. reflectance: the amount of light reflected from objects within the scene $r(x, y)$
+
+$$
+\Large f(x,y) = i(x, y) r(x, y)
+$$
+
+Logiruthum allow us deal them seperately.
+$$
+\Large ln[f(x,y)] = ln[i(x,y)] + ln[r(x,y)]
+$$
+Then into Fourier space.
+$$
+\Large F(ln\;f(x,y)) = F(ln\; i(x,y)) + F(ln\; r(x,y))\rightarrow F_f(u,v) = F_i(u,v) + F_r(u,v)
+$$
+Homomorphic filter $H(u,v)$:
+$$
+\Large H(u,v)F_f(u,v) = H(u,v)F_i(u,v) + H(u,v)F_j(u,v)
+$$
+Post processing:
+
+1. inverse DFT to get spatial logarithmic image.
+2. exponential transforms to recover now filtered spatial image
+
+In Fourier space:
+
+1. Illumination == low frequency ranges
+2. Reflection == high frequency ranges
+
+There are two frequency threshsold $h$ and $l$ are used to achieve separation.
+
+if $h < 1$ and $l > 1$:
+
+1. filter amplifies the contribution made by reflectance
+2. reduces the contribution made by illumination component
+
+# 3. Laplacian of Gaussian filtering
+
+highlight areas of rapid intensity change.
+
+Laplacian: sum of partial derivatives of image.
+$$
+\Large I_{laplacian}(x,y) = \frac{\partial^2I_{input}(x,y)}{\partial x^2} + \frac{\partial^2I_{input}(x,y)}{\partial y^2}
+$$
+commonly implemented via discrete convolution filters (an example below)
+$$
+\Large  L = \begin{bmatrix} 
+0 & -1 & 0 \\
+-1& 4 & -1 \\
+0 & -1 & 0
+\end{bmatrix}
+$$
+
+
+image gradient equal to Edges.
+
+A second order derivative is very sensitive to noise, thus we need  combine with prior stage of Gaussian smoothing as convolution is associative (combining into single kernel).
+$$
+\Large Log(x,y) = -\frac{1}{\pi\sigma^4}[1 - \frac{x^2 + y^2}{2\sigma^2}] exp(-\frac{x^2+y^2}{2\sigma^2})
+$$
+
+
+Laplacian of Gaussian operator: combination of the Laplacian second order kernels and the Gaussian kernel
+
+1. Area of uniform image intensity: zero
+2. areas of a change:  non zero
+3. For line/edge/contour/intensity change: +ve on the darker side, -ve on the light side
 
 
 
