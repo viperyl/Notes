@@ -192,7 +192,92 @@ Laplacian of Gaussian operator: combination of the Laplacian second order kernel
 2. areas of a change:  non zero
 3. For line/edge/contour/intensity change: +ve on the darker side, -ve on the light side
 
+# 4. Unsharpened Filter: edge enhancement
 
+Subtract smooth version of image to emphasis or enhance the high frequency information
+$$
+\Large I_{edge}(c,r) = I_{origin}(c,r) - I_{smoothed}(c,r)
+$$
+Extending:
+$$
+\Large I_{enhances}(c,r) = I_{original}(c,r) + K[I_{origin}(c,r) - I_{smoothed}(c,r)]
+$$
+scaling factor $K$ generally in $[0.2, 0.7]$ intervals. Ensure the result within the image range.
+
+In practice: use any low-pass technique to get smoothed image then add it to original.
+
+# 5. Noise reduction
+
+Noise variety of unwanted disturbances due to interference from external sources.
+
+White Noise: Noise signal with a broad spectrum.
+
+Colored Noise: Noise signal confined to a particular band.
+
+Aim: enhance the visual quality of an image by eliminating features which are random and uncorrelated.
+
+## 5.1 Low pass filter
+
+Usual image noise is high frequency effect. 
+
+Corrupts data where the energy of the spectrum is low.
+
+We can apply Low pass filter in Fourier space or by a simple statistical processing.
+
+
+
+## 5.2 Mean Filter
+
+Replace a given pixel with the mean of its $N\times N$ (example below)
+$$
+\Large K = \frac{1}{9}\begin{bmatrix}
+1 & 1 & 1\\
+1 & 1 & 1\\
+1 & 1 & 1
+\end{bmatrix}
+$$
+
+
+Eliminates sudden intensity jumps
+
+The kernel shape is $N\times M$, normally $N == M$. 
+
+Drawbacks
+
+1. Not robust enough to large noise deviations.
+2. Cause edge blurring.
+
+It also a general low pass filter
+
+## 5.3 Median Filter
+
+replace a given pixel with the median of its $N\times N$ image neighborhood.
+
+**Effect**
+
+1. Eliminates sudden intensity jumps
+2. Blurred image
+
+## 5.4 Conservative Smoothing
+
+compare pixel value to min and max of $N\times N$ neighborhood.
+
+replace by min if it less then min; replace by max if it large than max;
+
+**Effect**
+
+1. Eliminating isolated outliers.
+
+
+
+## 5.5 Crimmins Speckle detector
+
+Aim: algorithmic noise spike removal
+
+For a $3\times 3$ kernel, for each 8 neighbors.
+
+1. Increase the value of pixels that are darker than their surrounding pixel neighborhood.
+2. decrease the value of pixels that are brighter than their surrounding pixel nieghbohood.
 
 
 
