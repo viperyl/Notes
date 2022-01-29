@@ -32,5 +32,23 @@ common variations
 1. add all consistent neighbors at one (fast convergence)
 2. maintain statistics of each region
 
+## 1.3 Region Merging
 
+At start region == pixels; Iteratively merge regions; similarity measure $M$
+
+$M$ difference of 1 between gray levels
+
+Input: image gray level image (1 - 10)
+
+Iteration 1: Identifies regions of the same gray level and merges them.
+
+Iteration 2: merges are looked for with gray level difference of 1
+
+Iteration N: ....
+
+result: Image segmented into two distinct objects
+
+## 1.4 Splitting
+
+top-down method, start from whole image.
 
