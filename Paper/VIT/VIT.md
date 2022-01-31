@@ -74,6 +74,54 @@ Transformer Encoder前有个Dropout层，后有一个Layer Norm层。
 | ViT-Large | $16\times 16$ | 1024   | 4096     | 16    | 307M   |
 | ViT-Huge  | $16\times16$  | 1280   | 5120     | 16    | 632M   |
 
+Layers: Transformer Encoder 中重复堆叠Encoder block的次数
+
+Hidden Size: 通过Embedding层后每个token的dim。
+
+MLP Size： Transformer Encoder中MLP Block第一个全连接层的节点个数 (Hidden Size 的四倍)
+
+Heads：代表Transformer中Multi-head Attention的head数
+
+# 6. Hybrid Model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
