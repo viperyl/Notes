@@ -50,13 +50,29 @@ $$
 
 # 3. Transformer Encoder
 
-<img src="./Img/Screenshot 2022-01-31 130436.png" style="zoom:50%;" />
+<img src="./Img/Screenshot 2022-01-31 130436.png" style="zoom:70%;" />
 
 
 
 
 
+# 4. MLP Head
 
+Transformer Encoder前有个Dropout层，后有一个Layer Norm层。
+
+训练ImageNet21K时候由Linear + tanh + Linear构成。
+
+但是迁移到ImageNet1k或自己准备的数据集时，只有一个Linear层。若需要每个类别的概率，则需要加上一个SoftMax层
+
+
+
+# 5. VIT
+
+| Model     | Patch Size    | Layers | MLP Size | Heads | Params |
+| --------- | ------------- | ------ | -------- | ----- | ------ |
+| ViT-Base  | $16\times16$  | 768    | 3072     | 12    | 86M    |
+| ViT-Large | $16\times 16$ | 1024   | 4096     | 16    | 307M   |
+| ViT-Huge  | $16\times16$  | 1280   | 5120     | 16    | 632M   |
 
 
 
