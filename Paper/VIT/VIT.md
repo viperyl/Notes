@@ -48,7 +48,9 @@ $$
 $$
 
 
+# 3. Transformer Encoder
 
+<img src="./Img/Screenshot 2022-01-31 130436.png" style="zoom:50%;" />
 
 
 
