@@ -22,14 +22,30 @@ $$
 $$
 在输入Transformer Encoder 之前需要加上 class token 和position embedding， 原论文中都是可训练数据。
 
-拼接 class token： $Cat([1, 768], [196, 768]) \rightarrow [197, 768]$
+拼接 class token： $Cat([1, 768], [196, 768]) \rightarrow [197, 768]$     [1, 768]是可训练的
 
-叠加Position Embedding：$[197,768] \rightarrow [197, 768]$
-
-
+叠加Position Embedding：$[197,768] + [197, 768] \rightarrow [197, 768]$
 
 
 
+# 2. Position Embedding
+
+![](./Img/Screenshot 2022-01-31 031952.png)
+
+原论文给出了不同的Position embedding 的结果。
+
+无position embedding的准确率是0.61382.使用了一个一维的位置编码会提升3个百分点。
+
+```
+The difference in how to encode spatial information is less important
+```
+
+<img src="./Img/Screenshot 2022-01-31 032507.png" style="zoom:45%;" />
+
+每个token 都会叠加一个position encoding。对每个patches 都会有一个自己的位置编码，将一个patch的位置编码和其他的位置编码做一个余弦相似度计算就会得到上述的图。自身和自身的相似度为1.
+$$
+\Large cos(A,B) = \frac{A \cdot B}{|A| |B|} 
+$$
 
 
 
