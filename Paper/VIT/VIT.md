@@ -82,7 +82,6 @@ MLP Size： Transformer Encoder中MLP Block第一个全连接层的节点个数 
 
 Heads：代表Transformer中Multi-head Attention的head数
 
-# 6. Hybrid Model
 
 
 
@@ -93,6 +92,13 @@ Heads：代表Transformer中Multi-head Attention的head数
 
 
 
+
+
+inductive bias: The inductive bias of a learning algorithm is the set of assumptions that the lerarner uses a predict outputs of given inputs that it has not encountered. or called as learning bias.
+
+
+
+ 
 
 
 

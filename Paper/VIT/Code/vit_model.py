@@ -149,7 +149,7 @@ class VisionTransformer(nn.Module):
                  attn_drop_ratio=0., drop_path_ratio=0., embed_layer=PathEmbed, norm_layer=None, act_layer=None):
         super(VisionTransformer, self).__init__()
         self.num_classes = num_classes
-        self.features = self.embed = embed_dim
+        self.num_features = self.embed = embed_dim
         self.num_token = 2 if distilled else 1
         norm_layer = norm_layer or partial(nn.LayerNorm, eps=1e-6)
         act_layer = act_layer or nn.GELU
@@ -180,7 +180,7 @@ class VisionTransformer(nn.Module):
             ]))
         else:
             self.has_logits = False
-            self.pre_logits = nn.Identity
+            self.pre_logits = nn.Identity()
 
         # Classifier head
         self.head = nn.Linear(self.num_features, num_classes) if num_classes > 0 else nn.Identity()
@@ -190,7 +190,7 @@ class VisionTransformer(nn.Module):
             self.head_dist = nn.Linear(embed_dim, num_classes) if num_classes > 0 else nn.Identity()
 
         # Weight init
-        nn.init.trunc_normal_(self.pos.embed, std=0.02)
+        nn.init.trunc_normal_(self.pos_embed, std=0.02)
         if self.dist_token is not None:
             nn.init.trunc_normal_(self.dist_token, std=0.02)
 
@@ -212,7 +212,7 @@ class VisionTransformer(nn.Module):
         x = self.blocks(x)
         x = self.norm(x)
         if self.dist_token is None:
-            return self.pre_logits(x[:,0])
+            return self.pre_logits(x[:, 0])
         else:
             return x[:, 0], x[:, 1]
 
@@ -221,18 +221,18 @@ class VisionTransformer(nn.Module):
         x = self.head(x)
         return x
 
-    def _init_vit_weights(m):
-        if isinstance(m, nn.Linear):
-            nn.init.trunc_normal_(m.weight, std=0.01)
-            if m.bias is not None:
-                nn.init.zeros_(m.bias)
-        elif isinstance(m, nn.Conv2d):
-            nn.init.kaiming_normal_(m.weight, mode="fan_out")
-            if m.bais is not None:
-                nn.init.zeros_(m.bias)
-        elif isinstance(m, nn.LayerNorm):
+def _init_vit_weights(m):
+    if isinstance(m, nn.Linear):
+        nn.init.trunc_normal_(m.weight, std=0.01)
+        if m.bias is not None:
             nn.init.zeros_(m.bias)
-            nn.init.ones_(m.weight)
+    elif isinstance(m, nn.Conv2d):
+        nn.init.kaiming_normal_(m.weight, mode="fan_out")
+        if m.bias is not None:
+            nn.init.zeros_(m.bias)
+    elif isinstance(m, nn.LayerNorm):
+        nn.init.zeros_(m.bias)
+        nn.init.ones_(m.weight)
 
 def vit_base_patch16_224_in21k(num_classes: int=21483, has_logits: bool=True):
     model = VisionTransformer(img_size=224,
