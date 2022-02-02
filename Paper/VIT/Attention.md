@@ -20,7 +20,7 @@ v: information to be extracted
 
 并行化：
 $$
-\Large Q = \begin{bmatrix} q^1\\a^2\end{bmatrix} = \begin{bmatrix} a_1\\a_2\end{bmatrix} W^q
+\Large Q = \begin{bmatrix} q^1\\q^2\end{bmatrix} = \begin{bmatrix} a_1\\a_2\end{bmatrix} W^q
 $$
 
 $$
