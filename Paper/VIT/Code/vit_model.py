@@ -60,7 +60,7 @@ class Attention(nn.Module):
         head_dim = dim // num_heads
         self.qkv = nn.Linear(dim, dim*3, bias = qkv_bias)
         self.scale = qk_scale or head_dim ** -0.5
-        self.attn_drop = attn_drop_ratio
+        self.attn_drop = nn.Dropout(attn_drop_ratio)
         self.proj = nn.Linear(dim, dim)
         self.proj_drop = nn.Dropout(proj_drop_ratio)
 
