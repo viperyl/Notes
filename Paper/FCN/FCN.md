@@ -7,3 +7,62 @@ Fully Convolutional Networks for Semantic Segmentation
 
 
 FCN-32s: 32x upsampled prediction 
+
+
+
+# Architecture
+
+FCN-32S
+
+<img src="./Img/Screenshot 2022-02-04 123935.png" style="zoom:75%;" />
+
+FCN-16S
+
+<img src="./Img/Screenshot 2022-02-04 124036.png" style="zoom:75%;" />
+
+
+
+FCN-8S
+
+<img src="./Img/Screenshot 2022-02-04 124214.png" style="zoom:75%;" />
+
+
+
+
+
+# Loss Calculation
+
+Cross Entropy Loss
+
+
+
+
+
+# Implementation
+
+Pytorch 的Backbone 为ResNet-50, 也用到了膨胀卷积。
+
+![](./Img/torch_fcn.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
