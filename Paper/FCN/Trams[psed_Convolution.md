@@ -46,3 +46,49 @@ $$
 
 
 `torch.nn.ConvTranspose2d`
+
+
+
+## 卷积计算
+
+若卷积核为$\Large \begin{bmatrix}0&1 & 1\\0 &1 & 0\\ 1 & 0 & 1 \end{bmatrix}$. 若feature map 为$\Large \begin{bmatrix}1&0&1 & 0\\0 &0&1 & 1\\ 1 & 0&0 & 1\\0&1&0&0 \end{bmatrix}$, 构建等效卷积核
+
+$\Large \begin{bmatrix}0&1&1 & 0\\0 &1&0 & 0\\ 1 & 0&1 & 0\\0&0&0&0 \end{bmatrix}$​ $\Large \begin{bmatrix}0&0&1 & 1\\0 &0&1 & 0\\ 0 & 1&0 & 1\\0&0&0&0 \end{bmatrix}$​ $\Large \begin{bmatrix}0&0&0 & 0\\0 &1&1 & 0\\ 0 & 1&0 & 0\\1&0&1&0 \end{bmatrix}$​ $\Large \begin{bmatrix}0&0&0 & 0\\0 &0&1 & 1\\ 0 & 0&1 & 0\\0&1&0&1 \end{bmatrix}$ 
+
+
+
+将上述的矩阵flatten
+$$
+\Large \bold{C} = \begin{bmatrix} 0&1&1&0&0&1&0&0&1&0&1&0&0&0&0&0\\
+0&0&1 & 1&0 &0&1 & 0& 0 & 1&0 & 1&0&0&0&0\\
+0&0&0 & 0&0 &1&1 & 0& 0 & 1&0 & 0&1&0&1&0\\
+0&0&0 & 0&0 &0&1 & 1& 0 & 0&1 & 0&0&1&0&1
+
+\end{bmatrix}
+$$
+将feature map flatten
+$$
+\Large \bold{I} = \begin{bmatrix}1&0&1 & 0&0 &0&1 & 1& 1 & 0&0 & 1&0&1&0& \end{bmatrix}
+$$
+
+
+再展平我们的feature map， 二者相乘可得结果，
+$$
+\Large \bold{I}^{1\times16}\bold{C}^{16\times4} = \bold{O}^{1\times4}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
