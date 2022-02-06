@@ -13,4 +13,13 @@ def conv1x1(in_planes, out_planes, stride=1):
 
 
 class Bottleneck(nn.Module):
+    expansion = 4
+    def __init__(self, inplanes, planes, stride=1, downsample=None, groups=1, base_width=64, dilation=1, norm_layer=None):
+        super(Bottleneck, self).__init__()
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+
+        width = int(planes * (base_width/64.)) * groups
+        self.conv1 = conv1x1(inplanes, width)
+
 
