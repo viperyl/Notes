@@ -186,7 +186,71 @@ Solution 2.1 BFS (myself)
 
 
 
+### No. 567
 
+Solution 1: sliding windows
+
+```
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        if len(s2) < len(s1):
+            return False
+        s1_hash = [0] * 26
+        s2_hash = [0] * 26
+        for s in s1:
+            s1_hash[ord(s) - ord("a")] += 1
+        left, right = 0, len(s2) - 1
+
+        for right in range(len(s1)):
+            s2_hash[ord(s2[right]) - ord("a")] += 1
+
+
+        while True:
+            if s1_hash == s2_hash:
+                return True
+
+            left += 1
+            right += 1
+            if right >= len(s2):
+                return False
+
+            s2_hash[ord(s2[right]) - ord("a")] += 1
+            s2_hash[ord(s2[left - 1]) - ord("a")] -= 1
+```
+
+
+
+### No. 78
+
+Solution 1: Back tracking
+
+```
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        n = len(nums)
+        def backtracking(i, tmp):
+            res.append(tmp)
+            for j in range(i, n):
+                backtracking(j + 1, tmp + [nums[j]])
+        backtracking(0, [])
+        return res
+        
+```
+
+
+
+Solution 2: build-in function
+
+```
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        for i in range(len(nums) + 1):
+            for tmp in itertools.combinations(nums, i):
+                res.append(tmp)
+        return res
+```
 
 
 
