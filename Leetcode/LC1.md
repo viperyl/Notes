@@ -292,3 +292,71 @@ class Solution:
 
 
 
+### No. 39
+
+Solution 1. Back tracking
+
+```
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        def backtracking(currSum, index, path):
+            if currSum == target:
+                res.append(path)
+                return
+            for i in range(index, n):
+                newSum = candidates[i] + currSum
+                if newSum <= target:
+                    backtracking(newSum, i, [candidates[i]] + path)
+
+        candidates.sort()
+        res = []
+        n = len(candidates)
+        backtracking(0, 0, [])
+        return res
+        
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
