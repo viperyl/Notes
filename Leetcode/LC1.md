@@ -254,6 +254,40 @@ class Solution:
 
 
 
+### No.47
+
+Solution 1: back tracking
+
+```
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        def backtracking(cur, tmp):
+            if (len(cur) == len(nums)):
+                string_cur = [str(i) for i in cur]
+                hashlist = "".join(string_cur)
+                if hashlist in visited:
+                    return
+                else:
+                    visited.add(hashlist)
+                    res.append(cur)
+                    return
+
+
+            for i in range(len(tmp)):
+                if tmp[0:i] == []:
+                    backtracking(cur + [tmp[i]], tmp[i+1:])
+                elif tmp[i+1:] == []:
+                    backtracking(cur + [tmp[i]], tmp[0:i])
+                else:
+                    backtracking(cur + [tmp[i]], tmp[0:i] + tmp[i + 1:])
+        visited = set()
+        res = []
+        backtracking([], nums)
+        return res
+        
+        
+```
+
 
 
 
