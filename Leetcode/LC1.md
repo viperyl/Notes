@@ -377,6 +377,32 @@ class Solution:
 
 
 
+### No. 19
+
+Solution 1: two pointer
+
+```
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        l1, l2 = head, head
+        if l1.next == None:
+            return None
+        pre_l1 = None
+        while n != 1:
+            l2 = l2.next
+            n = n-1
+        if l2.next == None:
+            return head.next
+        
+        while l2.next != None:
+            pre_l1 = l1
+            l1 = l1.next
+            l2 = l2.next
+        pre_l1.next = l1.next
+        return head
+            
+```
+
 
 
 
