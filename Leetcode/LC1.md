@@ -409,6 +409,28 @@ class Solution:
 
 
 
+### No.83
+
+Solution 1: Two Adjacent pointer
+
+```
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head == None:
+            return head
+        cur = head
+        nextN = head.next
+        while nextN != None:
+            if nextN.val == cur.val:
+                nextN = nextN.next
+                cur.next = nextN
+            else:
+                cur = cur.next
+                nextN = nextN.next
+        return head
+                
+```
+
 
 
 
