@@ -545,6 +545,52 @@ class Solution:
 
 
 
+### No. 92
+
+Solution 1: brute force
+
+find the starting node and ending node for sorting. then perform ascending sort.
+
+to prevent starting node in the start of the linked list or ending node in the end of the linked list, we need add assistant node to prevent `None` value, because None value don't has the `val` and `next` attribute.
+
+```
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        start = ListNode(0)
+        start.next = head
+        if left == right:
+            return head
+        p1, pp1 = head, start
+        counter = 1
+        while counter != left:
+            pp1 = p1
+            p1 = p1.next
+            counter += 1
+        p2, np2 = p1, p1.next
+        while counter != right:
+            np2 = np2.next
+            p2 = p2.next
+            counter += 1
+        if np2 == None:
+            p2.next = ListNode(114514)
+            np2 = p2.next
+        pp1.next = None
+        p2.next = None
+        s1 = None
+        s2 = p1
+        s3 = p1.next
+        while s3 != None:
+            s2.next = s1
+            s1 = s2
+            s2 = s3
+            s3 = s3.next
+        s2.next = s1
+        pp1.next = s2
+        if np2.val != 114514:
+            p1.next = np2
+        return start.next
+```
+
 
 
 
