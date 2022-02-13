@@ -439,6 +439,38 @@ class Solution:
 
 
 
+### No. 24
+
+Solution 1: quad pointer
+
+```
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head == None or head.next == None:
+            return head
+        l1 = head
+        l2 = l1.next
+        l3 = l2.next
+        l1.next, l2.next = None, None
+        l2.next = l1
+        l1.next = l3
+        start = l2
+        l1, l2 = l2, l1
+        while l3 != None:
+            prel1 = l2
+            l1 = l1.next.next
+            l2 = l2.next.next
+            for i in range(2):
+                if l3 == None:
+                    return start
+                l3 = l3.next
+            l1.next, l2.next = None, None
+            l1, l2 = l2, l1
+            prel1.next, l1.next, l2.next = l1, l2, l3
+
+        return start
+```
+
 
 
 
