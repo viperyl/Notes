@@ -659,6 +659,42 @@ class Solution:
 
 
 
+### No. 23
+
+Solution 1: Brute froce
+
+```
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        start = ListNode(0)
+        copystart = start
+        while lists != [None] * len(lists):
+            # val, counting, index
+            adding = [10**10, []]
+            for i in range(len(lists)):
+                curList = lists[i]
+                if curList == None:
+                    continue
+                if curList.val < adding[0]:
+                    adding[0] = curList.val
+                    adding[1] = [i]
+                elif curList.val == adding[0]:
+                    adding[1].append(i)
+            
+            removed = []
+            for visit in adding[1]:
+                lists[visit] = lists[visit].next
+                if lists[visit] == None:
+                    removed.append(visit)
+                curNode = ListNode(adding[0])
+                copystart.next = curNode
+                copystart = copystart.next
+                
+            # print(start)
+        return start.next
+            
+```
+
 
 
 
