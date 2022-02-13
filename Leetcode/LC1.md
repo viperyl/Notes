@@ -475,6 +475,8 @@ class Solution:
 
 ### No. 61
 
+Solution 1: Brute force
+
 ```
 class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
@@ -502,6 +504,40 @@ class Solution:
 ```
 
 
+
+### No. 86
+
+Solution 1:  in-plane change every node
+
+```
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        if head == None or head.next == None:
+            return head
+        start1 = ListNode()
+        start2 = ListNode()
+        ps1, ps2 = start1, start2
+        p1 = head
+        while p1 != None:
+            if p1.val < x:
+                ps1.next = p1
+                p1 = p1.next
+                ps1 = ps1.next
+                ps1.next = None
+            else:
+                ps2.next = p1
+                p1 = p1.next
+                ps2 = ps2.next
+                ps2.next = None
+        if start1.next == None:
+            return start2.next
+        if start2.next == None:
+            return start1.next
+        start1 = start1.next
+        start2 = start2.next
+        ps1.next = start2
+        return start1
+```
 
 
 
