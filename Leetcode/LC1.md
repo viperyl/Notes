@@ -318,7 +318,58 @@ class Solution:
 
 
 
+### No. 2
 
+Solution 1: new a linked list for adding operation
+
+```
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        start = ListNode(0)
+        temp = start
+        up = 0
+        while l1 != None and l2 != None:
+            curNode = ListNode(0)
+            curNode.val = l1.val + l2.val + up
+            if curNode.val >= 10:
+                up = 1
+                curNode.val %= 10
+            else:
+                up = 0
+            temp.next =  curNode
+            temp = temp.next
+            l1 = l1.next
+            l2 = l2.next
+        if l1 == None and l2 == None:
+            if up == 1:
+                temp.next = ListNode(1)
+            return start.next
+        elif l1 == None:
+            res = l2
+        elif l2 == None:
+            res = l1
+        
+        if up == 0:
+            temp.next = res
+        else:
+            while res != None:
+                curNode = ListNode(0)
+                curNode.val = res.val + up
+                if curNode.val >= 10:
+                    curNode.val %= 10
+                    up = 1
+                else:
+                    up = 0
+                res = res.next
+                temp.next = curNode
+                temp = temp.next
+                if up == 0:
+                    temp.next = res
+        if up == 1:
+            temp.next = ListNode(1)
+        return start.next
+                
+```
 
 
 
