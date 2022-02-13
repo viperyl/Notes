@@ -473,6 +473,34 @@ class Solution:
 
 
 
+### No. 61
+
+```
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if head == None or head.next == None:
+            return head
+        p1, counter = head, 0
+        p4 = None
+        while p1 != None:
+            p4 = p1
+            p1 = p1.next
+            counter += 1
+        k = k % counter
+        if k == 0:
+            return head
+        
+        p1, p2 = head, head
+        counter1 = 1
+        while counter1 != counter - k:
+            p2 = p2.next
+            counter1 += 1
+        p3 = p2.next
+        p2.next = None
+        p4.next = head
+        return p3
+```
+
 
 
 
