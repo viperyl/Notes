@@ -593,6 +593,70 @@ class Solution:
 
 
 
+### No. 445
+
+Solution 1: Brute Force, reverse the first list and the second list, then performing adding operation. Finally return the reversed adding result 
+
+```
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        def reverseList(start):
+            s1 = None
+            s2 = start
+            s3 = start.next
+            while s3 != None:
+                s2.next = s1
+                s1 = s2
+                s2 = s3
+                s3 = s3.next
+            s2.next = s1
+            return s2
+        if l1 == None:
+            return l2
+        if l2 == None:
+            return l1
+        rl1 = reverseList(l1)
+        rl2 = reverseList(l2)
+        
+        s1 = ListNode(0)
+        copys1 = s1
+        up = 0
+        while rl1 != None and rl2 != None:
+            curVal = rl1.val + rl2.val + up
+            if curVal >= 10:
+                curVal %= 10
+                up = 1
+            else:
+                up = 0
+            rl1 = rl1.next
+            rl2 = rl2.next
+            curNode = ListNode(curVal)
+            copys1.next = curNode
+            copys1 = copys1.next
+        if rl1 == None and rl2 != None:
+            res = rl2
+        elif rl1 != None and rl2 == None:
+            res = rl1
+        else:
+            res = None
+        while res != None:
+            curVal = res.val + up
+            if curVal >= 10:
+                curVal = curVal % 10
+                up = 1
+            else:
+                up = 0
+            res = res.next
+            curNode = ListNode(curVal)
+            copys1.next = curNode
+            copys1 = copys1.next
+        if up == 1:
+            copys1.next = ListNode(1)
+        s1 = s1.next
+        vsda = reverseList(s1)
+        return vsda
+```
+
 
 
 
