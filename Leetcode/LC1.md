@@ -741,3 +741,20 @@ class Solution:
 
 
 
+### No. 53
+
+```
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        maxLength = nums[0]
+        pos = 0
+        while pos <= maxLength and pos < len(nums):
+            maxLength = max(maxLength, nums[pos] + pos)
+            pos += 1
+        if maxLength >= len(nums) -1:
+            return True
+        else:
+            return False
+        
+```
+
