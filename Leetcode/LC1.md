@@ -743,6 +743,8 @@ class Solution:
 
 ### No. 53
 
+Solution 1: DP
+
 ```
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
