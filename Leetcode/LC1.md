@@ -697,6 +697,27 @@ class Solution:
 
 
 
+### No. 104
+
+Solution 1: BFS
+
+```
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root == None:
+            return 0
+        res = 0
+        queue = [(root, 1)]
+        while queue != []:
+            curNode, depth = queue.pop()
+            res = max(res, depth)
+            if curNode.left:
+                queue.append((curNode.left, depth + 1))
+            if curNode.right:
+                queue.append((curNode.right, depth + 1))
+        return res
+```
+
 
 
 
