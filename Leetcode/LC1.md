@@ -788,3 +788,59 @@ class Solution:
         return res
 ```
 
+
+
+### No. 15
+
+Solution 1: Brute force, build map and visited set to avoid repeatance.
+
+```
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) < 3:
+            return []
+        nums.sort()
+        if nums[0] > 0:
+            return []
+        if nums[-1] < 0:
+            return []
+        hashmap = dict()
+        for i in range(len(nums)):
+            if nums[i] not in hashmap:
+                hashmap[nums[i]] = 1
+            else:
+                hashmap[nums[i]] += 1
+        mapping = dict()
+        counter = 0
+        visited = set()
+        res = []
+        for k, v in hashmap.items():
+            mapping[k] = counter
+            counter += 1
+        for k1, v1 in hashmap.items():
+            for k2, v2 in hashmap.items():
+                if k1 == k2 and v1 >= 2:
+                    target = 0 - 2 * k1
+                elif k1 != k2:
+                    target = 0 - k1 - k2
+                else:
+                    continue
+                if target in hashmap:
+                    if target == k1 and v1 == 1:
+                        continue
+                    if target == k2 and v2 == 1:
+                        continue
+                    if target == k1 and target == k2 and v1 == 2:
+                        continue
+                    temp = ["0"] * len(hashmap)
+                    temp[mapping[k1]] = str(int(temp[mapping[k1]]) + 1)
+                    temp[mapping[k2]] = str(int(temp[mapping[k2]]) + 1)
+                    temp[mapping[target]] = str(int(temp[mapping[target]]) + 1)
+                    encode = "".join(temp)
+                    if encode not in visited:
+                        visited.add(encode)
+                        res.append([k1, k2, target])
+        return res
+        
+```
+
