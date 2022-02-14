@@ -903,3 +903,59 @@ class Solution:
                 head = head.next
 ````
 
+
+
+
+
+### No. 817
+
+Solution 1: Brute Force, list to check element existence
+
+```
+class Solution:
+    def numComponents(self, head: Optional[ListNode], nums: List[int]) -> int:
+        res = 0
+        allset = [0] * 10**4
+        for i in nums:
+            allset[i] += 1
+        cur = 0
+        total_cur = 0
+        while total_cur != len(nums) and head != None:
+            if allset[head.val] == 1:
+                cur += 1
+                total_cur += 1
+                allset[head.val] = 0
+            elif allset[head.val] == 0 and cur != 0:
+                cur = 0
+                res += 1
+            head = head.next
+        # print(res, cur, total_cur, head)
+        if cur != 0:
+            res += 1
+        return res
+
+        
+```
+
+Solution 2: Brute Force, set to check existence
+
+```
+class Solution:
+    def numComponents(self, head: Optional[ListNode], nums: List[int]) -> int:
+        res = 0
+        allset = set(nums)
+        cur = 0
+        while len(allset) != 0:
+            if head.val in allset:
+                cur += 1
+                allset.remove(head.val)
+            elif head.val not in allset and cur != 0:
+                cur = 0
+                res += 1
+            head = head.next
+        if cur != 0:
+            res += 1
+        return res
+        
+```
+
