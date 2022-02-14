@@ -760,3 +760,31 @@ class Solution:
         
 ```
 
+
+
+### No.17
+
+```
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if digits == "":
+            return []
+        orig = ["abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+        hashmap = dict()
+        for i, val in enumerate(orig):
+            hashmap[str(i+2)] = val
+        
+        def backtracking(string, index):
+            if index == len(digits):
+                res.append(string)
+                return
+            
+            for substr in hashmap[digits[index]]:
+                backtracking(string + substr, index+1)
+                
+        
+        res = []
+        backtracking("", 0)
+        return res
+```
+
