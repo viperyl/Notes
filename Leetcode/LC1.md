@@ -844,3 +844,62 @@ class Solution:
         
 ```
 
+
+
+
+
+### No.143
+
+Solution 1: Brute Force, divide the part Linked list to three part: initial part, left part and right part. then break the link for each part. Assign left part and right part to initial part till all part are null.
+
+````
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        def reverse(start):
+            if start == None or start.next == None:
+                return start
+            pp1 = None
+            p1 = start
+            np1 = start.next
+            while np1 != None:
+                p1.next = pp1
+                pp1, p1 = p1, np1
+                np1 = np1.next
+            p1.next = pp1
+            return p1
+        if head == None or head.next == None or head.next.next == None:
+            return
+        leftStart = head.next
+        leftEnd, rightStart = head, head
+        breakdone = False
+        while True:
+            for _ in range(2):
+                if rightStart.next != None:
+                    rightStart = rightStart.next
+                else:
+                    breakdone = True
+                    break
+            if breakdone:
+                break
+            leftEnd = leftEnd.next
+
+        rightEnd = leftEnd.next
+        leftEnd.next = None
+        head.next = None
+        rightStart = reverse(rightEnd)
+
+        while rightStart != None:
+            if rightStart != None:
+                cur_R = rightStart
+                rightStart = rightStart.next
+                cur_R.next = None
+                head.next = cur_R
+                head = head.next
+            if leftStart != None:
+                cur_L = leftStart
+                leftStart = leftStart.next
+                cur_L.next = None
+                head.next = cur_L
+                head = head.next
+````
+
