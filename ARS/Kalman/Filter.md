@@ -157,7 +157,7 @@ $$
 **Update**
 
 1. Get a measurement and associated belief about its accuracy
-2. Coompute residual between estimated state and measurement 
+2. Compute residual between estimated state and measurement 
 3. Compute scaling factor based on whether the measurement or prediction is more accurate
 4. set state between the prediction and measurement based on scaling factor
 5. update belief in the state based on how certain we are in the measurement
@@ -188,7 +188,7 @@ $$
 $$
 for `N` dimensions, we need `N` means. $\mu = [\mu_1, \mu_2, ..., \mu_n]^T$ and `N` variance $\sigma^2 = [\sigma_1^2, ..., \sigma_n^2]$
 
-#### Correlation and Co-variance
+**Correlation and Co-variance**
 
 co-variance
 $$
@@ -200,25 +200,82 @@ $$
 $$
 `0` means no linear correlation
 
+biased estimator over $1/(N+1)$, unbiased estimator over $1/N$
+
+Multivariate Normal Distribution
+$$
+\Large \begin{equation}
+f(x, \bold{\mu}, \bold{\Sigma}) = \frac{1}{\sqrt{(2\pi)^2|\Sigma|}} \exp\left[-\frac{1}{2}(x -\mu)^T\Sigma^{-1}(x-\mu)\right]
+\end{equation}
+$$
+**Joint probability**
+
+$P(x, y)$, the probability of both $x$ and $y$ happening. Above equation is joint probability density function
+
+marginal probability is the probability of an event happening without regard of any other event.
+
+ 
+
+**Pearson’s Correlation Coefficient**
+$$
+\Large \rho_{xy} = \frac{\text{COV}(X,Y)}{\sigma_x\sigma_y}
+$$
+$\Large \rho_{xy} > 0$: positive correlation
+
+$\Large \rho_{xy} == 0$: no correlation
+
+$\Large \rho_{xy} < 0$ : negative correlation
 
 
 
+**Multivariate Gaussian Multiply**
+$$
+\Large\begin{align}
+\mu &= \Sigma_2(\Sigma_1 + \Sigma_2)^{-1}\mu_1 + \Sigma_1(\Sigma_1 + \Sigma_2)^{-1}\mu_2\\
+\Sigma &= \Sigma_1(\Sigma_1 + \Sigma_2)^{-1}\Sigma_2
+\end{align}
+$$
+
+
+**Multivariate Gaussian sum**
+$$
+\Large\begin{align}
+\mu &= \frac{\Sigma_2\mu_1 + \Sigma_1\mu_2}{\Sigma_1 + \Sigma_2} \\
+\Sigma &= \frac{\Sigma_1\Sigma_2}{\Sigma_1 + \Sigma_2}
+\end{align}
+$$
+
+# Ch 06: Multivariate Kalman Filter
+
+**predict**
+
+| Uni-variate                                                  | Kalman Form                         | Kalman Form                                                  |
+| ------------------------------------------------------------ | ----------------------------------- | ------------------------------------------------------------ |
+| $\bar{\mu} = \mu +\mu_{f}\\\bar{\sigma}^2 = \sigma^2 + \sigma_f^2$ | $\bar{x} = x + dx\\\bar{P} = P + Q$ | $\bar{\bold{X}} = \bold{Fx} + \bold{Bu}\\ \bold{P} = \bold{FPF}^T + \bold{Q}$ |
+
+$\bold{x, P}$: state mean and variance, correspond to $x, \sigma^2$
+
+$\bold{F}$: state transition function, when multiplied by $\bold{x}$ it computes the prior
+
+$\bold{Q}$: process variance, correspond to $\sigma_f^2$
+
+$\bold{B, u}$ represent the model control
+
+**Update**
+
+| Uni-variate                                                  | Kalman Form                                                  | Kalman Form                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| $\mu = \frac{\bar\sigma^2\mu_z + \sigma_z^2\bar{\mu}}{\sigma_1^2 + \sigma_2^2}\\\sigma^2 = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}$ | $y = z - \bar{x}\\K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\ P = (1 - K)\bar{P}$ | $\begin{align}\bold{y} &= \bold{z} - \bold{Hx}\\ \bold{K} &= \bold{PH}^T(\bold{HPH}^T + \bold{R})^{-1}\\ x&= \bar{x} + \bold{Ky}\\ \bold{P} &= (\bold{I - KH})\bold{P}\end{align}$ |
 
 
 
+$\bold{H}$: measurement function
 
+$\bold{z, R}$: measurement mean and variance
 
+$y$: residual
 
-
-
-
-
-
-
-
-
-
-
+$K$: Kalman gain
 
 
 
