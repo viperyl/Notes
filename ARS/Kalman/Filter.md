@@ -119,7 +119,7 @@ $$
 $$
 subscript `z` denote the measurement
 $$
-\Large \mu = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}\mu_z + \frac{\sigma_z^2}{\sigma_z^2 + \sigma_z^2}\bar{\mu}
+\Large \mu = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}\mu_z + \frac{\sigma_z^2}{\bar{\sigma}^2 + \sigma_z^2}\bar{\mu}
 $$
 We scaling the measurement and the prior by weights:
 $$
@@ -139,6 +139,9 @@ $$
 $$
 
 
+
+
+
 ## Description
 
 **Initialization**
@@ -153,7 +156,11 @@ $$
 
 **Update**
 
-1. 
+1. Get a measurement and associated belief about its accuracy
+2. Coompute residual between estimated state and measurement 
+3. Compute scaling factor based on whether the measurement or prediction is more accurate
+4. set state between the prediction and measurement based on scaling factor
+5. update belief in the state based on how certain we are in the measurement
 
 
 
@@ -161,7 +168,19 @@ $$
 
 
 
+Predict
 
+| Equation            | Implementation                                               | Kalman Form                         |
+| ------------------- | ------------------------------------------------------------ | ----------------------------------- |
+| $\bar{x} = x + f_x$ | $\bar{\mu} = \mu + \mu_{f}\\ \bar{\sigma}^2 = \sigma^2+\sigma_f^2$ | $\bar{x} = x +dx\\\bar{P} =  P + Q$ |
+
+Update
+
+| Equation                     | Implementation                                               | Kalman Form                                                  |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| $x = ||\mathcal{L}\bar{x}||$ | $y = z - \bar{\mu}\\ K = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}\\ \mu = \bar{\mu} + Ky\\ \sigma^2 = \frac{\bar{\mu}^2\sigma_z^2}{\sigma_z^2 + \bar{\sigma}^2}$ | $y = z - \bar{x}\\ K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\P = (1 - K)\bar{P}$ |
+
+# Ch 05: Multivariate Gaussians
 
 
 
