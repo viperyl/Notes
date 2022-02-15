@@ -308,8 +308,49 @@ $$
 \Large \mathcal{Y} = f(\mathcal{X})
 $$
 
+The mean and covariance of the sigma point are computed as
+$$
+\Large
+\begin{align}
+\mu &= \sum\limits_{i=0}^{2n}w_i^m\mathcal{Y}_i\\
+\Sigma &= \sum\limits_{i=0}^{2n}w_i^c(\mathcal{Y}_i - \mu)(\mathcal{Y}_i - \mu)^T
+\end{align}
+$$
+The UKF transform takes points sampled from some arbitrary probability distribution, passes them through an arbitrary, non-linear function and produces a Gaussian for each transformed points.
 
 
+
+#### Predict
+
+computes the prior using the process model $f(\cdot)$. We generate sigma points $\mathcal{X}$ and their corresponding weights $W^m, W^c$ according to some function.
+$$
+\Large
+\begin{align}
+\mathcal{X} &= \text{sigma-function}(\bold{x}, \bold{P})\\
+W^m, W^c &= \text{weight-function}(n, \text{parameters})
+\end{align}
+$$
+pass each sigma point through $f(x, \Delta t)$,  set of the sigma point is $\mathcal{Y}$.
+$$
+\Large \mathcal{Y} = f(\mathcal{X}, \Delta t)
+$$
+compute the mean and variance of the prior using the `unscented transform`  on transformed sigma points.
+$$
+\Large
+\bold{x}, \bold{P} = \text{UT}(\mathcal{Y}, w_m, w_c, \bold{Q})
+$$
+question for the `unscented transform`
+$$
+\Large\begin{align}
+\bold{x} &= \sum\limits_{i=0}^{2n} w_i^m\bold{\mathcal{Y}_i}\\
+\bold{P} &= \sum\limits_{i=0}^{2n} w_i^c(\bold{\mathcal{Y}}_i - \mu) (\bold{\mathcal{Y}}_i - \mu)^T
+
+\end{align}
+$$
+
+#### Update
+
+convert sigma points of the prior into 
 
 
 
