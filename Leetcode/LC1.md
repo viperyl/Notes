@@ -1038,7 +1038,106 @@ class Solution:
 
 
 
+### No.114
 
+Solution: DFS and add node to ordered list. Then tranverse the order list to build a new tree in-place
+
+```
+class Solution:
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        def dfs(node):
+            orderlist.append(node)
+            if node.left == None and node.right == None:
+                return
+            if node.left:
+                dfs(node.left)
+            if node.right:
+                dfs(node.right)
+        
+        if root == None:
+            return 
+        orderlist = []
+        dfs(root)
+        
+        for i in range(1, len(orderlist)):
+            orderlist[i-1].left = None
+            orderlist[i-1].right = orderlist[i]
+```
+
+
+
+### No. 430
+
+Solution 1: Brute Force
+
+```
+class Solution:
+    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        start = head
+        group = []
+        while start!= None:
+            if start.child:
+                group.append([start, start.child, start.next])
+                start = start.child
+            else:
+                start = start.next
+        for i in range(len(group)):
+            p1 ,p2 ,p3 = group[i]
+            if p3 == None:
+                p4 = p1.next
+            p1.child = None
+            p1.next = p2
+            p2.prev = p1
+            while p2.next != None:
+                p2 = p2.next
+            p2.next = p3
+            if p3 != None:
+                p3.prev = p2
+            else:
+                p2.next = p4
+                if p4 == None:
+                    continue
+                else:
+                    p4.prev = p2
+                
+        return head
+```
+
+```
+class Solution:
+    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        start = head
+        group = []
+        while start!= None:
+            if start.child:
+                group.append((start, start.child, start.next))
+                start = start.child
+            else:
+                start = start.next
+        for i in range(len(group)):
+            p1 ,p2 ,p3 = group[i]
+            if p3 == None:
+                p4 = p1.next
+            p1.child = None
+            p1.next = p2
+            p2.prev = p1
+            while p2.next != None:
+                p2 = p2.next
+            p2.next = p3
+            if p3 != None:
+                p3.prev = p2
+            else:
+                p2.next = p4
+                if p4 == None:
+                    continue
+                else:
+                    p4.prev = p2
+                
+        return head
+```
 
 
 
