@@ -959,9 +959,7 @@ class Solution:
         
 ```
 
-
-
-## No. 21
+### No. 21
 
 ```
 class Solution:
@@ -987,4 +985,90 @@ class Solution:
             p1.next = list2
         return start.next
 ```
+
+
+
+### No. 1290
+
+Solutuon 1: left operator
+
+if value == 0, left shift a bit
+
+if value == 1, left shift a bit then add one to our demical
+
+```
+class Solution:
+    def getDecimalValue(self, head: ListNode) -> int:
+        res = 0
+        while head != None:
+            if head.val == 0:
+                res = res << 1
+            else:
+                res = res << 1
+                res += 1
+            head = head.next
+        return res
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
