@@ -21,9 +21,98 @@ $$
 \Large VAR(X)  = \mathbb{E}[(X - \mu)^2]  = \frac{1}{n}\sum\limits_{i=1}^{n}(x_i - \mu)^2
 $$
 Standard deviation
+$$
+\Large \sigma = \sqrt{VAR(X)}
+$$
+Gaussian Distribution
+$$
+\Large f(x, \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}exp[-\frac{(x-\mu)^2}{2\sigma^2}]
+$$
+$\sigma$ represents the strength of the belief, for the same $\mu$, the smaller the $\sigma$, the narrower curve. Which indicates the stronger belief.
+
+$\mu \pm \sigma$: 0.68
+
+$\mu\pm2\sigma$:0.95
+
+$\mu\pm3\sigma$: 0.997
 
 
 
+## Gaussian Computational properties
+
+Sum of two independent Gaussian is another Gaussian
+$$
+\Large g_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)\;\;\;g_2\sim\mathcal{N}(\mu_2, \sigma_2^2)
+$$
+the product of above two Gaussian is
+$$
+\Large \mu = \frac{\sigma_1^2\mu_2 + \sigma_2^2\mu_1}{\sigma_1^2+\sigma_2^2}\\
+\Large \sigma^2 = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}
+$$
+the sum of above two Gaussian is
+$$
+\Large \mu = \mu_1 + \mu_2\\
+\Large \sigma^2 = \sigma_1^2 + \sigma_2^2
+$$
+
+
+Bayes Theorem
+$$
+\Large \text{posterior} = \frac{\text{likelihood}\times \text{prior}}{\text{normalization}}
+$$
+
+$$
+\Large P(A|B) = \frac{P(B|A)P(A)}{P(B)}
+$$
+
+$$
+\Large p(A|B) = \frac{p(B|A)p(A)}{\int p(B|A_j)p(A_j)dA_j}
+$$
+
+`B`  is the evidence, `A` is prior, `P(B|A)` is likelihood, `P(A|B)` is posterior
+
+Total Probability Theorem
+$$
+\Large P(X_i^t) = \sum\limits_{j}P(X_j^{t-1})P(x_i|x_j)
+$$
+
+# Ch 04: One-dimensional Kalman filter
+
+$$
+\Large \bar{x} = x * f_x(\cdot)\\
+\Large x = \mathcal{L} \cdot \bar{x}
+$$
+
+$\bar{x}$: prior
+
+$\mathcal{L}$: likelihood of a measurement given the prior $\bar{x}$
+
+$f_x(\cdot)$: process model
+
+$*$: convolution
+
+If dog in 10 m, and speed it 15 m/s, the epoch is 2 seconds. 
+$$
+\Large \bar{x}_k =x_{k-1} + v_k\Delta t = x_{k-1} + f_x
+$$
+dog position standard deviation is 0.2 m, $x\sim \mathcal{N}(10, 0.2^2)$
+
+velocity uncertainty is 0.7 m/s, $x\sim \mathcal{N}(15, 0.7^2)$
+$$
+\Large \bar{x}_k \sim \mathcal{N}(25, 0.53)
+$$
+if we sense the dog position is 24 with uncertainty $0.6^2$, $\text{likelihood} \sim \mathcal{N}(24, 0.6^2)$
+
+then perform update. which is Gaussian multiply.
+
+
+
+## Kalman gain
+
+the posterior is
+$$
+\Large x = \mathcal{L} \cdot \bar{x}
+$$
 
 
 

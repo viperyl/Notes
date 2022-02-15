@@ -959,3 +959,32 @@ class Solution:
         
 ```
 
+
+
+## No. 21
+
+```
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        start = ListNode("asdada")
+        # if list1.val < list2.val:
+        #     start = list1
+        #     list1 = list1.next
+        #     start.next = None
+        p1 = start
+        while list1 != None and list2 != None:
+            if list1.val <= list2.val:
+                p1.next = list1
+                list1 = list1.next
+                p1 = p1.next
+            else:
+                p1.next = list2
+                list2 = list2.next
+                p1 = p1.next
+        if list1 != None:
+            p1.next = list1
+        if list2 != None:
+            p1.next = list2
+        return start.next
+```
+
