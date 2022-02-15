@@ -133,17 +133,27 @@ where
 $$
 \Large K = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}
 $$
-
-
-
-
 `K` is the Kalman Gain
+$$
+\Large \sigma^2 = \frac{\bar{\sigma}^2\sigma_z^2}{\bar{\sigma}^2 + \sigma_z^2} = K\sigma_z^2 = (1-K)\bar{\sigma}^2
+$$
 
 
+## Description
 
+**Initialization**
 
+1. Initialize the state of the filter
+2. Initialize the belief of the state
 
+**Predict**
 
+1. Use system behavior to predict state at the next time step
+2. Adjust belief to account for the uncertainty in prediction
+
+**Update**
+
+1. 
 
 
 
