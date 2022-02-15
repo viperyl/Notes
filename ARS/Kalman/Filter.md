@@ -180,7 +180,25 @@ Update
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | $x = ||\mathcal{L}\bar{x}||$ | $y = z - \bar{\mu}\\ K = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}\\ \mu = \bar{\mu} + Ky\\ \sigma^2 = \frac{\bar{\mu}^2\sigma_z^2}{\sigma_z^2 + \bar{\sigma}^2}$ | $y = z - \bar{x}\\ K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\P = (1 - K)\bar{P}$ |
 
-# Ch 05: Multivariate Gaussians
+# Ch 05: Multivariate Gaussian
+
+univariate normal
+$$
+\Large \mathcal{N}(\mu, \sigma^2)
+$$
+for `N` dimensions, we need `N` means. $\mu = [\mu_1, \mu_2, ..., \mu_n]^T$ and `N` variance $\sigma^2 = [\sigma_1^2, ..., \sigma_n^2]$
+
+#### Correlation and Co-variance
+
+co-variance
+$$
+\Large \text{COV}(X, Y) = \sigma_{xy} = \mathbb{E}[(X - \mu_x)(Y - \mu_y)]
+$$
+
+$$
+\Large \text{COV}(X, X) =\begin{bmatrix}\sigma_1^2 & \sigma_{12}&...&\sigma_{1n}\\\sigma_{21}&\sigma_2^2&...&\sigma_{2n}\\...&...&...&...\\\sigma_{n1}&\sigma_{n2}&...&\sigma_{n}^2 \end{bmatrix}
+$$
+`0` means no linear correlation
 
 
 
