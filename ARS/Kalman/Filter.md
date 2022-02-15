@@ -113,15 +113,31 @@ the posterior is
 $$
 \Large x = \mathcal{L} \cdot \bar{x}
 $$
+the mean of the posterior is
+$$
+\Large \mu = \frac{\bar{\sigma}^2\mu_z + \sigma_z^2\bar{\mu}}{\bar{\sigma}^2 + \sigma_z^2}
+$$
+subscript `z` denote the measurement
+$$
+\Large \mu = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}\mu_z + \frac{\sigma_z^2}{\sigma_z^2 + \sigma_z^2}\bar{\mu}
+$$
+We scaling the measurement and the prior by weights:
+$$
+\Large \mu = W_1 \mu_z + W_2\bar{\mu}
+$$
+the weights sum to one, assume $K = W_1$
+$$
+\Large \mu = K\mu_z + (1-K)\bar{\mu} = \bar{\mu} + K(\mu_z - \bar{\mu})
+$$
+where
+$$
+\Large K = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}
+$$
 
 
 
 
-
-
-
-
-
+`K` is the Kalman Gain
 
 
 
