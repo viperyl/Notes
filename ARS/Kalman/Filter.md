@@ -279,6 +279,34 @@ $K$: Kalman gain
 
 
 
+# Ch 10. Unscented Kalman Filter
+
+weighted mean
+$$
+\Large \mu = \sum\limits_{i}w_if(\mathcal{X}_i)
+$$
+$\mathcal{X}$ is the sigma points
+
+we need the sums of the weights to equal one. we also need sum of the weighted co-variance to equal one.
+
+Constraints
+$$
+\Large \begin{align}
+1 &= \sum\limits_{i}w_i^m\\
+1 &= \sum\limits_{i}w_i^c\\
+\mu &= \sum\limits_{i}w_i^mf(\mathcal{X}_i)\\
+\Sigma &= \sum\limits_{i}w_i^c(f(\mathcal{X})_i - \mu)(f(\mathcal{X})_i - \mu)^T
+
+\end{align}
+$$
+These constraints do not form a unique solution. 
+
+
+
+Core of the UKF
+$$
+\Large \mathcal{Y} = f(\mathcal{X})
+$$
 
 
 
