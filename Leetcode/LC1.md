@@ -1012,6 +1012,30 @@ class Solution:
 
 
 
+### No. 1669
+
+Solution 1: two pointer
+
+```
+class Solution:
+    def mergeInBetween(self, list1: ListNode, a: int, b: int, list2: ListNode) -> ListNode:
+        counter = 0
+        left = list1
+        while counter != a-1:
+            left = left.next
+            counter += 1
+        right = left
+        while counter != b+1:
+            right = right.next
+            counter += 1
+        endList2 = list2
+        while endList2.next != None:
+            endList2 = endList2.next
+        left.next = list2
+        endList2.next = right
+        return list1
+```
+
 
 
 
