@@ -1206,6 +1206,38 @@ class Solution:
 
 
 
+### No. 2058
+
+Solution 1: list record
+
+```
+class Solution:
+    def nodesBetweenCriticalPoints(self, head: Optional[ListNode]) -> List[int]:
+        if head.next.next == None:
+            return [-1, -1]
+        res = []
+        minDistance = 10 ** 10
+        p1 = head
+        p2 = head.next
+        p3 = p2.next
+        counter = 1
+        while p3 != None:
+            if (p2.val > p1.val and p2.val > p3.val) or (p2.val < p1.val and p2.val < p3.val):
+                res.append(counter)
+                if len(res) >=2:
+                    minDistance = min(minDistance, res[-1]-res[-2])
+
+            counter += 1
+            p1, p2, p3 = p1.next, p2.next, p3.next
+            
+        if len(res) <= 1:
+            return [-1, -1]
+        else:
+            return [minDistance, res[-1]-res[0]]
+```
+
+
+
 
 
 
