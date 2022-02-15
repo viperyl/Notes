@@ -1143,6 +1143,67 @@ class Solution:
 
 
 
+### No. 160
+
+Solution 1: two pointer, walk through same path, check any interaction
+
+```
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        a1 = headA
+        a2 = headB
+        counter = 0
+        while a1 != a2 and counter < 3:
+            a1 = a1.next
+            a2 = a2.next
+            if a1 == None:
+                a1 = headB
+                counter += 1
+            if a2 == None:
+                a2 = headA
+                counter += 1
+        if a1 == a2:
+            return a1
+        else:
+            return 
+```
+
+### No. 1367
+
+Solution 1: Transver the tree, if find the node, using dfs
+
+```
+class Solution:
+    def isSubPath(self, head: Optional[ListNode], root: Optional[TreeNode]) -> bool:
+        def findResult(ListNODE, treeNode):
+            if ListNODE.next == None:
+                return True
+            if treeNode.left and treeNode.left.val == ListNODE.next.val:
+                 if findResult(ListNODE.next, treeNode.left):
+                    return True
+            if treeNode.right and treeNode.right.val == ListNODE.next.val:
+                if findResult(ListNODE.next, treeNode.right):
+                    return True
+            
+            
+            
+        queue = [root]
+        temp_head = head
+        while queue != []:
+            curNode = queue.pop()
+            # print(curNode.val)
+            if curNode.val == head.val:
+                # List, tree
+                if findResult(temp_head, curNode):
+                    return True
+            
+            if curNode.left:
+                queue.append(curNode.left)
+            if curNode.right:
+                queue.append(curNode.right)
+        return False
+```
+
 
 
 
