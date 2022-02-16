@@ -1308,6 +1308,30 @@ class Solution:
         return start.next
 ```
 
+### No.328
+
+```
+class Solution:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        odd, even = ListNode(), ListNode()
+        p1, p2 = odd, even
+        counter = 1
+        while head != None:
+            if counter % 2 == 0:
+                p2.next = head
+                p2 = p2.next
+                head = head.next
+            else:
+                p1.next = head
+                p1 = p1.next
+                head = head.next
+            counter += 1
+        p2.next = None
+        p1.next = even.next
+        return odd.next
+        
+```
+
 
 
 
