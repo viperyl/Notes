@@ -418,6 +418,139 @@ $$
 
 
 
+# CH 11. Extended Kalman Filter
+
+EKF linearize the nonlinear equation at the point of the current estimates. First order Taylor expansion.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Example
+
+Radar given the `slant` and `bearing`
+$$
+\Large
+\begin{align}
+\epsilon &= \text{tan}^{-1}\frac{y}{x}\\
+r^2 &= x^2 + y^2
+\end{align}
+$$
+we want to track the position of an aircraft.
+$$
+\Large
+x = \begin{bmatrix} \text{distance}\\ \text{velocity}\\ \text{altitude}\end{bmatrix} = 
+\begin{bmatrix}x\\\dot{x}\\y \end{bmatrix}
+$$
+
+$$
+\Large \bold{F} = \begin{bmatrix}
+1 & \Delta t & 0\\
+0 & 1 & 0\\
+0 & 0  & 1
+\end{bmatrix}
+$$
+
+Design the measurement model, which takes the state estimate of the prior $\bar{x}$ and turn it into a measurement of the slant range distance.
+$$
+\Large h(\bar{x}) = \sqrt{x^2 + y^2}
+$$
+
+$$
+\Large \frac{\partial \bold{H}}{\partial \bar{x}}  = \begin{bmatrix}
+\frac{\partial h_1}{\partial x_1} &...& \frac{\partial h_1}{\partial x_n}\\
+...&...&...\\
+\frac{\partial h_m}{\partial x_1}&...&\frac{\partial h_m}{\partial x_n}
+\end{bmatrix} = \begin{bmatrix}
+\frac{\partial h}{\partial x_1} & ...  &\frac{\partial h}{\partial x_n}
+\end{bmatrix}
+$$
+
+Here, we can derive the measurement matrix
+$$
+\Large \bold{H} =\begin{bmatrix}
+\frac{\partial h}{\partial x} & \frac{\partial h}{\partial \dot{x}}  &\frac{\partial h}{\partial y}
+\end{bmatrix} = \begin{bmatrix}
+\frac{x}{\sqrt{x^2 + y^2}} & 0 & \frac{y}{\sqrt{x^2 + y^2}} 
+\end{bmatrix}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+| Linear Kalman Filter | Extended Kalman Filter                                       |
+| -------------------- | ------------------------------------------------------------ |
+|                      | $\bold{F} = \frac{\partial f(\bold{x}_t, \bold{u}_t)}{\partial x}\vert_{x_t,u_t}$ |
+|                      |                                                              |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EKF
+
 
 
 
