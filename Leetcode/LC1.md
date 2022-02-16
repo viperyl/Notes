@@ -1334,7 +1334,39 @@ class Solution:
 
 
 
+### No.695
 
+Solution 1: BFS
+
+```
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        n = len(grid)
+        m = len(grid[0])
+        max_area = 0
+        directions = [(-1,0), (1,0), (0,-1), (0,1)]
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j] == 1:
+                    area = 0
+                    queue = [(i,j)]
+                    while queue != []:
+                        x, y = queue.pop()
+                        if grid[x][y] == 0:
+                            continue
+                        grid[x][y] = 0
+                        area += 1
+                        for direction in directions:
+                            new_x = x + direction[0]
+                            new_y = y + direction[1]
+                            if 0 <= new_x < n and 0<= new_y < m and grid[new_x][new_y] == 1:
+                                queue.append((new_x, new_y))
+                    max_area = max(max_area, area)
+                    
+        return max_area
+                    
+        
+```
 
 
 
