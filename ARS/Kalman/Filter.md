@@ -442,6 +442,18 @@ EKF linearize the nonlinear equation at the point of the current estimates. Firs
 
 #### Example
 
+bicycle basic model by mathematics
+$$
+\Large \begin{align}
+\beta &= \frac{d}{w}tan(\alpha)\\
+x &= x - R\cdot sin(\theta) + R\cdot sin(\theta + \beta)\\
+y &= y + R\cdot cos(\theta) - R\cdot cos(\theta + \beta)\\
+\theta &= \theta + \beta
+
+\end{align}
+$$
+
+
 Radar given the `slant` and `bearing`
 $$
 \Large
@@ -465,27 +477,84 @@ $$
 \end{bmatrix}
 $$
 
-Design the measurement model, which takes the state estimate of the prior $\bar{x}$ and turn it into a measurement of the slant range distance.
+Then build error matrix, since the error matrix
 $$
-\Large h(\bar{x}) = \sqrt{x^2 + y^2}
+\Large \bold{M} = \begin{bmatrix}
+\sigma_{vel}^2 & 0\\
+0& \sigma_\alpha^2
+\end{bmatrix}
 $$
+In the lienar Kalman filter, we using $\bold{FMF}^\intercal$ form.
+
+In the EKF, we linearize it with a Jacobian named $\bold{V}$
+$$
+\Large \bold{V} = \frac{\partial f(x,u)}{\partial u} = \begin{bmatrix}
+\frac{\partial f_1}{\partial v} & \frac{\partial f_1}{\partial \alpha}\\
+\frac{\partial f_2}{\partial v} & \frac{\partial f_2}{\partial \alpha}\\
+\frac{\partial f_3}{\partial v} & \frac{\partial f_3}{\partial \alpha}
+\end{bmatrix}
+$$
+Then form the prediction equation
+$$
+\Large \bold{P} = \bold{FPF}^\intercal + \bold{VMV}^\intercal
+$$
+Design the measurement model, which takes the state estimate of the prior $\bar{x}$ and turn it into a measurement of the slant range distance. Here is convert $[x,y, \theta] $ to $[r, \phi]$.
+$$
+\Large \begin{align}
+r &= \sqrt{(p_x-x)^2 + (p_y-y)^2}\\
+\phi &= arctan(\frac{p_y - y}{p_x - x}) - \theta
+\end{align}
+$$
+Thus our meausrement model $h$ is 
+$$
+\Large\begin{align} \bold{z} &= h(\bar{x}, \bold{p})  + \mathcal{N}(0,R)\\
+&=\begin{bmatrix}
+\sqrt{(p_x-x)^2 + (p_y-y)^2}\\
+arctan(\frac{p_y - y}{p_x - x}) - \theta
+
+\end{bmatrix}+ \mathcal{N}(0,R)
+\end{align}
+$$
+
+$$
+\Large \frac{\partial \bold{H}}{\partial \bar{x}}  = \begin{bmatrix}
+\frac{\partial h_1}{\partial x} & \frac{\partial h_1}{\partial y}& \frac{\partial h_1}{\partial \theta}\\
+\frac{\partial h_2}{\partial x}& \frac{\partial h_2}{\partial y}&\frac{\partial h_2}{\partial \theta}
+\end{bmatrix} = \begin{bmatrix}
+\frac{x-p_x}{\sqrt{(p_x-x)^2 + (p_y-y)^2}} & \frac{y-p_y}{\sqrt{(p_x-x)^2 + (p_y-y)^2}} & 0\\
+\frac{p_y - y}{(p_x-x)^2 + (p_y-y)^2} & \frac{p_x - x}{(p_x-x)^2 + (p_y-y)^2} & -1
+
+\end{bmatrix}
+$$
+
+Design measurement noise
+$$
+\Large \bold{R} = \begin{bmatrix}
+\sigma_{\text{range}}^2 & 0\\
+0 & \sigma_{\text{bearing}}^2
+
+\end{bmatrix}
+$$
+
+
+# Ch 11: Particle Filter
+
+
+
+
+
+
+
+
+
+
+
 
 $$
 \Large \frac{\partial \bold{H}}{\partial \bar{x}}  = \begin{bmatrix}
 \frac{\partial h_1}{\partial x_1} &...& \frac{\partial h_1}{\partial x_n}\\
 ...&...&...\\
 \frac{\partial h_m}{\partial x_1}&...&\frac{\partial h_m}{\partial x_n}
-\end{bmatrix} = \begin{bmatrix}
-\frac{\partial h}{\partial x_1} & ...  &\frac{\partial h}{\partial x_n}
-\end{bmatrix}
-$$
-
-Here, we can derive the measurement matrix
-$$
-\Large \bold{H} =\begin{bmatrix}
-\frac{\partial h}{\partial x} & \frac{\partial h}{\partial \dot{x}}  &\frac{\partial h}{\partial y}
-\end{bmatrix} = \begin{bmatrix}
-\frac{x}{\sqrt{x^2 + y^2}} & 0 & \frac{y}{\sqrt{x^2 + y^2}} 
 \end{bmatrix}
 $$
 
