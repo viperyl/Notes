@@ -350,9 +350,71 @@ $$
 
 #### Update
 
-convert sigma points of the prior into 
+convert sigma points of the prior into measurement using a measurement functions $h(x)$.
+$$
+\Large \mathcal{Z} = h(\mathcal{Y})
+$$
+compute the mean and variance of these points using the `unscented transform` . The `z` subscript denotes that these are the mean and covariance of the measurement sigma points.
+$$
+\Large
+\begin{align}
+\bold{\mu}_z, \bold{P}_z &= \text{UT}(\mathcal{Z}, w_m, w_c, \bold{R})\\
+\bold{\mu}_z &= \sum\limits_{i=0}^{2n} w_i^m\mathcal{Z}_i\\
+\bold{P}_z &= \sum\limits_{i=0}^{2n}w_i^c(\mathcal{Z}_i - \bold{\mu}_z)(\mathcal{Z}_i - \bold{\mu}_z)^\intercal + \bold{R}
+
+\end{align}
+$$
+Next compute the residual and Kalman gain
+$$
+\Large y = z - \mu_z
+$$
+compute cross covariance
+$$
+\Large \bold{P}_{xz} = \sum\limits_{i=0}^{2n}w_i^c(\mathcal{Y}_i - x)(\mathcal{Z}_i - \bold{\mu}_z)^\intercal
+$$
+
+$$
+\Large \bold{K} = \bold{P}_{xz}\bold{P}_z^{-1}
+$$
+
+Finally, compute the new state estimate using the residual and Kalman gain
+$$
+\Large x = \bar{x} + \bold{K}y
+$$
+compute new covariance
+$$
+\Large \bold{P} = \bold{P} - \bold{KP}_z\bold{K}^\intercal
+$$
+
+#### KF vs UKF
+
+| Kalman Filter                                                | Unscented Kalman Filter |
+| ------------------------------------------------------------ | ----------------------- |
+| $\begin{align}  x &= Fx\\ \bold{P} &= \bold{FPF}^\intercal + \bold{Q}\end{align}$ |                         |
+|                                                              |                         |
 
 
+
+#### Sigma point computation
+
+The first point is the mean of the input, denote as $\mathcal{X}_0$.
+$$
+\Large \mathcal{X}_0 = \mu
+$$
+we define $\lambda = \alpha^2(n+k)-n$, where $n$ is the dimension of $\bold{x}$. The remaining sigma point are computed as
+$$
+\Large \mathcal{X}_i = \begin{cases}\mu + \left[\sqrt{(n+\lambda)\Sigma}\right]_i, \text{for i=1..n}\\
+\mu - \left[\sqrt{(n+\lambda)\Sigma}\right]_i, \text{for i=(n+1)..2n}
+
+\end{cases}
+$$
+
+
+#### Weight computation
+
+$$
+\Large W_0^m = \frac{\lambda}{n + \lambda}
+$$
 
 
 
