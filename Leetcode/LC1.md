@@ -1283,6 +1283,33 @@ class Solution:
 
 
 
+Solution 2: inplace without any additional Linked list
+
+```
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        start = ListNode(114514)
+        cstart = start
+        while head != None:
+            p1 = head
+            p2 = head.next
+            for i in range(2):
+                if head:
+                    head = head.next
+            if p2 != None:
+                p2.next = None
+                cstart.next = p2
+                cstart = cstart.next
+            if p1 != None:
+                p1.next = None
+                cstart.next = p1
+                cstart = cstart.next
+            
+        return start.next
+```
+
+
+
 
 
 
