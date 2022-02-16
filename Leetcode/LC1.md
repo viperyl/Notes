@@ -1238,7 +1238,48 @@ class Solution:
 
 
 
+### No. 24
 
+Soluton 1: in-place
+
+```
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        p1 = ListNode(114514)
+        p2 = ListNode(114514)
+        pp1, pp2 = p1, p2
+        counter = 1
+        while head != None:
+            if counter % 2 == 1:
+                pp1.next = head
+                head = head.next
+                pp1 = pp1.next
+                pp1.next = None
+            else:
+                pp2.next = head
+                head = head.next
+                pp2 = pp2.next
+                pp2.next = None
+            counter += 1
+        start = ListNode(114514)
+        cstart = start
+        p1 = p1.next
+        p2 = p2.next
+        print(p1)
+        print(p2)
+        for i in range(counter//2):
+            if p2 != None:
+                cstart.next = p2
+                p2 = p2.next
+                cstart = cstart.next
+            if p1 != None:
+                cstart.next = p1
+                p1 = p1.next
+                cstart = cstart.next
+        return start.next
+            
+        
+```
 
 
 
