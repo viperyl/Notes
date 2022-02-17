@@ -550,13 +550,6 @@ $$
 
 
 
-$$
-\Large \frac{\partial \bold{H}}{\partial \bar{x}}  = \begin{bmatrix}
-\frac{\partial h_1}{\partial x_1} &...& \frac{\partial h_1}{\partial x_n}\\
-...&...&...\\
-\frac{\partial h_m}{\partial x_1}&...&\frac{\partial h_m}{\partial x_n}
-\end{bmatrix}
-$$
 
 
 
