@@ -1,5 +1,7 @@
 #  Path Planning
 
+## Dubins Path using Geometry
+
 **Target**
 
 Given initial Pose: $P_i(x, y,q)$
@@ -75,6 +77,47 @@ T_X &= (x_{cs} + \rho_s \cos(\phi_{ex}), y_{cs} + \rho_s \sin(\phi_{ex}))\\
 T_N &= (x_{cf} + \rho_f \cos(\phi_{en}), y_{cf} + \rho_f \sin(\phi_{ef}))\\
 \end{align}
 $$
+
+
+
+#### Multi solution
+
+Initial Orientation: Fixes
+
+Final Approach: Either $\pm \theta_f$
+
+#### Conditions for existance of Dubins path
+
+Vanishing Conditions:
+
+1. External Tangnet: One of the primary circles contains the other
+2. Internal Tangent: The primary circles intersect each other
+
+Existance Conditions:
+
+1. External Tangnet: $(c + \rho_s) > \rho_f, \rho_f > \rho_f>\rho_s$
+2. Internal Tangnet: $c > (\rho_s + \rho_f), \rho_f > \rho_s$
+
+#### Exercise 1
+
+![](./Img/Screenshot from 2022-02-17 20-05-29.png)
+$$
+\Large (x_s, y_s, \rho_s, \theta_s) = (0, 0, 1, \frac{\pi}{2})\;\;(x_f,y_f,\rho_f, \theta_f) = (5, 0, 1, -\frac{\pi}{2})
+$$
+Step 1, Calcualte the circle center posiiton
+$$
+\Large O_s= (0, 1)
+$$
+
+
+
+
+
+
+
+
+
+
 
 
 # Dubins Path using Differential Geometry
