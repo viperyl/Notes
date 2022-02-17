@@ -79,7 +79,7 @@ $$
 
 # Dubins Path using Differential Geometry
 
-![](./Img/Screenshot from 2022-02-17 10-24-27.png
+![](./Img/Screenshot from 2022-02-17 10-24-27.png)
 
 ​                                                                     
 $$
