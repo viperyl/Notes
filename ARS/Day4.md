@@ -1,4 +1,4 @@
-# Path Planning
+#  Path Planning
 
 **Target**
 
@@ -70,15 +70,16 @@ Connect the points $P_s$ and $T_X$ by an arc of radius $\rho_s$ and $P_f$ by an 
 
 
 $$
-
+\Large \begin{align}
+T_X &= (x_{cs} + \rho_s \cos(\phi_{ex}), y_{cs} + \rho_s \sin(\phi_{ex}))\\
+T_N &= (x_{cf} + \rho_f \cos(\phi_{en}), y_{cf} + \rho_f \sin(\phi_{ef}))\\
+\end{align}
 $$
 
 
 # Dubins Path using Differential Geometry
 
-
-
-![](./Img/Screenshot from 2022-02-17 10-24-27.png)
+![](./Img/Screenshot from 2022-02-17 10-24-27.png
 
 ​                                                                     
 $$
