@@ -1368,6 +1368,88 @@ class Solution:
         
 ```
 
+### No. 413
+
+Solution 1: Mathemtical
+
+Calculate the consecutive difference in list `A`, then statistics the  consecutive number in list `A`. If we find a consecutive same number sub-array `B`, then add it to our result.
+$$
+\Large \frac{(\text{fisrt val + last val})\times\text{length of sub array}}{2}
+$$
+
+```
+class Solution:
+    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
+        if len(nums) < 3:
+            return 0
+        condiff = [0 for _ in range(len(nums))]
+        condiff[-1] = 123456789
+        for i in range(len(nums) -1):
+            condiff[i] = nums[i+1] - nums[i]
+
+        curVal = 114514
+        counter = 1
+        res = 0
+        for i in range(len(nums)):
+            if curVal != condiff[i]:
+                if counter >= 2:
+                    res += counter * (counter-1)//2
+                counter = 1
+                curVal = condiff[i]
+            else:
+                counter += 1
+        return res
+        
+```
+
+Solution 2: standard DP
+
+```
+class Solution:
+    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
+        if len(nums) < 3:
+            return 0
+        dp = [0 for i in range(len(nums))]
+        curVal = nums[1] - nums[0]
+        counter = 1
+        for i in range(2, len(nums)):
+            curDiff = nums[i] - nums[i - 1]
+            if curVal == curDiff:
+                counter += 1
+                dp[i] = dp[i - 1]
+            else:
+                dp[i-1] = dp[i - 2] + (counter - 1) * counter // 2
+                dp[i] = dp[i-1]
+                curVal = curDiff
+                counter = 1
+        if counter != 0:
+            dp[-1] = dp[-2] + (counter - 1) * counter // 2
+        return dp[-1]
+```
+
+Solution 3: work space compression DP 
+
+```
+class Solution:
+    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
+        if len(nums) < 3:
+            return 0
+        dp = 0
+        curVal = nums[1] - nums[0]
+        counter = 1
+        for i in range(2, len(nums)):
+            curDiff = nums[i] - nums[i-1]
+            if curVal == curDiff:
+                counter += 1
+            else:
+                dp += (counter - 1) * counter //2
+                curVal = curDiff
+                counter = 1
+        if counter != 0:
+            dp += (counter - 1) * counter // 2
+        return dp
+```
+
 
 
 
