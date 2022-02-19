@@ -1452,7 +1452,66 @@ class Solution:
 
 
 
+### No. 91
 
+Solution 1: DP
+
+special case is `0`
+
+if current char is `0`, we need consider the front char. 
+
+1. If the front number is greater than `2` or equal to `0`, there are no valid decoding method
+2. If the front  number is not less or equal than `0` but greater than `0`, we have one decoding way.
+
+```
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        if s[0] == "0":
+            return 0
+        dp = [0 for _ in range(len(s) + 1)]
+        dp[0] = 1
+        dp[1] = 1
+        A = set([str(i) for i in range(3,10)])
+        for i in range(1, len(s)):
+            if s[i-1] != "0":
+                if s[i] == "0":
+                    if s[i-1] in A:
+                        return 0
+                    else:
+                        dp[i+1] = dp[i-1]
+                elif 0 < int(s[i-1:i+1]) <= 26:
+                    dp[i+1] = dp[i] + dp[i-1]
+                else:
+                    dp[i+1] = dp[i]
+            else:
+                if int(s[i-1:i+1]) == 0:
+                    return 0
+                else:
+                    dp[i+1] = dp[i]
+                
+        return dp[-1]
+```
+
+
+
+### No. 300
+
+Solution: Brute force DP
+
+```
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        dp = [1 for _ in range(len(nums))]
+        maximum = 1
+        for i in range(1, len(nums)):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+                    maximum = max(maximum, dp[i])
+        return maximum
+        
+        
+```
 
 
 
