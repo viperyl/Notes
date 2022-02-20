@@ -1536,9 +1536,71 @@ class Solution:
 
 
 
+### No. 343
+
+Solution 1: Math
+
+If an optimal product contains a factor `f>= 4`, then we can replace it with factors `2` and `f-2` without losing optimality, which means we only need factor 1, 2 ,3.
+$$
+\Large n = n_1 + n_2 +... + n_a\\
+\Large \max{\;\;\;\;n_1n_2n_3...n_a}\\
+\Large \frac{n_1 + n_2 +...+n_a}{a} \geq \sqrt[\leftroot{-2}\uproot{2}a]{n_1n_2n_3...n_a}\\
+$$
+
+$$
+\Large n = ax\\
+\Large \max\;\;\;x^a\rightarrow\max\;\;\;x^{\frac{n}{x}}\rightarrow\max\;\;\; (x^{\frac{1}{x}})^n\rightarrow \max\;\;\; x^{\frac{1}{x}}\\
+\Large y = x^{\frac{1}{x}} \rightarrow \ln{y} =\frac{1}{x}\ln{x} \rightarrow  \frac{1}{y}\dot{y} = \frac{1}{x^2} - \frac{1}{x^2}\ln{x}\\
+\Large \dot{y} = \frac{1-\ln{x}}{x^2}*x^{\frac{1}{x}} == 0 \rightarrow x == e\\
+\Large \text{if x < e: } \dot{y} > 0; \text{if x > e:} \dot{y} < 0
+$$
+
+Therefore, `x ==e` is the local maximum point. We can choose `x = =2` or `x == 3` for split.
+$$
+\Large 3^{\frac{1}{3}} - 2^{\frac{1}{2}} \rightarrow  \ln3^{\frac{1}{3}} - \ln2^{\frac{1}{2}} =\ln{\frac{3^{\frac{1}{3}}}{2^{\frac{1}{2}}}} = \ln{\left(\frac{3^2}{2^3}\right)^\frac{1}{6}} = \ln{\left(\frac{9}{8}\right)}^{\frac{1}{6}} \geq 0
+$$
+so we choose `3` as our maximum split.
 
 
 
+
+
+
+
+
+
+
+
+```
+class Solution:
+    def integerBreak(self, n: int) -> int:
+        if n <= 3:
+            return n-1
+        
+        num3, re = n // 3, n % 3
+        
+        if re == 0:
+            return 3 ** num3
+        elif re == 1:            
+            return 3 ** (num3 - 1) * 4
+        return 3 ** num3 * re
+```
+
+
+
+Solution 2: DP
+
+```
+def integerBreak(n: int) -> int:
+    dp = [0 for _ in range(n+1)]
+    dp[0] = 0
+    dp[1] = 1
+    for i in range(2, n+1):
+        for j in range(i//2+1):
+            dp[i] = max(dp[i], max(dp[i-j], i-j) * max(dp[j], j))
+    print(dp)
+    return dp[i]
+```
 
 
 
