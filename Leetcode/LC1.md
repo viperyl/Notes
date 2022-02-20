@@ -1513,6 +1513,27 @@ class Solution:
         
 ```
 
+### No. 322
+
+Solution 1: DP, divided the problem to sub-problem
+
+```
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [2**31 for _ in range(amount + 1)]
+        coins.sort()
+        dp[0] = 0
+        for i in range(1, amount+1):
+            for coin in coins:
+                if i - coin >= 0:
+                    dp[i] = min(dp[i], dp[i-coin] + 1)
+                else:
+                    break
+        if dp[-1] == 2**31:
+            return -1
+        return dp[-1]
+```
+
 
 
 
