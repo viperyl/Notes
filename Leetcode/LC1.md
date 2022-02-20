@@ -1561,16 +1561,6 @@ $$
 $$
 so we choose `3` as our maximum split.
 
-
-
-
-
-
-
-
-
-
-
 ```
 class Solution:
     def integerBreak(self, n: int) -> int:
@@ -1611,6 +1601,25 @@ def integerBreak(n: int) -> int:
 
 
 
+
+### No.1288
+
+Solution 1: sort first element ascending then sort second element descending.
+
+```
+class Solution:
+    def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
+        intervals.sort(key=lambda element: (element[0], -element[1]))
+        # print(intervals)
+        cur = intervals[0]
+        res = len(intervals)
+        for i in range(1, len(intervals)):
+            if cur[0] <= intervals[i][0] and cur[1] >= intervals[i][1]:
+                res -= 1
+            else:
+                cur = intervals[i]
+        return res
+```
 
 
 
