@@ -203,7 +203,93 @@ class Solution:
         return head
 ```
 
+### No. 2095
 
+Solution 1: Triple pointer, find the mid point, find the point before the mid point.
+
+```
+class Solution:
+    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head.next == None:
+            return None
+        p1, p2, p3 = head, head, None
+        tag = True
+        while tag:
+            for i in range(2):
+                if p2.next.next != None:
+                    p2 = p2.next
+                else:
+                    tag = False
+                    break
+            p3 = p1
+            p1 = p1.next
+            if tag == False:
+                break
+        p3.next = p1.next
+        return head
+            
+```
+
+
+
+### No. 338
+
+Solution 1: odd number `i` is same as `i-1`. even number `i` is same as `i//2`  
+
+```
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        dp = [0 for _ in range(n +1)]
+        for i in range(1, n+1):
+            if i % 2 == 0:
+                dp[i] = dp[i//2]
+            else:
+                dp[i] = dp[i-1] + 1
+        return dp
+                
+        
+```
+
+### No. 746
+
+Solution 1: DP
+
+```
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        dp = [0 for _ in range(len(cost)+2)]
+        dp[0] = 0
+        dp[1] = 0
+        dp[2] = 0
+        for  i in range(3, len(cost)+2):
+            dp[i] = min(dp[i-1] + cost[i-2], dp[i-2] + cost[i-3])
+
+        return dp[-1]
+        
+```
+
+
+
+### No. 392
+
+Solution 1: No need DP, string match
+
+```
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if s == "":
+            return True
+        if len(s) > len(t):
+            return False
+        p1 = 0
+        for i in range(len(t)):
+            if t[i] == s[p1]:
+                p1 += 1
+                if p1 == len(s):
+                    return True
+        return False
+        
+```
 
 
 
