@@ -313,6 +313,22 @@ class Solution:
 
 
 
+### No. 1486
+
+Solution 1: Brute Force
+
+```
+class Solution:
+    def xorOperation(self, n: int, start: int) -> int:
+        res = start
+        v = start
+        for i in range(1, n):
+            v += 2
+            res = res ^ v
+        return res
+        
+```
+
 
 
 
