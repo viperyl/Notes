@@ -1,0 +1,6 @@
+## Architecture
+
+Encoder-Decoder structure
+
+
+
