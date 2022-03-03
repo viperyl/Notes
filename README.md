@@ -16,4 +16,11 @@ This is my study Notes
 
 
 
- 
+
+
+Launch UE 4
+
+ ```
+ /home/yang/InstallAndBuild/UnrealEngine-release/Engine/Binaries/Linux
+ ```
+

@@ -1,0 +1,9 @@
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/_setup_util.py
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/env.sh
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/setup.bash
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/local_setup.bash
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/setup.sh
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/local_setup.sh
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/setup.zsh
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/local_setup.zsh
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/.rosinstall

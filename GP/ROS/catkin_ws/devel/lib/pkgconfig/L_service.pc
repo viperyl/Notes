@@ -1,0 +1,8 @@
+prefix=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel
+
+Name: L_service
+Description: Description of L_service
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

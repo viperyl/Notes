@@ -329,3 +329,5 @@ For a $3\times 3$ kernel, for each 8 neighbors.
 
 
 
+
+
