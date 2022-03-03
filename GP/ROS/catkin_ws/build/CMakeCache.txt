@@ -461,6 +461,12 @@ gtest_hide_internal_symbols:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 
+//Value Computed by CMake
+l_service_BINARY_DIR:STATIC=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/l_service
+
+//Value Computed by CMake
+l_service_SOURCE_DIR:STATIC=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/noetic/lib/libxmlrpcpp.so
 

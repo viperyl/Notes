@@ -8,4 +8,3 @@
 
 # modified environment variables
 export PWD='/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build'
-export PYTHONPATH="/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/python3/dist-packages:$PYTHONPATH"

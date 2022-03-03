@@ -5,4 +5,4 @@ Description: Description of L_service
 Version: 0.0.0
 Cflags: 
 Libs: -L${prefix}/lib 
-Requires: 
+Requires: geometry_msgs roscpp rospy std_msgs turtlesim message_runtime

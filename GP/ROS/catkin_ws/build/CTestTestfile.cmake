@@ -6,4 +6,4 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
 subdirs("test_pkg")
-subdirs("L_service")
+subdirs("l_service")

@@ -177,7 +177,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(L_service_EXPORTED_TARGETS "")
+set(L_service_EXPORTED_TARGETS "L_service_generate_messages_cpp;L_service_generate_messages_eus;L_service_generate_messages_lisp;L_service_generate_messages_nodejs;L_service_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${L_service_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -185,7 +185,7 @@ foreach(t ${L_service_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "")
+set(depends "geometry_msgs;roscpp;rospy;std_msgs;turtlesim;message_runtime")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -214,7 +214,7 @@ foreach(depend ${depends})
   _list_append_deduplicate(L_service_EXPORTED_TARGETS ${${L_service_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "L_service-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${L_service_DIR}/${extra})

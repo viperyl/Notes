@@ -1,2 +1,2 @@
-L_service:test_pkg
+l_service:test_pkg
 -DCATKIN_DEVEL_PREFIX=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install -G Unix Makefiles

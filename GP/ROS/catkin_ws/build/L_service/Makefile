@@ -80,28 +80,6 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -134,6 +112,28 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,19 +168,34 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-L_service/CMakeFiles/turtle_command_server.dir/rule:
-	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/turtle_command_server.dir/rule
-.PHONY : L_service/CMakeFiles/turtle_command_server.dir/rule
+L_service/CMakeFiles/L_service_generate_messages.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_generate_messages.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_generate_messages.dir/rule
 
 # Convenience name for target.
-turtle_command_server: L_service/CMakeFiles/turtle_command_server.dir/rule
+L_service_generate_messages: L_service/CMakeFiles/L_service_generate_messages.dir/rule
 
-.PHONY : turtle_command_server
+.PHONY : L_service_generate_messages
 
 # fast build rule for target.
-turtle_command_server/fast:
-	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/turtle_command_server.dir/build.make L_service/CMakeFiles/turtle_command_server.dir/build
-.PHONY : turtle_command_server/fast
+L_service_generate_messages/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_generate_messages.dir/build.make L_service/CMakeFiles/L_service_generate_messages.dir/build
+.PHONY : L_service_generate_messages/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_generate_messages_cpp.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_generate_messages_cpp.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+L_service_generate_messages_cpp: L_service/CMakeFiles/L_service_generate_messages_cpp.dir/rule
+
+.PHONY : L_service_generate_messages_cpp
+
+# fast build rule for target.
+L_service_generate_messages_cpp/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_generate_messages_cpp.dir/build.make L_service/CMakeFiles/L_service_generate_messages_cpp.dir/build
+.PHONY : L_service_generate_messages_cpp/fast
 
 # Convenience name for target.
 L_service/CMakeFiles/turtle_spawn.dir/rule:
@@ -196,6 +211,156 @@ turtle_spawn: L_service/CMakeFiles/turtle_spawn.dir/rule
 turtle_spawn/fast:
 	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/turtle_spawn.dir/build.make L_service/CMakeFiles/turtle_spawn.dir/build
 .PHONY : turtle_spawn/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_gencpp.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_gencpp.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_gencpp.dir/rule
+
+# Convenience name for target.
+L_service_gencpp: L_service/CMakeFiles/L_service_gencpp.dir/rule
+
+.PHONY : L_service_gencpp
+
+# fast build rule for target.
+L_service_gencpp/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_gencpp.dir/build.make L_service/CMakeFiles/L_service_gencpp.dir/build
+.PHONY : L_service_gencpp/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_generate_messages_eus.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_generate_messages_eus.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+L_service_generate_messages_eus: L_service/CMakeFiles/L_service_generate_messages_eus.dir/rule
+
+.PHONY : L_service_generate_messages_eus
+
+# fast build rule for target.
+L_service_generate_messages_eus/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_generate_messages_eus.dir/build.make L_service/CMakeFiles/L_service_generate_messages_eus.dir/build
+.PHONY : L_service_generate_messages_eus/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_geneus.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_geneus.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_geneus.dir/rule
+
+# Convenience name for target.
+L_service_geneus: L_service/CMakeFiles/L_service_geneus.dir/rule
+
+.PHONY : L_service_geneus
+
+# fast build rule for target.
+L_service_geneus/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_geneus.dir/build.make L_service/CMakeFiles/L_service_geneus.dir/build
+.PHONY : L_service_geneus/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_genpy.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_genpy.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_genpy.dir/rule
+
+# Convenience name for target.
+L_service_genpy: L_service/CMakeFiles/L_service_genpy.dir/rule
+
+.PHONY : L_service_genpy
+
+# fast build rule for target.
+L_service_genpy/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_genpy.dir/build.make L_service/CMakeFiles/L_service_genpy.dir/build
+.PHONY : L_service_genpy/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_genlisp.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_genlisp.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_genlisp.dir/rule
+
+# Convenience name for target.
+L_service_genlisp: L_service/CMakeFiles/L_service_genlisp.dir/rule
+
+.PHONY : L_service_genlisp
+
+# fast build rule for target.
+L_service_genlisp/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_genlisp.dir/build.make L_service/CMakeFiles/L_service_genlisp.dir/build
+.PHONY : L_service_genlisp/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_generate_messages_lisp.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_generate_messages_lisp.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+L_service_generate_messages_lisp: L_service/CMakeFiles/L_service_generate_messages_lisp.dir/rule
+
+.PHONY : L_service_generate_messages_lisp
+
+# fast build rule for target.
+L_service_generate_messages_lisp/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_generate_messages_lisp.dir/build.make L_service/CMakeFiles/L_service_generate_messages_lisp.dir/build
+.PHONY : L_service_generate_messages_lisp/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_generate_messages_nodejs.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_generate_messages_nodejs.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+L_service_generate_messages_nodejs: L_service/CMakeFiles/L_service_generate_messages_nodejs.dir/rule
+
+.PHONY : L_service_generate_messages_nodejs
+
+# fast build rule for target.
+L_service_generate_messages_nodejs/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_generate_messages_nodejs.dir/build.make L_service/CMakeFiles/L_service_generate_messages_nodejs.dir/build
+.PHONY : L_service_generate_messages_nodejs/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_gennodejs.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_gennodejs.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_gennodejs.dir/rule
+
+# Convenience name for target.
+L_service_gennodejs: L_service/CMakeFiles/L_service_gennodejs.dir/rule
+
+.PHONY : L_service_gennodejs
+
+# fast build rule for target.
+L_service_gennodejs/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_gennodejs.dir/build.make L_service/CMakeFiles/L_service_gennodejs.dir/build
+.PHONY : L_service_gennodejs/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/turtle_command_server.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/turtle_command_server.dir/rule
+.PHONY : L_service/CMakeFiles/turtle_command_server.dir/rule
+
+# Convenience name for target.
+turtle_command_server: L_service/CMakeFiles/turtle_command_server.dir/rule
+
+.PHONY : turtle_command_server
+
+# fast build rule for target.
+turtle_command_server/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/turtle_command_server.dir/build.make L_service/CMakeFiles/turtle_command_server.dir/build
+.PHONY : turtle_command_server/fast
+
+# Convenience name for target.
+L_service/CMakeFiles/L_service_generate_messages_py.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/L_service_generate_messages_py.dir/rule
+.PHONY : L_service/CMakeFiles/L_service_generate_messages_py.dir/rule
+
+# Convenience name for target.
+L_service_generate_messages_py: L_service/CMakeFiles/L_service_generate_messages_py.dir/rule
+
+.PHONY : L_service_generate_messages_py
+
+# fast build rule for target.
+L_service_generate_messages_py/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/L_service_generate_messages_py.dir/build.make L_service/CMakeFiles/L_service_generate_messages_py.dir/build
+.PHONY : L_service_generate_messages_py/fast
 
 src/turtle_command_server.o: src/turtle_command_server.cpp.o
 
@@ -259,13 +424,24 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... install"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... turtle_command_server"
+	@echo "... L_service_generate_messages"
+	@echo "... install"
+	@echo "... L_service_generate_messages_cpp"
 	@echo "... turtle_spawn"
+	@echo "... L_service_gencpp"
+	@echo "... L_service_generate_messages_eus"
+	@echo "... L_service_geneus"
+	@echo "... L_service_genpy"
+	@echo "... L_service_genlisp"
+	@echo "... list_install_components"
+	@echo "... L_service_generate_messages_lisp"
+	@echo "... L_service_generate_messages_nodejs"
+	@echo "... L_service_gennodejs"
+	@echo "... turtle_command_server"
+	@echo "... L_service_generate_messages_py"
 	@echo "... src/turtle_command_server.o"
 	@echo "... src/turtle_command_server.i"
 	@echo "... src/turtle_command_server.s"
