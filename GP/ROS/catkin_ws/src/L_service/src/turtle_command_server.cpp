@@ -9,7 +9,7 @@ bool commandCallback(std_srvs::Trigger::Request &req,std_srvs::Trigger::Response
 {
     pubCommand = !pubCommand;
     
-    ROS_INFO("Publish turtle velocity command [%s]", pubCommand=true?"Yes":"No");
+    ROS_INFO("Publish turtle velocity command [%s]", pubCommand==true?"Yes":"No");
 
     res.success = true;
     res.message = "Change turtle command state!";
@@ -41,6 +41,7 @@ int main(int argc, char **argv)
             vel_msg.angular.z = 0.2;
             turtle_vel_pub.publish(vel_msg);
         }
+        loop_rate.sleep();
     }
 
 

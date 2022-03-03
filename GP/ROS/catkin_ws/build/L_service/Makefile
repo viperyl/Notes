@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+L_service/CMakeFiles/turtle_command_server.dir/rule:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/turtle_command_server.dir/rule
+.PHONY : L_service/CMakeFiles/turtle_command_server.dir/rule
+
+# Convenience name for target.
+turtle_command_server: L_service/CMakeFiles/turtle_command_server.dir/rule
+
+.PHONY : turtle_command_server
+
+# fast build rule for target.
+turtle_command_server/fast:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/turtle_command_server.dir/build.make L_service/CMakeFiles/turtle_command_server.dir/build
+.PHONY : turtle_command_server/fast
+
+# Convenience name for target.
 L_service/CMakeFiles/turtle_spawn.dir/rule:
 	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 L_service/CMakeFiles/turtle_spawn.dir/rule
 .PHONY : L_service/CMakeFiles/turtle_spawn.dir/rule
@@ -181,6 +196,33 @@ turtle_spawn: L_service/CMakeFiles/turtle_spawn.dir/rule
 turtle_spawn/fast:
 	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/turtle_spawn.dir/build.make L_service/CMakeFiles/turtle_spawn.dir/build
 .PHONY : turtle_spawn/fast
+
+src/turtle_command_server.o: src/turtle_command_server.cpp.o
+
+.PHONY : src/turtle_command_server.o
+
+# target to build an object file
+src/turtle_command_server.cpp.o:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/turtle_command_server.dir/build.make L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o
+.PHONY : src/turtle_command_server.cpp.o
+
+src/turtle_command_server.i: src/turtle_command_server.cpp.i
+
+.PHONY : src/turtle_command_server.i
+
+# target to preprocess a source file
+src/turtle_command_server.cpp.i:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/turtle_command_server.dir/build.make L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.i
+.PHONY : src/turtle_command_server.cpp.i
+
+src/turtle_command_server.s: src/turtle_command_server.cpp.s
+
+.PHONY : src/turtle_command_server.s
+
+# target to generate assembly for a file
+src/turtle_command_server.cpp.s:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(MAKE) -f L_service/CMakeFiles/turtle_command_server.dir/build.make L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.s
+.PHONY : src/turtle_command_server.cpp.s
 
 src/turtle_spawn.o: src/turtle_spawn.cpp.o
 
@@ -222,7 +264,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... turtle_command_server"
 	@echo "... turtle_spawn"
+	@echo "... src/turtle_command_server.o"
+	@echo "... src/turtle_command_server.i"
+	@echo "... src/turtle_command_server.s"
 	@echo "... src/turtle_spawn.o"
 	@echo "... src/turtle_spawn.i"
 	@echo "... src/turtle_spawn.s"

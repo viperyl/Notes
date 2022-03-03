@@ -883,6 +883,19 @@ std_srvs_generate_messages_lisp/fast:
 .PHONY : std_srvs_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named turtle_command_server
+
+# Build rule for target.
+turtle_command_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 turtle_command_server
+.PHONY : turtle_command_server
+
+# fast build rule for target.
+turtle_command_server/fast:
+	$(MAKE) -f L_service/CMakeFiles/turtle_command_server.dir/build.make L_service/CMakeFiles/turtle_command_server.dir/build
+.PHONY : turtle_command_server/fast
+
+#=============================================================================
 # Target rules for targets named turtle_spawn
 
 # Build rule for target.
@@ -963,6 +976,7 @@ help:
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_eus"
 	@echo "... std_srvs_generate_messages_lisp"
+	@echo "... turtle_command_server"
 	@echo "... turtle_spawn"
 .PHONY : help
 
