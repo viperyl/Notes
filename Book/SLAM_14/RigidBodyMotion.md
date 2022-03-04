@@ -2,6 +2,14 @@
 
 
 
+```mermaid
+graph LR
+
+A[sensor data]--> B[front-end Visual Odometry] -->C[back-end Non-lienar optimization] --> D[build map]
+A --> E[loop detection]-->C
+
+```
+
 
 
 
@@ -18,7 +26,7 @@ For a vector under this two coordinates are $[a_1, a_2, a_3]^\intercal$ and $[a_
 
 
 $$
-\Large 
+\Large
 $$
 Rotation matrix set are following
 $$
