@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: l_service
+Description: Description of l_service
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 
