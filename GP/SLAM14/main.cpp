@@ -1,76 +1,67 @@
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-// opencv part
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
-// Eigen part
-#include <Eigen/Geometry>
-
-// PCL part
-#include <pcl-1.12/pcl/point_types.h>
-#include <pcl-1.12/pcl/io/pcd_io.h>
-#include <pcl-1.12/pcl/visualization/pcl_visualizer.h>
-
-#include <boost/format.hpp>
+#include "uselib.h"
 
 #define MATRIX_SIZE 100
 
-int main() {
-    vector<cv::Mat> colorImgs, depthImgs;
-    vector<Eigen::Isometry3d> poses;
-
-    ifstream fin("/home/yang/Resource/slambook2-master/ch5/rgbd/pose.txt");
-    if (!fin) {
-        cerr << "cannot open pose.txt" << endl;
-        return 1;
-    }
-    for (int i = 0; i < 5; i++)
-    {
-        boost::format fmt("/home/yang/Resource/slambook2-master/ch5/rgbd/%s/%d.%s");
-        colorImgs.push_back(cv::imread((fmt%"color"%(i+1)%"png").str()));
-        depthImgs.push_back(cv::imread((fmt%"depth"%(i+1)%"pgm").str(), -1));
-
-        double data[7] = {0};
-        for (auto& d: data)
-            fin >> d;
-        Eigen::Quaternion q(data[6], data[3], data[4], data[5]);
-        Eigen::Isometry3d T(q);
-        T.pretranslate(Eigen::Vector3d(data[0], data[1], data[2]));
-        poses.push_back(T);
-    }
-    double cx = 325.0, cy = 235.0, fx = 518.0, fy = 519.0;
-    double depthScale = 1000.0;
-
-    cout << "Png to point cloud" << endl;
-    // point cloud format XYZRGB
-    typedef pcl::PointXYZRGB PointT;
-    typedef pcl::PointCloud<PointT> PointCloud;
-
-    // new a point cloud
-    PointCloud::Ptr pointCloud(new PointCloud);
-    for (int i=0; i<5; i++)
-    {
-        cout << "Convert " << i+1 << " th" << endl;
-        cv::Mat color = colorImgs[i];
-        cv::Mat depth = depthImgs[i];
-        Eigen::Isometry3d T = poses[i];
-        for (int v = 0; v < color.rows; v++)
-            for (int u = 0; i < color.cols; u++)
-            {
-                unsigned int d = depth.ptr<unsigned short> (v)[u];
-                if (d == 0) continue;
-                Eigen::Vector3d point;
-                point[2] = double(d)
-            }
-    }
-
-
-
+int main()
+{
+//    feature_extraction();
+    
     return 0;
 }
+
+//int main() {
+//    vector<cv::Mat> colorImgs, depthImgs;
+//    vector<Eigen::Isometry3d> poses;
+//
+//    ifstream fin("/home/yang/Resource/slambook2-master/ch5/rgbd/pose.txt");
+//    if (!fin) {
+//        cerr << "cannot open pose.txt" << endl;
+//        return 1;
+//    }
+//    for (int i = 0; i < 5; i++)
+//    {
+//        boost::format fmt("/home/yang/Resource/slambook2-master/ch5/rgbd/%s/%d.%s");
+//        colorImgs.push_back(cv::imread((fmt%"color"%(i+1)%"png").str()));
+//        depthImgs.push_back(cv::imread((fmt%"depth"%(i+1)%"pgm").str(), -1));
+//
+//        double data[7] = {0};
+//        for (auto& d: data)
+//            fin >> d;
+//        Eigen::Quaternion q(data[6], data[3], data[4], data[5]);
+//        Eigen::Isometry3d T(q);
+//        T.pretranslate(Eigen::Vector3d(data[0], data[1], data[2]));
+//        poses.push_back(T);
+//    }
+//    double cx = 325.0, cy = 235.0, fx = 518.0, fy = 519.0;
+//    double depthScale = 1000.0;
+//
+//    cout << "Png to point cloud" << endl;
+//    // point cloud format XYZRGB
+//    typedef pcl::PointXYZRGB PointT;
+//    typedef pcl::PointCloud<PointT> PointCloud;
+//
+//    // new a point cloud
+//    PointCloud::Ptr pointCloud(new PointCloud);
+//    for (int i=0; i<5; i++)
+//    {
+//        cout << "Convert " << i+1 << " th" << endl;
+//        cv::Mat color = colorImgs[i];
+//        cv::Mat depth = depthImgs[i];
+//        Eigen::Isometry3d T = poses[i];
+//        for (int v = 0; v < color.rows; v++)
+//            for (int u = 0; i < color.cols; u++)
+//            {
+//                unsigned int d = depth.ptr<unsigned short> (v)[u];
+//                if (d == 0) continue;
+//                Eigen::Vector3d point;
+//                point[2] = double(d)
+//            }
+//    }
+//
+//
+//
+//    return 0;
+//}
 
 
 //int main()

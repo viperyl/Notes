@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 project(SLAM14)
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(SLAM14 main.cpp)
+add_executable(SLAM14 main.cpp uselib.h uselib.cpp)
 
 find_package(OpenCV REQUIRED )
 find_package(Eigen3 REQUIRED)
