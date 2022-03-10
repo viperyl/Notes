@@ -167,8 +167,6 @@ class RrtStar:
 if __name__ == "__main__":
     x_start = (18, 8)  # Starting node
     x_goal = (37, 18)  # Goal node
-    env1 = env.Env()
-    print(env1)
-    # rrt_star = RrtStar(x_start, x_goal, 10, 0.10, 20, 10000)
-    # rrt_star.planning()
+    rrt_star = RrtStar(x_start, x_goal, 10, 0.10, 20, 10000)
+    rrt_star.planning()
     print("Hello world")
