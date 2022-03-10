@@ -9,13 +9,25 @@
 
 #### 2022.Mar.1
 
-- [ ] ROS course 1
+- [x] ROS course 1
 - [ ] Statistical learning 1
 - [ ] C++ learning 1
 - [ ] DP learning 1
 
 
 
-#### 
+#### 2022 Mar.10
 
-- [x] 
+- [x] Statistical learning 1
+- [ ] PCL 1
+- [ ] Avoidance
+- [ ] Visualization
+
+
+
+- [ ] Statistical learning 1
+- [ ] Statistical learning 1
+- [ ] Statistical learning 1
+- [ ] Statistical learning 1
+- [ ] Statistical learning 1
+- [ ] 
