@@ -1,8 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(WARNING "Invoking generate_messages() without having added any message or service file before.
-You should either add add_message_files() and/or add_service_files() calls or remove the invocation of generate_messages().")
-message(STATUS "l_service: 0 messages, 0 services")
+message(STATUS "l_service: 0 messages, 1 services")
 
 set(MSG_I_FLAGS "-Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
 
@@ -19,6 +17,11 @@ add_custom_target(l_service_generate_messages ALL)
 
 
 
+get_filename_component(_filename "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv" NAME_WE)
+add_custom_target(_l_service_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "l_service" "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv" ""
+)
+
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
@@ -27,6 +30,12 @@ add_custom_target(l_service_generate_messages ALL)
 ### Generating Messages
 
 ### Generating Services
+_generate_srv_cpp(l_service
+  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/l_service
+)
 
 ### Generating Module File
 _generate_module_cpp(l_service
@@ -40,6 +49,8 @@ add_custom_target(l_service_generate_messages_cpp
 add_dependencies(l_service_generate_messages l_service_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv" NAME_WE)
+add_dependencies(l_service_generate_messages_cpp _l_service_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(l_service_gencpp)
@@ -52,6 +63,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS l_service_generate_messages_cpp)
 ### Generating Messages
 
 ### Generating Services
+_generate_srv_eus(l_service
+  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/l_service
+)
 
 ### Generating Module File
 _generate_module_eus(l_service
@@ -65,6 +82,8 @@ add_custom_target(l_service_generate_messages_eus
 add_dependencies(l_service_generate_messages l_service_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv" NAME_WE)
+add_dependencies(l_service_generate_messages_eus _l_service_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(l_service_geneus)
@@ -77,6 +96,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS l_service_generate_messages_eus)
 ### Generating Messages
 
 ### Generating Services
+_generate_srv_lisp(l_service
+  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/l_service
+)
 
 ### Generating Module File
 _generate_module_lisp(l_service
@@ -90,6 +115,8 @@ add_custom_target(l_service_generate_messages_lisp
 add_dependencies(l_service_generate_messages l_service_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv" NAME_WE)
+add_dependencies(l_service_generate_messages_lisp _l_service_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(l_service_genlisp)
@@ -102,6 +129,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS l_service_generate_messages_lisp)
 ### Generating Messages
 
 ### Generating Services
+_generate_srv_nodejs(l_service
+  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/l_service
+)
 
 ### Generating Module File
 _generate_module_nodejs(l_service
@@ -115,6 +148,8 @@ add_custom_target(l_service_generate_messages_nodejs
 add_dependencies(l_service_generate_messages l_service_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv" NAME_WE)
+add_dependencies(l_service_generate_messages_nodejs _l_service_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(l_service_gennodejs)
@@ -127,6 +162,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS l_service_generate_messages_nodejs)
 ### Generating Messages
 
 ### Generating Services
+_generate_srv_py(l_service
+  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/l_service
+)
 
 ### Generating Module File
 _generate_module_py(l_service
@@ -140,6 +181,8 @@ add_custom_target(l_service_generate_messages_py
 add_dependencies(l_service_generate_messages l_service_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv" NAME_WE)
+add_dependencies(l_service_generate_messages_py _l_service_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(l_service_genpy)

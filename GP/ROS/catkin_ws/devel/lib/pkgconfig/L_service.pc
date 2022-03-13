@@ -1,8 +1,8 @@
 prefix=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel
 
-Name: L_service
-Description: Description of L_service
+Name: l_service
+Description: Description of l_service
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/include
 Libs: -L${prefix}/lib 
-Requires: geometry_msgs roscpp rospy std_msgs turtlesim message_runtime
+Requires: 

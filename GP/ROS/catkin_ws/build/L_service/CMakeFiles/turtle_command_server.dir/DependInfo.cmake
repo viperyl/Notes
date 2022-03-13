@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/L_service/src/turtle_command_server.cpp" "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o"
+  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/src/turtle_command_server.cpp" "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/l_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -12,11 +12,12 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "ROSCONSOLE_BACKEND_LOG4CXX"
   "ROS_BUILD_SHARED_LIBS=1"
-  "ROS_PACKAGE_NAME=\"L_service\""
+  "ROS_PACKAGE_NAME=\"l_service\""
   )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

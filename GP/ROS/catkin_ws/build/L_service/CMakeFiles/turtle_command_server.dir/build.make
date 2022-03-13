@@ -49,26 +49,26 @@ CMAKE_SOURCE_DIR = /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src
 CMAKE_BINARY_DIR = /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build
 
 # Include any dependencies generated for this target.
-include L_service/CMakeFiles/turtle_command_server.dir/depend.make
+include l_service/CMakeFiles/turtle_command_server.dir/depend.make
 
 # Include the progress variables for this target.
-include L_service/CMakeFiles/turtle_command_server.dir/progress.make
+include l_service/CMakeFiles/turtle_command_server.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include L_service/CMakeFiles/turtle_command_server.dir/flags.make
+include l_service/CMakeFiles/turtle_command_server.dir/flags.make
 
-L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o: L_service/CMakeFiles/turtle_command_server.dir/flags.make
-L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o: /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/L_service/src/turtle_command_server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o"
-	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/L_service && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o -c /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/L_service/src/turtle_command_server.cpp
+l_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o: l_service/CMakeFiles/turtle_command_server.dir/flags.make
+l_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o: /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/src/turtle_command_server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object l_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o"
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/l_service && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o -c /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/src/turtle_command_server.cpp
 
-L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.i: cmake_force
+l_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.i"
-	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/L_service && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/L_service/src/turtle_command_server.cpp > CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.i
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/l_service && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/src/turtle_command_server.cpp > CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.i
 
-L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.s: cmake_force
+l_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.s"
-	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/L_service && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/L_service/src/turtle_command_server.cpp -o CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.s
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/l_service && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/src/turtle_command_server.cpp -o CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.s
 
 # Object files for target turtle_command_server
 turtle_command_server_OBJECTS = \
@@ -77,22 +77,39 @@ turtle_command_server_OBJECTS = \
 # External object files for target turtle_command_server
 turtle_command_server_EXTERNAL_OBJECTS =
 
-/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/L_service/turtle_command_server: L_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o
-/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/L_service/turtle_command_server: L_service/CMakeFiles/turtle_command_server.dir/build.make
-/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/L_service/turtle_command_server: L_service/CMakeFiles/turtle_command_server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/L_service/turtle_command_server"
-	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/L_service && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/turtle_command_server.dir/link.txt --verbose=$(VERBOSE)
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: l_service/CMakeFiles/turtle_command_server.dir/src/turtle_command_server.cpp.o
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: l_service/CMakeFiles/turtle_command_server.dir/build.make
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /opt/ros/noetic/lib/libroscpp.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.71.0
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /opt/ros/noetic/lib/librosconsole.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /opt/ros/noetic/lib/librosconsole_log4cxx.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /opt/ros/noetic/lib/librosconsole_backend_interface.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /opt/ros/noetic/lib/libxmlrpcpp.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /opt/ros/noetic/lib/libroscpp_serialization.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /opt/ros/noetic/lib/librostime.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.71.0
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /opt/ros/noetic/lib/libcpp_common.so
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server: l_service/CMakeFiles/turtle_command_server.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server"
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/l_service && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/turtle_command_server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-L_service/CMakeFiles/turtle_command_server.dir/build: /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/L_service/turtle_command_server
+l_service/CMakeFiles/turtle_command_server.dir/build: /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_command_server
 
-.PHONY : L_service/CMakeFiles/turtle_command_server.dir/build
+.PHONY : l_service/CMakeFiles/turtle_command_server.dir/build
 
-L_service/CMakeFiles/turtle_command_server.dir/clean:
-	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/L_service && $(CMAKE_COMMAND) -P CMakeFiles/turtle_command_server.dir/cmake_clean.cmake
-.PHONY : L_service/CMakeFiles/turtle_command_server.dir/clean
+l_service/CMakeFiles/turtle_command_server.dir/clean:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/l_service && $(CMAKE_COMMAND) -P CMakeFiles/turtle_command_server.dir/cmake_clean.cmake
+.PHONY : l_service/CMakeFiles/turtle_command_server.dir/clean
 
-L_service/CMakeFiles/turtle_command_server.dir/depend:
-	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/L_service /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/L_service /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/L_service/CMakeFiles/turtle_command_server.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : L_service/CMakeFiles/turtle_command_server.dir/depend
+l_service/CMakeFiles/turtle_command_server.dir/depend:
+	cd /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/l_service /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build/l_service/CMakeFiles/turtle_command_server.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : l_service/CMakeFiles/turtle_command_server.dir/depend
 

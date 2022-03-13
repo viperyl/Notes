@@ -1,8 +1,8 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = ""
-services_str = ""
-pkg_name = "L_service"
+services_str = "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/srv/Person.srv"
+pkg_name = "l_service"
 dependencies_str = "geometry_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"
 dep_include_paths_str = "geometry_msgs;/opt/ros/noetic/share/geometry_msgs/cmake/../msg;std_msgs;/opt/ros/noetic/share/std_msgs/cmake/../msg"
