@@ -120,6 +120,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/learning_parameters.cpp
@@ -149,6 +151,8 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+add_executable(parameter_config src/parameter_config.cpp)
+target_link_libraries(parameter_config ${catkin_LIBRARIES})
 
 #############
 ## Install ##

@@ -27,14 +27,6 @@
 (intern "*FEAMLE*" (find-package "L_SERVICE::PERSONREQUEST"))
 (shadow '*FEAMLE* (find-package "L_SERVICE::PERSONREQUEST"))
 (defconstant l_service::PersonRequest::*FEAMLE* 2)
-
-(defun l_service::PersonRequest-to-symbol (const)
-  (cond
-        ((= const 0) 'l_service::PersonRequest::*unknown*)
-        ((= const 1) 'l_service::PersonRequest::*male*)
-        ((= const 2) 'l_service::PersonRequest::*feamle*)
-        (t nil)))
-
 (defclass l_service::PersonRequest
   :super ros::object
   :slots (_name _age _sex ))

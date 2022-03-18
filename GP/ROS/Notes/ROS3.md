@@ -13,7 +13,25 @@ rosparam delete param_key
 
 YAML format: store param_key param_value pairs
 
-```
+## update set params
+
+send a blank request. 
 
 ```
+rosservice call /clear "{}"
+```
+
+
+
+## Robot coordinates
+
+TF tree maintain the all of coordinates
+
+
+
+
+
+
+
+
 

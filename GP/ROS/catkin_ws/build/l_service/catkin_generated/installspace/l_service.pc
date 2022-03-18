@@ -1,4 +1,4 @@
-prefix=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install
+prefix=/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/install
 
 Name: l_service
 Description: Description of l_service

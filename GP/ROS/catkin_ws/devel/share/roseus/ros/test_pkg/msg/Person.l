@@ -21,14 +21,6 @@
 (intern "*FEMALE*" (find-package "TEST_PKG::PERSON"))
 (shadow '*FEMALE* (find-package "TEST_PKG::PERSON"))
 (defconstant test_pkg::Person::*FEMALE* 2)
-
-(defun test_pkg::Person-to-symbol (const)
-  (cond
-        ((= const 0) 'test_pkg::Person::*unkown*)
-        ((= const 1) 'test_pkg::Person::*male*)
-        ((= const 2) 'test_pkg::Person::*female*)
-        (t nil)))
-
 (defclass test_pkg::Person
   :super ros::object
   :slots (_name _sex _age ))

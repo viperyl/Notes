@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
-  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_spawn"
-  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_spawn.pdb"
+  "/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_spawn"
+  "/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/lib/l_service/turtle_spawn.pdb"
   "CMakeFiles/turtle_spawn.dir/src/turtle_spawn.cpp.o"
+  "CMakeFiles/turtle_spawn.dir/src/turtle_spawn.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

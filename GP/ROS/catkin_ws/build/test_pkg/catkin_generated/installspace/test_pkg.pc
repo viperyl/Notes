@@ -1,4 +1,4 @@
-prefix=/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install
+prefix=/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/install
 
 Name: test_pkg
 Description: Description of test_pkg

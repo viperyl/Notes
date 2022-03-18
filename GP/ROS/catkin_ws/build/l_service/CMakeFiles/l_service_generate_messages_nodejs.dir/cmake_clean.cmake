@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/share/gennodejs/ros/l_service/srv/Person.js"
+  "/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/share/gennodejs/ros/l_service/srv/Person.js"
   "CMakeFiles/l_service_generate_messages_nodejs"
 )
 

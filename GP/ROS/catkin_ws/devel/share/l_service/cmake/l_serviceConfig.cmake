@@ -67,14 +67,14 @@ set(l_service_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(l_service_SOURCE_PREFIX /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service)
-  set(l_service_DEVEL_PREFIX /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel)
+  set(l_service_SOURCE_PREFIX /home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/src/l_service)
+  set(l_service_DEVEL_PREFIX /home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel)
   set(l_service_INSTALL_PREFIX "")
   set(l_service_PREFIX ${l_service_DEVEL_PREFIX})
 else()
   set(l_service_SOURCE_PREFIX "")
   set(l_service_DEVEL_PREFIX "")
-  set(l_service_INSTALL_PREFIX /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install)
+  set(l_service_INSTALL_PREFIX /home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/install)
   set(l_service_PREFIX ${l_service_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(l_service_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/include " STREQUAL " ")
+if(NOT "/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/include " STREQUAL " ")
   set(l_service_INCLUDE_DIRS "")
-  set(_include_dirs "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/include")
+  set(_include_dirs "/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/include " STREQ
         message(FATAL_ERROR "Project 'l_service' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'l_service' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/l_service/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'l_service' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/src/l_service/${idir}'.  ${_report}")
     endif()
     _list_append_unique(l_service_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib;/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/lib;/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/lib;/home/viper/Documents/Github/GroupProject/dashgo_nano_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(l_service_LIBRARIES ${l_service_LIBRARIES})
 
   _list_append_unique(l_service_LIBRARY_DIRS ${${l_service_dep}_LIBRARY_DIRS})
-  _list_append_deduplicate(l_service_EXPORTED_TARGETS ${${l_service_dep}_EXPORTED_TARGETS})
+  list(APPEND l_service_EXPORTED_TARGETS ${${l_service_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "l_service-msg-extras.cmake")

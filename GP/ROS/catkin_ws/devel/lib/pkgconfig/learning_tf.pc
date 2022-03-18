@@ -1,0 +1,8 @@
+prefix=/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel
+
+Name: learning_tf
+Description: Description of learning_tf
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

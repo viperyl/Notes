@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/build'
+export PWD='/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/build'

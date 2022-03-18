@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/include/test_pkg/Person.h"
+  "/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/include/test_pkg/Person.h"
   "CMakeFiles/test_pkg_generate_messages_cpp"
 )
 

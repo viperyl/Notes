@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/share/common-lisp/ros/test_pkg/msg/Person.lisp"
+  "/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/share/common-lisp/ros/test_pkg/msg/Person.lisp"
   "CMakeFiles/test_pkg_generate_messages_lisp"
 )
 

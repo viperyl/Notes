@@ -73,7 +73,7 @@ class PersonRequest {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.name);
+    length += object.name.length;
     return length + 6;
   }
 
@@ -173,7 +173,7 @@ class PersonResponse {
 
   static getMessageSize(object) {
     let length = 0;
-    length += _getByteLength(object.result);
+    length += object.result.length;
     return length + 4;
   }
 

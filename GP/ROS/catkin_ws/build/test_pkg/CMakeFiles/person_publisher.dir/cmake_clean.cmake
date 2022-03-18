@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
-  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/test_pkg/person_publisher"
-  "/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib/test_pkg/person_publisher.pdb"
+  "/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/lib/test_pkg/person_publisher"
+  "/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/lib/test_pkg/person_publisher.pdb"
   "CMakeFiles/person_publisher.dir/src/person_publisher.cpp.o"
+  "CMakeFiles/person_publisher.dir/src/person_publisher.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

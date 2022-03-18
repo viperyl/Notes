@@ -67,14 +67,14 @@ set(test_pkg_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(test_pkg_SOURCE_PREFIX /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/src/test_pkg)
-  set(test_pkg_DEVEL_PREFIX /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel)
+  set(test_pkg_SOURCE_PREFIX /home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/src/test_pkg)
+  set(test_pkg_DEVEL_PREFIX /home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel)
   set(test_pkg_INSTALL_PREFIX "")
   set(test_pkg_PREFIX ${test_pkg_DEVEL_PREFIX})
 else()
   set(test_pkg_SOURCE_PREFIX "")
   set(test_pkg_DEVEL_PREFIX "")
-  set(test_pkg_INSTALL_PREFIX /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install)
+  set(test_pkg_INSTALL_PREFIX /home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/install)
   set(test_pkg_PREFIX ${test_pkg_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/install/lib;/home/yang/Documents/GitHub/Notes/GP/ROS/catkin_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/install/lib;/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel/lib;/home/viper/Documents/Github/GroupProject/dashgo_nano_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(test_pkg_LIBRARIES ${test_pkg_LIBRARIES})
 
   _list_append_unique(test_pkg_LIBRARY_DIRS ${${test_pkg_dep}_LIBRARY_DIRS})
-  _list_append_deduplicate(test_pkg_EXPORTED_TARGETS ${${test_pkg_dep}_EXPORTED_TARGETS})
+  list(APPEND test_pkg_EXPORTED_TARGETS ${${test_pkg_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "test_pkg-msg-extras.cmake")
