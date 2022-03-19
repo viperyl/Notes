@@ -1,2 +1,2 @@
-l_service:learning_parameters:learning_tf:test_pkg
+l_service:learning_launch:learning_parameters:learning_tf:test_pkg
 -DCATKIN_DEVEL_PREFIX=/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/viper/Documents/Github/Notes/GP/ROS/catkin_ws/install -G Unix Makefiles
