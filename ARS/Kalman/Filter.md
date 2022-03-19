@@ -282,7 +282,7 @@ $$
 
 **predict**
 
-| Uni-variate                                                  | Univariate Form                     | Kalman Form                                                  |
+| Uni-variate                                                  | Univariate KF                       | Kalman Form                                                  |
 | ------------------------------------------------------------ | ----------------------------------- | ------------------------------------------------------------ |
 | $\bar{\mu} = \mu +\mu_{f}\\\bar{\sigma}^2 = \sigma^2 + \sigma_f^2$ | $\bar{x} = x + dx\\\bar{P} = P + Q$ | $\bar{\bold{X}} = \bold{Fx} + \bold{Bu}\\ \bold{P} = \bold{FPF}^T + \bold{Q}$ |
 
@@ -296,11 +296,9 @@ $\bold{B, u}$ represent the model control
 
 **Update**
 
-| Uni-variate                                                  | Univariate Form                                              | Kalman Form                                                  |
+| Uni-variate                                                  | Univariate KF                                                | Kalman Form                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | $\mu = \frac{\bar\sigma^2\mu_z + \sigma_z^2\bar{\mu}}{\sigma_1^2 + \sigma_2^2}\\\sigma^2 = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}$ | $y = z - \bar{x}\\K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\ P = (1 - K)\bar{P}$ | $\begin{align}\bold{y} &= \bold{z} - \bold{Hx}\\ \bold{K} &= \bold{PH}^T(\bold{HPH}^T + \bold{R})^{-1}\\ x&= \bar{x} + \bold{Ky}\\ \bold{P} &= (\bold{I - KH})\bold{P}\end{align}$ |
-
-
 
 $\bold{H}$: measurement function
 
@@ -330,6 +328,41 @@ $K$: Kalman gain
 4. Set state between the prediction and measurement based on scaling factor
 5. Update belief in the state based on how certain we are in the measurement
 
+
+
+**Predict step**
+$$
+\Large \begin{align}
+\bold{x} &= \bold{Fx} + \bold{Bu} \\
+\bold{P} &= \bold{FPF}^\intercal + \bold{Q}
+\end{align}
+$$
+**Update step**
+$$
+\Large \begin{align}
+\bold{S} &= \bold{HPH}^\intercal + \bold{R}\\
+\bold{K} &= \bold{PH}^\intercal\bold{S}^{-1}\\
+\bold{y} &= \bold{z} - \bold{Hx}\\
+\bold{x} &= \bold{x} + \bold{Ky}\\
+\bold{P} &= (\bold{I-KH})\bold{P}
+\end{align}
+$$
+Kalman filter with Bayesian notion
+
+**Predict step**
+$$
+\Large \begin{align}
+\bar{\bold{x}}_{k|k-1} &= \bold{F}_k\bar{\bold{x}}_{k-1|k-1} = \bold{B}_k\bold{u}_k\\
+\bold{P}_{k|k-1} &= \bold{F}_k\bold{P}_{k-1|k-1}\bold{F}_k^\intercal + \bold{Q}_k
+\end{align}
+$$
+**Update step**
+$$
+\Large \begin{align}
+\tilde{\bold{y}}_k = \bold{z}_k - \bold{H}_k\bar{\bold{x}}_{k|k-1}\\
+
+\end{align}
+$$
 
 
 
