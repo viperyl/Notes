@@ -207,9 +207,9 @@ Update
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | $x = ||\mathcal{L}\bar{x}||$ | $y = z - \bar{\mu}\\ K = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}\\ \mu = \bar{\mu} + Ky\\ \sigma^2 = \frac{\bar{\mu}^2\sigma_z^2}{\sigma_z^2 + \bar{\sigma}^2}$ | $y = z - \bar{x}\\ K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\P = (1 - K)\bar{P}$ |
 
-# 3: Multivariate Gaussian
+# 3: Multivariate Kalman filter
 
-## 3.1 Basic
+## 3.1 Multivariate Gaussian
 
 univariate normal
 $$
@@ -219,7 +219,7 @@ for `N` dimensions, we need `N` means. $\mu = [\mu_1, \mu_2, ..., \mu_n]^T$ and 
 
 **Correlation and Co-variance**
 
-co-variance
+co-variance used to describe how much two variables vary together. 
 $$
 \Large \text{COV}(X, Y) = \sigma_{xy} = \mathbb{E}[(X - \mu_x)(Y - \mu_y)]
 $$
@@ -228,7 +228,12 @@ $$
 \Large \text{COV}(X, X) =\begin{bmatrix}\sigma_1^2 & \sigma_{12}&...&\sigma_{1n}\\\sigma_{21}&\sigma_2^2&...&\sigma_{2n}\\...&...&...&...\\\sigma_{n1}&\sigma_{n2}&...&\sigma_{n}^2 \end{bmatrix}
 $$
 `0` means no linear correlation
-
+$$
+\Large \mathbb{E}[X] = \begin{cases}
+\sum\limits_{i=1}^{n}p_ix_i,\text{discrete}\\
+\int\limits_{-\infty}^{+\infty}f(x)x dx, \text{continous}
+\end{cases}
+$$
 biased estimator over $1/(N+1)$, unbiased estimator over $1/N$
 
 Multivariate Normal Distribution
@@ -273,11 +278,11 @@ $$
 \end{align}
 $$
 
-# Ch 04: Multivariate Kalman Filter
+## 3.2 Multivariate Kalman Filter
 
 **predict**
 
-| Uni-variate                                                  | Kalman Form                         | Kalman Form                                                  |
+| Uni-variate                                                  | Univariate Form                     | Kalman Form                                                  |
 | ------------------------------------------------------------ | ----------------------------------- | ------------------------------------------------------------ |
 | $\bar{\mu} = \mu +\mu_{f}\\\bar{\sigma}^2 = \sigma^2 + \sigma_f^2$ | $\bar{x} = x + dx\\\bar{P} = P + Q$ | $\bar{\bold{X}} = \bold{Fx} + \bold{Bu}\\ \bold{P} = \bold{FPF}^T + \bold{Q}$ |
 
@@ -291,7 +296,7 @@ $\bold{B, u}$ represent the model control
 
 **Update**
 
-| Uni-variate                                                  | Kalman Form                                                  | Kalman Form                                                  |
+| Uni-variate                                                  | Univariate Form                                              | Kalman Form                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | $\mu = \frac{\bar\sigma^2\mu_z + \sigma_z^2\bar{\mu}}{\sigma_1^2 + \sigma_2^2}\\\sigma^2 = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}$ | $y = z - \bar{x}\\K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\ P = (1 - K)\bar{P}$ | $\begin{align}\bold{y} &= \bold{z} - \bold{Hx}\\ \bold{K} &= \bold{PH}^T(\bold{HPH}^T + \bold{R})^{-1}\\ x&= \bar{x} + \bold{Ky}\\ \bold{P} &= (\bold{I - KH})\bold{P}\end{align}$ |
 
@@ -304,6 +309,28 @@ $\bold{z, R}$: measurement mean and variance
 $y$: residual
 
 $K$: Kalman gain
+
+## 3.3 Kalman filter algorithm
+
+**Initialization**
+
+1. Initialize the state of the filter
+2. Initialize our belief in the state
+
+**Predict**
+
+1. Use process model to predict state at the next time step
+2. Adjust belief to account for the uncertainty in prediction
+
+**Update**
+
+1. Get a measurement and associated belief about its accuracy
+2. Compute residual between estimated state and measurement
+3. Compute scaling factor based on whether the measurement or prediction is more accurate
+4. Set state between the prediction and measurement based on scaling factor
+5. Update belief in the state based on how certain we are in the measurement
+
+
 
 
 
