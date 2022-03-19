@@ -1,12 +1,6 @@
+# 1: Probabilities, Gaussians, and bayes’s Theorem
 
-
-
-
-
-
-
-
-# Ch 03: Probabilities, Gaussians, and bayes’s Theorem
+## 1.1 Basic notion
 
 Mean 
 $$
@@ -38,7 +32,7 @@ $\mu\pm3\sigma$: 0.997
 
 
 
-## Gaussian Computational properties
+## 1.2 Gaussian Computational properties
 
 Sum of two independent Gaussian is another Gaussian
 $$
@@ -46,7 +40,7 @@ $$
 $$
 the product of above two Gaussian is
 $$
-L rge \mu = \frac{\sigma_1^2\mu_2 + \sigma_2^2\mu_1}{\sigma_1^2+\sigma_2^2}\\
+\Large \mu = \frac{\sigma_1^2\mu_2 + \sigma_2^2\mu_1}{\sigma_1^2+\sigma_2^2}\\
 \Large \sigma^2 = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}
 $$
 the sum of above two Gaussian is
@@ -76,7 +70,9 @@ $$
 \Large P(X_i^t) = \sum\limits_{j}P(X_j^{t-1})P(x_i|x_j)
 $$
 
-# Ch 04: One-dimensional Kalman filter
+# 2: One-dimensional Kalman filter
+
+## 2.1 Kalman filter 
 
 $$
 \Large \bar{x} = x * f_x(\cdot)\\
@@ -105,12 +101,12 @@ if we sense the dog position is 24 with uncertainty $0.6^2$, $\text{likelihood} 
 
 then perform update. which is Gaussian multiply.
 
-| Discrete Bayes                          | Gaussian                                                     | Step    |
-| --------------------------------------- | ------------------------------------------------------------ | ------- |
-| $\bar{x} = x*f(x)$                      | $\bar{x}_\mathcal{L} = x_{\mathcal{N}}\oplus f_{x_{\mathcal{N}}}(\cdot)$ | Predict |
-| $x = \vert\vert \mathcal{L}x\vert\vert$ | $x_{\mathcal{N}} = L\otimes \bar{x}_{\mathcal{N}}$           | Update  |
+| Discrete Bayes                                | Gaussian                                                     | Step    |
+| --------------------------------------------- | ------------------------------------------------------------ | ------- |
+| $\bar{x} = x*f(x)$                            | $\bar{x}_\mathcal{L} = x_{\mathcal{N}}\oplus f_{x_{\mathcal{N}}}(\cdot)$ | Predict |
+| $x = \vert\vert \mathcal{L}\bar{x}\vert\vert$ | $x_{\mathcal{N}} = L\otimes \bar{x}_{\mathcal{N}}$           | Update  |
 
-## Example
+## 2.2 Example
 
 Newton’s equation of motion
 $$
@@ -146,7 +142,7 @@ $$
 $$
 
 
-## Kalman gain
+## 2.3 Kalman gain
 
 the posterior is
 $$
@@ -177,7 +173,7 @@ $$
 \Large \sigma^2 = \frac{\bar{\sigma}^2\sigma_z^2}{\bar{\sigma}^2 + \sigma_z^2} = K\sigma_z^2 = (1-K)\bar{\sigma}^2
 $$
 
-## Description
+## 2.4 Description
 
 **Initialization**
 
@@ -211,7 +207,9 @@ Update
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | $x = ||\mathcal{L}\bar{x}||$ | $y = z - \bar{\mu}\\ K = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}\\ \mu = \bar{\mu} + Ky\\ \sigma^2 = \frac{\bar{\mu}^2\sigma_z^2}{\sigma_z^2 + \bar{\sigma}^2}$ | $y = z - \bar{x}\\ K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\P = (1 - K)\bar{P}$ |
 
-# Ch 05: Multivariate Gaussian
+# 3: Multivariate Gaussian
+
+## 3.1 Basic
 
 univariate normal
 $$
@@ -275,7 +273,7 @@ $$
 \end{align}
 $$
 
-# Ch 06: Multivariate Kalman Filter
+# Ch 04: Multivariate Kalman Filter
 
 **predict**
 
@@ -309,7 +307,7 @@ $K$: Kalman gain
 
 
 
-# Ch 10. Unscented Kalman Filter
+# Ch 5. Unscented Kalman Filter
 
 weighted mean
 $$
