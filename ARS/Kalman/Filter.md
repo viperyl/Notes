@@ -22,11 +22,11 @@ $$
 $$
 Standard deviation
 $$
-\Large \sigma = \sqrt{VAR(X)}
+\Large \sigma = \sqrt{\text{VAR}(X)}
 $$
 Gaussian Distribution
 $$
-\Large f(x, \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}exp[-\frac{(x-\mu)^2}{2\sigma^2}]
+\Large f(x, \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}exp\left[-\frac{(x-\mu)^2}{2\sigma^2}\right]
 $$
 $\sigma$ represents the strength of the belief, for the same $\mu$, the smaller the $\sigma$, the narrower curve. Which indicates the stronger belief.
 
@@ -46,7 +46,7 @@ $$
 $$
 the product of above two Gaussian is
 $$
-\Large \mu = \frac{\sigma_1^2\mu_2 + \sigma_2^2\mu_1}{\sigma_1^2+\sigma_2^2}\\
+L rge \mu = \frac{\sigma_1^2\mu_2 + \sigma_2^2\mu_1}{\sigma_1^2+\sigma_2^2}\\
 \Large \sigma^2 = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}
 $$
 the sum of above two Gaussian is
@@ -104,6 +104,64 @@ $$
 if we sense the dog position is 24 with uncertainty $0.6^2$, $\text{likelihood} \sim \mathcal{N}(24, 0.6^2)$
 
 then perform update. which is Gaussian multiply.
+
+| Discrete Bayes                          | Gaussian                                                     | Step    |
+| --------------------------------------- | ------------------------------------------------------------ | ------- |
+| $\bar{x} = x*f(x)$                      | $\bar{x}_\mathcal{L} = x_{\mathcal{N}}\oplus f_{x_{\mathcal{N}}}(\cdot)$ | Predict |
+| $x = \vert\vert \mathcal{L}x\vert\vert$ | $x_{\mathcal{N}} = L\otimes \bar{x}_{\mathcal{N}}$           | Update  |
+
+## Example
+
+Newton’s equation of motion
+$$
+\bar{x}_k = X_{K-1} + V_K\Delta_t = x_{k-1} + f_x
+$$
+If dog position is $\mathcal{N}\sim(10, 0.2^2)$, and velocity is 15 m/s and uncertainty is 0.7 m/s, the velocity obey $\mathcal{N}(15, 0.7^2)$
+
+The result of prediction is sum of the Gaussian.
+$$
+\Large x\sim \mathcal{N}(10, 0.2^2)\;\;\;\;\;\;\;\; f_x \sim \mathcal{N}(15, 0.7^2)
+$$
+
+$$
+\Large 
+\begin{align}
+\bar{x} &= \mu_x + \mu_{f_x} = 10 + 15 = 25\\
+\bar{\sigma}^2 &= \sigma_x^2 + \sigma^2_{f_x} = 0.2^2 + 0.7^2 = 0.53
+\end{align}
+$$
+
+Update with Gaussian.
+
+Likelihood is the probability of the measurement given the current state.
+
+If sensor states that the dog is at 23 m, with a 0.4 m standard deviation as Gaussian, $\mathcal{N}(23, 0.4^2)$
+$$
+\Large z \sim \mathcal{N}(23, 0.4^2)\;\;\;\;\;\bar{x} \sim \mathcal{N}(25, 0.53)
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
