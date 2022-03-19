@@ -137,32 +137,13 @@ Likelihood is the probability of the measurement given the current state.
 
 If sensor states that the dog is at 23 m, with a 0.4 m standard deviation as Gaussian, $\mathcal{N}(23, 0.4^2)$
 $$
-\Large z \sim \mathcal{N}(23, 0.4^2)\;\;\;\;\;\bar{x} \sim \mathcal{N}(25, 0.53)
+\Large z \sim \mathcal{N}(23, 0.16)\;\;\;\;\;\bar{x} \sim \mathcal{N}(25, 0.53)
 $$
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Multiplication of the above twol.
+$$
+\Large x \sim \mathcal{N}(23.46, 0.12)
+$$
 
 
 ## Kalman gain
@@ -196,10 +177,6 @@ $$
 \Large \sigma^2 = \frac{\bar{\sigma}^2\sigma_z^2}{\bar{\sigma}^2 + \sigma_z^2} = K\sigma_z^2 = (1-K)\bar{\sigma}^2
 $$
 
-
-
-
-
 ## Description
 
 **Initialization**
@@ -219,10 +196,6 @@ $$
 3. Compute scaling factor based on whether the measurement or prediction is more accurate
 4. set state between the prediction and measurement based on scaling factor
 5. update belief in the state based on how certain we are in the measurement
-
-
-
-
 
 
 
@@ -294,8 +267,7 @@ $$
 \end{align}
 $$
 
-
-**Multivariate Gaussian sum**
+**Multivariate Gaussian Sum**
 $$
 \Large\begin{align}
 \mu &= \frac{\Sigma_2\mu_1 + \Sigma_1\mu_2}{\Sigma_1 + \Sigma_2} \\
