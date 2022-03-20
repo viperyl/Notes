@@ -296,7 +296,7 @@ $\bold{B, u}$ represent the model control
 
 | Uni-variate                                                  | Univariate KF                                                | Kalman Form                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| $\mu = \frac{\bar\sigma^2\mu_z + \sigma_z^2\bar{\mu}}{\sigma_1^2 + \sigma_2^2}\\\sigma^2 = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}$ | $y = z - \bar{x}\\K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\ P = (1 - K)\bar{P}$ | $\begin{align}\bold{y} &= \bold{z} - \bold{Hx}\\ \bold{K} &= \bold{PH}^T(\bold{HPH}^T + \bold{R})^{-1}\\ x&= \bar{x} + \bold{Ky}\\ \bold{P} &= (\bold{I - KH})\bold{P}\end{align}$ |
+| $\mu = \frac{\bar\sigma^2\mu_z + \sigma_z^2\bar{\mu}}{\sigma_1^2 + \sigma_2^2}\\\sigma^2 = \frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}$ | $y = z - \bar{x}\\K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\ P = (1 - K)\bar{P}$ | $\begin{align}\bold{y} &= \bold{z} - \bold{Hx}\\ \bold{K} &= \bold{PH}^\intercal(\bold{HPH}^\intercal + \bold{R})^{-1}\\ x&= \bar{x} + \bold{Ky}\\ \bold{P} &= (\bold{I - KH})\bold{P}\end{align}$ |
 
 $\bold{H}$: measurement function
 
@@ -365,7 +365,15 @@ $$
 \end{align}
 $$
 
-# Ch 5. Unscented Kalman Filter
+## 3.4 Mathematical Derivation
+
+**To-do**
+
+
+
+# 4. Unscented Kalman Filter
+
+## 4.1 Process of UKF
 
 weighted mean
 $$
@@ -381,15 +389,15 @@ $$
 1 &= \sum\limits_{i}w_i^m\\
 1 &= \sum\limits_{i}w_i^c\\
 \mu &= \sum\limits_{i}w_i^mf(\mathcal{X}_i)\\
-\Sigma &= \sum\limits_{i}w_i^c(f(\mathcal{X})_i - \mu)(f(\mathcal{X})_i - \mu)^T
-
+\Sigma &= \sum\limits_{i}w_i^c(f(\mathcal{X})_i - \mu)(f(\mathcal{X})_i - \mu)^T\\
+w_i^m &: \text{weight of mean}\\
+w_i^c &: \text{weight of covariance}
 \end{align}
 $$
 These constraints do not form a unique solution. 
 
-
-
 Core of the UKF
+
 $$
 \Large \mathcal{Y} = f(\mathcal{X})
 $$
@@ -504,7 +512,7 @@ $$
 
 
 
-# CH 11. Extended Kalman Filter
+# 5. Extended Kalman Filter
 
 EKF linearize the nonlinear equation at the point of the current estimates. First order Taylor expansion.
 
@@ -623,7 +631,7 @@ $$
 $$
 
 
-# Ch 11: Particle Filter
+# 6. Particle Filter
 
 
 
