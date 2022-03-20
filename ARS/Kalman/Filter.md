@@ -357,8 +357,11 @@ $$
 **Update step**
 $$
 \Large \begin{align}
-\tilde{\bold{y}}_k = \bold{z}_k - \bold{H}_k\bar{\bold{x}}_{k|k-1}\\
-
+\tilde{\bold{y}}_k &= \bold{z}_k - \bold{H}_k\bar{\bold{x}}_{k|k-1}\\
+\bold{S}_k &= \bold{H}_k\bold{P}_{k|k-1}\bold{H}_k^\intercal +\bold{R}_k\\
+\bold{K}_k &= \bold{P}_{k|k-1}\bold{H}_k^\intercal\bold{S}_k^{-1}\\
+\bar{\bold{x}}_{k|k} &= \bar{\bold{x}}_{k|k-1} + \bold{K}_k\tilde{y}_{k}\\
+\bold{P}_{k|k} &= (\bold{I} - \bold{K}_k\bold{H}_k)\bold{P}_{k|k-1}
 \end{align}
 $$
 
