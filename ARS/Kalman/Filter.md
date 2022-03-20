@@ -1,4 +1,4 @@
-# 1: Probabilities, Gaussians, and bayes’s Theorem
+# 1. Probabilities, Gaussians, and bayes’s Theorem
 
 ## 1.1 Basic notion
 
@@ -29,8 +29,6 @@ $\mu \pm \sigma$: 0.68
 $\mu\pm2\sigma$:0.95
 
 $\mu\pm3\sigma$: 0.997
-
-
 
 ## 1.2 Gaussian Computational properties
 
@@ -70,7 +68,7 @@ $$
 \Large P(X_i^t) = \sum\limits_{j}P(X_j^{t-1})P(x_i|x_j)
 $$
 
-# 2: One-dimensional Kalman filter
+# 2. One-dimensional Kalman filter
 
 ## 2.1 Kalman filter 
 
@@ -207,7 +205,7 @@ Update
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | $x = ||\mathcal{L}\bar{x}||$ | $y = z - \bar{\mu}\\ K = \frac{\bar{\sigma}^2}{\bar{\sigma}^2 + \sigma_z^2}\\ \mu = \bar{\mu} + Ky\\ \sigma^2 = \frac{\bar{\mu}^2\sigma_z^2}{\sigma_z^2 + \bar{\sigma}^2}$ | $y = z - \bar{x}\\ K = \frac{\bar{P}}{\bar{P} + R}\\x = \bar{x} + Ky\\P = (1 - K)\bar{P}$ |
 
-# 3: Multivariate Kalman filter
+# 3. Multivariate Kalman filter
 
 ## 3.1 Multivariate Gaussian
 
@@ -352,7 +350,7 @@ Kalman filter with Bayesian notion
 **Predict step**
 $$
 \Large \begin{align}
-\bar{\bold{x}}_{k|k-1} &= \bold{F}_k\bar{\bold{x}}_{k-1|k-1} = \bold{B}_k\bold{u}_k\\
+\bar{\bold{x}}_{k|k-1} &= \bold{F}_k\bar{\bold{x}}_{k-1|k-1} + \bold{B}_k\bold{u}_k\\
 \bold{P}_{k|k-1} &= \bold{F}_k\bold{P}_{k-1|k-1}\bold{F}_k^\intercal + \bold{Q}_k
 \end{align}
 $$
@@ -363,9 +361,6 @@ $$
 
 \end{align}
 $$
-
-
-
 
 # Ch 5. Unscented Kalman Filter
 
