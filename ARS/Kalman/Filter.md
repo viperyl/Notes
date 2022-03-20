@@ -413,16 +413,14 @@ $$
 $$
 The UKF transform takes points sampled from some arbitrary probability distribution, passes them through an arbitrary, non-linear function and produces a Gaussian for each transformed points.
 
-
-
-#### Predict
+## 4.3 Predict
 
 computes the prior using the process model $f(\cdot)$. We generate sigma points $\mathcal{X}$ and their corresponding weights $W^m, W^c$ according to some function.
 $$
 \Large
 \begin{align}
 \mathcal{X} &= \text{sigma-function}(\bold{x}, \bold{P})\\
-W^m, W^c &= \text{weight-function}(n, \text{parameters})
+w^m, w^c &= \text{weight-function}(n, \text{parameters})
 \end{align}
 $$
 pass each sigma point through $f(x, \Delta t)$,  set of the sigma point is $\mathcal{Y}$.
@@ -443,7 +441,7 @@ $$
 \end{align}
 $$
 
-#### Update
+## 4.4 Update
 
 convert sigma points of the prior into measurement using a measurement functions $h(x)$.
 $$
@@ -469,7 +467,7 @@ $$
 $$
 
 $$
-\Large \bold{K} = \bold{P}_{xz}\bold{P}_z^{-1}
+\Large \bold{K} = \bold{P}_{xz}\bold{P}_z^{-1}\approx \frac{\bold{P}_{xz}}{\bold{P}_z} \approx \frac{\text{belief in state}}{\text{belief in measurement}}
 $$
 
 Finally, compute the new state estimate using the residual and Kalman gain
@@ -481,12 +479,16 @@ $$
 \Large \bold{P} = \bold{P} - \bold{KP}_z\bold{K}^\intercal
 $$
 
-#### KF vs UKF
+## 4.5 KF vs UKF
 
-| Kalman Filter                                                | Unscented Kalman Filter |
-| ------------------------------------------------------------ | ----------------------- |
-| $\begin{align}  x &= Fx\\ \bold{P} &= \bold{FPF}^\intercal + \bold{Q}\end{align}$ |                         |
-|                                                              |                         |
+| Kalman Filter                                                | Unscented Kalman Filter                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| $\Large \begin{align}  x &= Fx\\ \bold{P} &= \bold{FPF}^\intercal + \bold{Q}\end{align}$ | $\Large \begin{align}\bold{\mathcal{Y}} &= f(\bold{\mathcal{X}})\\ \bold{x} &= \sum w^m\bold{\mathcal{Y}}\\ \bold{P} &= \sum w^c(\bold{\mathcal{Y} -\bold{x}})(\bold{\mathcal{Y} -\bold{x}})^\intercal + \bold{Q}\end{align}$ |
+| $\Large \begin{align}\bold{S} &= \bold{HPH}^\intercal + \bold{R}\\\bold{K} &= \bold{PH}^\intercal\bold{S}^{-1}\\\bold{y} &= \bold{z} - \bold{Hx}\\\bold{x} &= \bold{x} + \bold{Ky}\\\bold{P} &= (\bold{I-KH})\bold{P}\end{align}$ | $\Large \begin{align}\bold{\mathcal{Z}} &= h(\bold{\mathcal{Y}})\\ \bold{\mu}_z &=\sum w^m\bold{\mathcal{Z}}\\ \bold{y} &=\bold{z} - \bold{\mu}_z \\ \bold{P}_z &= \sum w^c(\bold{\mathcal{Z}-\bold{\mu}})\\ \bold{K} &=[\sum w^c(\bold{\mathcal{Y}-\bar{\bold{x}}})(\bold{\mathcal{Z}-\bold{\mu}_z})^\intercal]\bold{P}_z^{-1}\\ x &= x + \bold{Ky}\\ \bold{P} &= \bar{\bold{P}}-\bold{KP}_z\bold{K}^\intercal   \end{align}$ |
+
+## 4.6 Van der Merwe's Scaled Sigma Point Algorithm
+
+
 
 
 
