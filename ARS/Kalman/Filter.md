@@ -373,7 +373,7 @@ $$
 
 # 4. Unscented Kalman Filter
 
-## 4.1 Process of UKF
+## 4.1 Sigma point
 
 weighted mean
 $$
@@ -396,8 +396,9 @@ w_i^c &: \text{weight of covariance}
 $$
 These constraints do not form a unique solution. 
 
-Core of the UKF
+## 4.2 Unscented Transform
 
+Core of the UKF
 $$
 \Large \mathcal{Y} = f(\mathcal{X})
 $$
