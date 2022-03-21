@@ -488,12 +488,6 @@ $$
 
 ## 4.6 Van der Merwe's Scaled Sigma Point Algorithm
 
-
-
-
-
-#### Sigma point computation
-
 The first point is the mean of the input, denote as $\mathcal{X}_0$.
 $$
 \Large \mathcal{X}_0 = \mu
@@ -506,38 +500,151 @@ $$
 \end{cases}
 $$
 
-
-#### Weight computation
-
+**Weight computation**
 $$
 \Large W_0^m = \frac{\lambda}{n + \lambda}
 $$
+
+The weight of the covariance of $\mathcal{X}_0$ is
+$$
+\Large W_0^c = \frac{\lambda}{n+\lambda} + 1 - \alpha^2 + \beta
+$$
+The weights for the rest of the sigma points $\mathcal{X}_1,...,\mathcal{X}_{2n}$ are the same for the mean and covariance. They are
+$$
+\Large W_i^m = W_i^c = \frac{1}{2(n+\lambda)}\;\;i=1,..,2n
+$$
+
+## 4.6 Example
+
+**Tracking an airplane**
+
+Radar tracking an aircraft by emitting radio waves or microwaves. So the measurement result is slant $r$ and angle $\epsilon$.
+
+Assume the aircraft if flying at a constant altitude. We have three variables.
+$$
+\Large x = \begin{bmatrix}\text{distance}\\\text{velocity}\\\text{altitude}\\\text{climbrate} \end{bmatrix} = \begin{bmatrix} x\\ \dot{x} \\ y\\\dot{y} \end{bmatrix}
+$$
+system transition function is
+$$
+\Large x = \begin{bmatrix} 1 & \Delta t & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & \Delta t\\ 0 & 0 & 0 & 1  \end{bmatrix}\begin{bmatrix}   x\\\dot{x}\\y\\\dot{y}\end{bmatrix}
+$$
+Define the measurement
+$$
+\Large \begin{align}
+r &= \sqrt{(x - x_r)^2 + (y-y_r)^2}\\
+\epsilon &= \tan^{-1}\frac{y - y_r}{x - x_r}
+\end{align}
+$$
+
+
+
+
+
+
+```
+\begin{bmatrix}   \end{bmatrix}
+```
+
+
 
 
 
 # 5. Extended Kalman Filter
 
+## 5.1 Description
+
 EKF linearize the nonlinear equation at the point of the current estimates. First order Taylor expansion.
 
+$$
+\Large \begin{align}\bar{\bold{x}} &= f(\bold{x}, \bold{u}) + w_x\\
+\bold{z} &= h(\bold{x}) + w_z
+\end{align}
+$$
+where $f(\cdot)$ is non-linear function. 
+
+We can linearize equation by taking the partial derivatives of each evaluate $\bold{F}$ and $\bold{H}$  at the point $\bold{x}_t$ and $\bold{u}_t$
+
+The partial derivative of a matrix is  `Jacobian`
+$$
+\Large \begin{align}
+\bold{F} &= \left.\frac{\partial f(\bold{x}_t, \bold{u}_t)}{\partial \bold{x}}\right\vert_{\bold{x}_t, \bold{u}_t}\\
+\bold{H} &= \left.\frac{\partial h(\bar{\bold{x}_t})}{\partial\bar{\bold{x}}}\right\vert_{\bar{\bold{x}}_t}
+\end{align}
+$$
+
+| Linear Kalman Filter                                         | Extended Kalman Filter                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| $\bar{\bold{x}} = \bold{Fx} + \bold{Bu}\\ \bold{P} = \bold{FPF}^T + \bold{Q}$ | $\Large \begin{align}\bold{F} &= \left.\frac{\partial f(\bold{x}_t, \bold{u}_t)}{\partial \bold{x}}\right\vert_{\bold{x}_t, \bold{u}_t}\\\bar{\bold{x}} &=f(\bold{x}, \bold{u})\\ \bold{P} &= \bold{FPF}^\intercal + \bold{Q} \end{align}$ |
+| $\begin{align}\bold{y} &= \bold{z} - \bold{H}\bar{\bold{x}}\\ \bold{K} &= \bold{PH}^\intercal(\bold{HPH}^\intercal + \bold{R})^{-1}\\ \bold{x}&= \bar{\bold{x}} + \bold{Ky}\\ \bold{P} &= (\bold{I - KH})\bold{P}\end{align}$ | $\Large \begin{align}\bold{H} &= \left.\frac{\partial h(\bar{\bold{x}}_t)}{\partial\bar{\bold{x}}}\right\vert_{\bar{\bold{x}}_t}\\\bold{y}&=\bold{z}-h(\bar{\bold{x}})\\\bold{K} &= \bold{PH}^\intercal(\bold{HPH}^\intercal + \bold{R})^{-1}\\ x&= \bar{x} + \bold{Ky}\\ \bold{P} &= (\bold{I - KH})\bold{P}\end{align}$ |
+
+## 5.2 Example
+
+Tracking an airplane
+$$
+\Large \begin{align}
+\epsilon &= \tan^{-1}(\frac{y}{x})\\
+r^2 &= x^2 + y^2
+\end{align}
+$$
+state variable:
+$$
+\Large x =  \begin{bmatrix} x\\\dot{x}\\y \end{bmatrix}
+$$
+Obtain the system transition matrix. calculate the first order derivation
+$$
+\Large \bold{\dot{x}} = \begin{bmatrix}\dot{x}\\\ddot{x}  \end{bmatrix} = \begin{bmatrix}0 & 1\\0&0  \end{bmatrix}\begin{bmatrix}x\\\dot{x}  \end{bmatrix} = \bold{Ax}
+$$
+
+$$
+\Large \bold{A}^2 = \bold{0}_{2\times2}
+$$
+
+$$
+\Large \bold{F}(\Delta t) = e^{\bold{A}\Delta t} = \bold{I} + \bold{A}\Delta t + \frac{(\bold{A}\Delta t)^2}{2!} + \frac{(\bold{A}\Delta t)^3}{3!} + ...
+$$
+
+So all higher powers of $\bold{A}$ are also $\bold{0}$
+
+
+$$
+\Large \begin{align}
+\bold{F} &= \bold{I} + \bold{A}t + \bold{0}\\
+&=\begin{bmatrix} 1 & 0\\ 0 & 1 \end{bmatrix} + \begin{bmatrix}0 & 1\\0&0  \end{bmatrix}\Delta t\\
+&= \begin{bmatrix}1 & \Delta t\\ 0 & 1  \end{bmatrix}
+\end{align}
+$$
+Design the measurement model
+$$
+\Large h(\bar{x}) = \sqrt{x^2 + y^2}
+$$
+
+$$
+\Large \frac{\partial \bold{H}}{\partial \bold{\bar{x}}} = \begin{bmatrix}  
+\frac{\partial h_1}{\partial x_1} & \frac{\partial h_1}{\partial x_2} & ... \\
+\frac{\partial h_2}{\partial x_1} & \frac{\partial h_2}{\partial x_2} & ... \\
+\vdots & \vdots
+\end{bmatrix}
+$$
+
+$$
+\Large\begin{align} \bold{H} &=\begin{bmatrix}\frac{\partial h}{\partial x} & \frac{\partial h}{\partial \dot{x}}
+& \frac{\partial h}{\partial y}
+\end{bmatrix}\\
+&= \begin{bmatrix}\frac{x}{\sqrt{x^2 + y^2}} & 0 & \frac{y}{\sqrt{x^2 + y^2}} \end{bmatrix}
+\end{align}
+$$
+
+
+
+```
+\begin{bmatrix}  \end{bmatrix}
+```
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Example
+#### 
 
 bicycle basic model by mathematics
 $$
