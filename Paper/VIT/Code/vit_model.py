@@ -199,7 +199,7 @@ class VisionTransformer(nn.Module):
 
     def forward_features(self, x):
         # [B, C, H, W] -> [B, num_patches, embed_dim]
-        x = self.patch_embed(x);
+        x = self.patch_embed(x)
         # [1, 1, 768] -> [B, 1, 768]
         cls_token = self.cls_token.expand(x.shape[0], -1, -1)
         if self.dist_token is None:
