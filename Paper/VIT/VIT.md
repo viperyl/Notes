@@ -88,13 +88,9 @@ Heads：代表Transformer中Multi-head Attention的head数
 
 
 
+# 6. VIT calculation
 
 
-
-
-
-
-inductive bias: The inductive bias of a learning algorithm is the set of assumptions that the lerarner uses a predict outputs of given inputs that it has not encountered. or called as learning bias.
 
 
 
