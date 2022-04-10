@@ -100,8 +100,8 @@ def main(args):
         tb_writter.add_scalar(tags[2], val_loss, epoch)
         tb_writter.add_scalar(tags[3], val_acc, epoch)
         tb_writter.add_scalar(tags[4], optimizer.param_groups[0]["lr"], epoch)
-
-        torch.save(model.state_dict(), "/home/yang/Documents/dataset/weights/model-{}.pth".format(epoch))
+        if (epoch+1) // 5 == 0:
+            torch.save(model.state_dict(), "/home/yang/Documents/dataset/weights/model-{}.pth".format(epoch))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
