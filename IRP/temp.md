@@ -2,9 +2,11 @@
 
 ## Introduction
 
-
-
-
+Facial expressions are an important channel for interpersonal communication, and recognizing facial expressions can facilitate the understanding of people's mental states and emotions. Unlike conventional facial expressions, 
+Micro-expressions are special facial movements that can be used as an important basis for judging people's subjective emotions and have a wide range of applications in public security and psychotherapy. Because micro-expressions
+Because micro-expressions are characterized by small amplitude and short duration, the manual recognition of micro-expressions requires professional training and the recognition rate is low. In recent years, many researchers have started to
+In recent years, many researchers have started to use computer vision technology to automatically recognize micro-expressions, which has greatly improved the feasibility of micro-expression application. In this paper, we review the definition and research status of facial micro-expression recognition, and summarize
+In this paper, we review the definition and research status of micro-expression recognition, summarize some key techniques in micro-expression recognition, and discuss potential problems and possible research directions.
 
 
 
