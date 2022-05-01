@@ -93,7 +93,7 @@ class ResNet(nn.Module):
                  num_classes=1000,
                  include_top=True,
                  groups=1,
-                 width_per_group=64):
+                 width_per_group=64, channels=3):
         super(ResNet, self).__init__()
         self.include_top = include_top
         self.in_channel = 64
@@ -101,7 +101,7 @@ class ResNet(nn.Module):
         self.groups = groups
         self.width_per_group = width_per_group
 
-        self.conv1 = nn.Conv2d(3, self.in_channel, kernel_size=7, stride=2,
+        self.conv1 = nn.Conv2d(channels, self.in_channel, kernel_size=7, stride=2,
                                padding=3, bias=False)
         self.bn1 = nn.BatchNorm2d(self.in_channel)
         self.relu = nn.ReLU(inplace=True)
@@ -160,6 +160,9 @@ class ResNet(nn.Module):
 
         return x
 
+def resnet18(num_classes=1000, channels=3, include_top=True):
+    # https://download.pytorch.org/models/resnet34-333f7ec4.pth
+    return ResNet(BasicBlock, [2, 2, 2, 2], num_classes=num_classes, include_top=include_top, channels=channels)
 
 def resnet34(num_classes=1000, include_top=True):
     # https://download.pytorch.org/models/resnet34-333f7ec4.pth
