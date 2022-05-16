@@ -60,8 +60,8 @@ def data_prep(dataname: str, batch_size: int):
     # create dataloader
 
     train_loader = DataLoader(dataset=trainset, batch_size=batch_size, pin_memory=True, shuffle=True)
-    test_loader = DataLoader(dataset=testset, batch_size=1024, pin_memory=True, shuffle=False)
-    val_loader = DataLoader(dataset=valset, batch_size=1024, pin_memory=True, shuffle=False)
+    test_loader = DataLoader(dataset=testset, batch_size=batch_size, pin_memory=True, shuffle=False)
+    val_loader = DataLoader(dataset=valset, batch_size=batch_size, pin_memory=True, shuffle=False)
 
 
     return train_loader, test_loader, val_loader
