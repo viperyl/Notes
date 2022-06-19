@@ -1,0 +1,6 @@
+--2022-06-11 22:06:53--  https://d.pcs.baidu.com/file/31fb147b3n702545a349da90dcf0cb80?fid=73808770-250528-381687934701651
+Resolving d.pcs.baidu.com (d.pcs.baidu.com)... 182.61.62.109
+Connecting to d.pcs.baidu.com (d.pcs.baidu.com)|182.61.62.109|:443... connected.
+HTTP request sent, awaiting response... 400 Bad Request
+2022-06-11 22:06:55 ERROR 400: Bad Request.
+

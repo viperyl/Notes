@@ -4,3 +4,14 @@ GP/ROS/catkin_ws/src/L_service/.vscode/browse.vc.db
 *.db-wal
 *.json
 *.db
+# C extensions
+*.so
+
+# pycharm
+IRP/.idea/
+IRP/Code/wandb
+
+# jupyter checkpoint
+IRP/Code/Test/.ipynb_checkpoints/
+IRP/Code/EDA/.ipynb_checkpoints/
+Kaggle/.ipynb_checkpoints

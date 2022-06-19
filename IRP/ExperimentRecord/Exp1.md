@@ -30,3 +30,36 @@ opt: Adam
 
 ### res
 avg: around 0.84
+
+## resnet_34_500
+
+```
+instance: wobbly-sky-27
+```
+
+### warm up 
+
+epoch: 600
+lr: 1e-4
+
+### res
+
+avg: around 0.84
+
+## resnet_18_GCN
+
+```
+instance: woven-water-28
+weight&bias: resnet18_GCN_100
+```
+
+### warm up 
+
+epoch: 100
+
+lr: 1e-4
+
+### res
+
+
+
