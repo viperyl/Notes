@@ -8,6 +8,6 @@ Optimizer: Adam
 
 Freeze: No
 
-Accuracy: 
+Accuracy: 82.1%
 
-Pth file: 
+Pth file: `resnet18_100.pth`
