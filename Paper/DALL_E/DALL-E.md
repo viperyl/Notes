@@ -2,6 +2,33 @@
 
 **Hierarchical**: DALLE2 generate a small resolution image first (e.g $64\times 64$), then using a model up-sample image to $256\times 256$, finally using another model up-sample image to $1024\times 1024$ image.
 
+**CLIP Latents**: DALLE2 先训练CLIP模型，找到图片和文本对的关系。给定一个文本，CLIP的text encoder 可以将文本映射为一个embedding。
+
+**Prior**：DALLE2 的**prior**模型输入是文本特征，输出是图像特征。
+
+**Decoder**：给定一个图像特征，Decoder可以生成一个图像。
+
+
+
+```mermaid
+graph LR
+A[Text] --> |CLIP| B[Test embedding]
+B -->|Prior| C[Image embedding]
+C --> D[Image]
+```
+
+
+
+对于Decoder，作者尝试了autoregressive and Diffusion， 结果还是Diffusion更好。
+
+
+
+# Introduction
+
+CLIP have an impressive zero-shot capabilities. CLIP embeddings are robust to image distribution shift. However, for the OOD sample, CLIP does not work.
+
+Diffusion model have emerged as a promising generative modeling framework. Diffusion model 是一种概率分布模型，它生成的图片是从一个分布中采样，所以diversity方面很好，但是在保真度方面差于GAN。但是通过guidance technique，Diffusion model可以牺牲部分diversity来获得更好的保真度(photorealism).
+
 
 
 
