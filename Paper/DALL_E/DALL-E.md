@@ -35,7 +35,36 @@ Diffusion model have emerged as a promising generative modeling framework. Diffu
 
 文本和图像通过各自的encoder变成一个embedding，学习到的embedding是处于一个多模态的空间。当CLIP训练完后，其参数会被固定。
 
-对于Prior+Decoder 部分，最朴素的做法是使用一个大的模型直接端到端的学习，但是作者发现如果中间先学习image embedding，再输出，则效果会好上一些。
+对于Prior+Decoder 部分，最朴素的做法是使用一个大的模型直接端到端的学习，但是作者发现如果中间先学习image embedding，再输出，则效果会好上一些。CLIP的图像特征作为Prior学习到的图像特征的监督 (ground truth)。Decoder 则将image embedding 转换为图片。
+
+
+
+# Image generation
+
+## GAN
+
+生成对抗模型
+
+```mermaid
+graph LR
+A[Z] --> B[Generator]
+B --> C[X fake]
+C --> E[Discriminator]
+D[X true] --> E
+E --> F[0/1 classification]
+```
+
+Generator 通过噪音生成图片，Discriminator 判断图片是真或假的。通过两个网络的较量，可以获得比较真实的图片。GAN的目标函数就是用于与以假乱真，因此目前GAN的保真度很高。
+
+GAN训练不够稳定，由于需要同时训练两个网络，因此需要平衡两个网络。 此外GAN的多样性不行，其多样性主要来源于开始的随机噪声$Z$。最后，GAN不是概率模型，所有的计算都是隐式的，因此我们无法知道内部发生了什么事情，不清楚内部遵循了什么分布。  
+
+
+
+## VAE
+
+
+
+
 
 
 
