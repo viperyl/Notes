@@ -31,7 +31,11 @@ Diffusion model have emerged as a promising generative modeling framework. Diffu
 
 ![](./Img/DALLE2.png)
 
-上半部分是CLIP，下半部分为DALLE2 模型，
+上半部分是CLIP，下半部分为DALLE2 模型。
+
+文本和图像通过各自的encoder变成一个embedding，学习到的embedding是处于一个多模态的空间。当CLIP训练完后，其参数会被固定。
+
+对于Prior+Decoder 部分，最朴素的做法是使用一个大的模型直接端到端的学习，但是作者发现如果中间先学习image embedding，再输出，则效果会好上一些。
 
 
 
