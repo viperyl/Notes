@@ -103,7 +103,20 @@ E --> F[X']
 
 Vector quantized VAE
 
-现实额信号是连续的，但是具体表现形式缺都是离散化的。图片被像素表达，语音被采样。因此VQVAE不去学习分布，而是学习一个Codebook， 大小为$K\times D$ 
+现实额信号是连续的，但是具体表现形式缺都是离散化的。图片被像素表达，语音被采样。因此VQVAE不去学习分布，而是学习一个Codebook， 大小为$K\times D$ 。
+
+通过Encoder，我们可以得到一个特征图，将特征图中的向量与Codebook中的向量做对比，观察它和哪个聚类中心最为接近。把最接近的中心的编码存到$Z$中。完成聚类分配后，我们不使用$f$，仅使用分配后的$f_q$ 做下游任务。
+
+```mermaid
+graph LR
+A[X] --> B[Encoder]
+B --> C[f]
+C --> D[Z]
+E[Codebook] --> D
+D --> F[fq]
+F --> G[Decoder]
+G --> H[X']
+```
 
 
 
