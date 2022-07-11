@@ -62,9 +62,48 @@ GAN训练不够稳定，由于需要同时训练两个网络，因此需要平�
 
 ## VAE
 
+Auto-Encoder 的结构如下。图片通过Encoder转换为bottleneck低维向量，然后通过Decoder将bottleneck转换为图像$x^{'}$。 我们希望$x^{'}$可以重建出$x$。
 
+ ```mermaid
+ graph LR
+ A[X] --> B[Encoder]
+ B --> C[Z]
+ C --> D[Decoder]
+ D --> E[X']
+ 
+ ```
 
+Denoising Auto-Encoder。 通过Mask操作我们扰动原图片，我们希望AE可以将扰动后的图片复原为初始图片。
 
+```mermaid
+graph LR
+A[X] -->|Mask| H[Xc]
+H --> B[Encoder]
+B --> C[Z]
+C --> D[Decoder]
+D --> E[X']
+
+```
+
+DAE 和 AE主要目标是训练中间的bottleneck，然后将特征用于下游任务中。因此二者都不用于生成模型。主要原因为bottleneck不是一个概率分布，因此无法进行采样
+
+Variational Auto-Encoder
+
+VAE通过Encoder 学习一个分布， 假设分布是高斯分布。当我们得到编码结果后通过FC层去预测均值和方差。通过均值和方差去采样一个Z。从贝叶斯的角度来看，给X而生成Z是后验过程，学出的distribution是一个先prior distribution。给定一个Z去生成图片$X^{'}$是likelihood。整个过程可以summarize 为maximize likelihood。
+
+```mermaid
+graph LR
+A[X] --> B[Encoder]
+B -->|FC Layer| C[mean, var]
+C --> D[Z]
+D --> E[Decoder]
+E --> F[X']
+
+```
+
+Vector quantized VAE
+
+现实额信号是连续的，但是具体表现形式缺都是离散化的。图片被像素表达，语音被采样。因此VQVAE不去学习分布，而是学习一个Codebook， 大小为$K\times D$ 
 
 
 
