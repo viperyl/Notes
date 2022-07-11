@@ -118,6 +118,10 @@ F --> G[Decoder]
 G --> H[X']
 ```
 
+# Diffusion Model
+
+ 
+
 
 
 
