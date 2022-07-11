@@ -15,3 +15,7 @@ IRP/Code/wandb
 IRP/Code/Test/.ipynb_checkpoints/
 IRP/Code/EDA/.ipynb_checkpoints/
 Kaggle/.ipynb_checkpoints
+
+IRP/Code/.idea/
+
+IRP/FDRL/.idea/
