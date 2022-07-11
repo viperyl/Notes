@@ -29,11 +29,9 @@ CLIP have an impressive zero-shot capabilities. CLIP embeddings are robust to im
 
 Diffusion model have emerged as a promising generative modeling framework. Diffusion model 是一种概率分布模型，它生成的图片是从一个分布中采样，所以diversity方面很好，但是在保真度方面差于GAN。但是通过guidance technique，Diffusion model可以牺牲部分diversity来获得更好的保真度(photorealism).
 
+![](./Img/DALLE2.png)
 
-
-
-
-
+上半部分是CLIP，下半部分为DALLE2 模型，
 
 
 
