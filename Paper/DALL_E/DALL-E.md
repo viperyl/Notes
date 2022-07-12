@@ -126,10 +126,20 @@ G --> H[X']
 
 # Diffusion Model
 
- 
+ ```mermaid
+ graph LR
+ A[DDPM] --> B[Improved DDPM]
+ B --> C[Diffusion model beats GAN]
+ C --> D[D]
+ ```
 
 
 
+
+
+$$
+\Large p(x_{t-1}|x_t) = \vert\vert \epsilon - f_{\epsilon}(x_t, t)\vert\vert
+$$
 
 
 
