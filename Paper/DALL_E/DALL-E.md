@@ -118,6 +118,12 @@ F --> G[Decoder]
 G --> H[X']
 ```
 
+## Summary of generative model
+
+<img src="./Img/generative-overview.png" style="zoom:20%;" />
+
+
+
 # Diffusion Model
 
  
