@@ -13,7 +13,7 @@
 
 ### 1 Scene representation and tokenization
 
-网络会先学习一个语义的laout，并在最终生成图片的时候调整它
+网络会先学习一个语义的layout，并在最终生成图片的时候调整它
 
 文中作者使用了 VQ-SEG 来学习segmentation layout。网络的输入输出都有m个channels，代表着所有的分割组
 $$
@@ -35,12 +35,13 @@ VQ图片重建间的质量内在的迁移到了生成图片的transformer上了 
 
 
 
-### 3 Face-aware vector quantization
+### 3 Face-aware vector quantification
 
+Face-aware VQ (VQ-IMG)
 
 $$
 \Large
-\mathcal{L}_{\text{Face}} = \sum\limits_{k}\sum\limits_{l} \alpha_f^l \lVert \text{FE}^l(\hat{c}_f^k) - \text{FE}^l(c_f^k)\rVert 
+\mathcal{L}_{\text{Face}} = \sum\limits_{k}\sum\limits_{l} \alpha_f^l \lVert \text{FE}^l(\hat{c}_f^k) - \text{FE}^l(c_f^k)\rVert
 $$
 其中index $l$用于表示人脸embedding网络特定层的空间激活的大小 
 
@@ -50,7 +51,7 @@ $\hat{c}, c$
 
 
 
-### 3 Scene-based transforme
+### 3 Scene-based transformer
 
 
 
