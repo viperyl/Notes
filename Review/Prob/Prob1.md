@@ -94,7 +94,7 @@ P(\vert X - E(X)\vert \geq \epsilon) \leq \frac{\text{Var}(X)}{\epsilon^2}
 $$
 
 
-## 2.4.1 二项分布
+## 2.4.1 二项分布 Binomial distribution
 
 $$
 \Large
@@ -106,7 +106,7 @@ E(X^2) &= n(n-1)p^2 + np\\
 \end{split}
 $$
 
-## 2.4.2 
+## 2.4.2 泊松分布 Poisson distribution
 
 $$
 \Large
@@ -118,6 +118,44 @@ E(X^2) &= \lambda^2 + \lambda\\
 \text{Var} &= \lambda
 \end{split}
 $$
+
+## 2.4.3  超几何分布 Hypergeometric distribution
+
+$$
+\Large
+\begin{split}
+X &\sim h(n, N, M) \\
+P &= \frac{\binom Mk \binom{N-M}{n-k}}{\binom Nn}\\
+E(X) &= n\frac{M}{N} \\
+\text{Var} &= \frac{nM(N-M)(N-a)}{N^2(N-1)}
+\end{split}
+$$
+
+## 2.4.4 几何分布 Geometric distribution
+
+$$
+\Large
+\begin{split}
+X &\sim Ge(p) \\
+P(X=k) &= (1-p)^{k-1}p \\
+E(X) &= \frac{1}{p}\\
+\text{Var} &=  \frac{1-p}{p^2}\\
+P(X> m+n \vert X>m) &= P(X>n)
+\end{split}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
