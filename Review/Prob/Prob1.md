@@ -190,7 +190,22 @@ $$
 
 
 
-# Ch03
+# Ch03 多维概率分布
+
+## 3.1 概念
+
+### 3.1.1 联合密度函数
+
+$$
+\Large
+\begin{split}
+F(x, y) = \int\limits_{-\infty}^{+\infty}\int\limits_{-\infty}^{+\infty}p(u, v) \text{dv}\text{du}
+\end{split} 
+$$
+
+
+
+
 
 
 
