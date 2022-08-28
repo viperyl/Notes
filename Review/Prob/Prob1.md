@@ -182,7 +182,11 @@ $$
 $$
 \Large
 \begin{split}
-\Gamma 
+\Gamma(\alpha) &= \int\limits_{0}^{\infty}x^{\alpha-1}e^{-x}dx\\
+p(x) &= \begin{cases}\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x}&,x\geq0\\0 &, x<0  \end{cases}\\
+X &\sim Ga(\alpha, \lambda)\\
+E(X) &= \frac{\alpha}{\lambda}\\
+\text{Var}(X) &= \frac{\alpha}{\lambda}
 \end{split}
 $$
 
@@ -199,9 +203,46 @@ $$
 $$
 \Large
 \begin{split}
-F(x, y) = \int\limits_{-\infty}^{+\infty}\int\limits_{-\infty}^{+\infty}p(u, v) \text{dv}\text{du}
-\end{split} 
+F(x, y) &= \int\limits_{-\infty}^{+\infty}\int\limits_{-\infty}^{+\infty}p(u, v) \text{dv}\text{du}\\
+p(x, y) &= \frac{\partial^2}{\partial x \partial y}F(x,y)
+\end{split}
 $$
+
+
+
+
+
+### 3.1.2 多项分布
+
+$$
+\Large
+\begin{split}
+&P(X_1=n_1, X_2=n_2, \cdots, X_r=n_r) = \frac{n!}{n_1!n_2!\cdots n_r!}p_1^{n_1}p_2^{n_2}\cdots p_r^{n_r}\\
+&M(n, p_1, p_2,\cdots, p_r)
+\end{split}
+$$
+
+
+
+### 3.1.3 多维超几何分布
+
+$$
+\Large
+\begin{split}
+P(X_1=n_1, X_2=n_2,\cdots,X_r=n_r) = \frac{\binom{N_1}{n_1}\binom{N_2}{n_2}\cdots\binom{N_r}{n_r}}{\binom{N}{n}}
+\end{split}
+$$
+
+### 3.1.4 多维均匀分布
+
+$$
+\Large
+\begin{split}
+p(x_1,\cdots,x_r) = \begin{cases}\frac{1}{S_D} &,(x_1,\cdots,x_r)\in D\\0 &,\text{others} \end{cases}
+\end{split}
+$$
+
+
 
 
 
