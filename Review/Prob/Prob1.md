@@ -140,7 +140,7 @@ P(X> m+n \vert X>m) &= P(X>n)
 \end{split}
 $$
 
-### 2.5.1 正太分布
+### 2.5.1 正态分布
 
 $$
 \Large
@@ -186,11 +186,23 @@ $$
 p(x) &= \begin{cases}\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x}&,x\geq0\\0 &, x<0  \end{cases}\\
 X &\sim Ga(\alpha, \lambda)\\
 E(X) &= \frac{\alpha}{\lambda}\\
-\text{Var}(X) &= \frac{\alpha}{\lambda}
+\text{Var}(X) &= \frac{\alpha}{\lambda^2}
 \end{split}
 $$
 
 
+
+### 2.5.5 Beta分布
+
+$$
+\Large
+\begin{split}
+B(a, b) &= \int\limits_{0}^{1}x^{\alpha-1}(1-x)^{\beta-1}dx, a>0, b>0\\
+p(x) &= \begin{cases}\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1} &, 0<x<1\\0 &,\text{others} \end{cases}\\
+E(X) &= \frac{a}{a+b}\\
+\text{Var}(X) &= \frac{ab}{(a+b)^2(a+b+1)}
+\end{split}
+$$
 
 
 
