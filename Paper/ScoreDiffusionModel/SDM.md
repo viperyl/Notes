@@ -32,5 +32,4 @@ $$
 2. 数量可观的话可以先train
 3. Score Diffusion Model
 4. PITI + stable diffusion
-5. dream booth 
-6. 
+5. dream booth
