@@ -21,7 +21,7 @@ $$
 
 ## 1.3 Score Matching
 
-
+Score Matching 最早用于学习非标准化的统计模型基于 从未知数据分布采集而来的I.I.D 样本。 使用Score Matching，我们可以train一个score network $\large s_{\theta}(x)$ 来估计$\large \nabla_x \log p_{data}(x)$ 而无需train 模型来先估计 $\large p_{data}(x)$。
 $$
 \Large
 \mathbb{E}_{p_{data}(\bold{x})} \left[  \text{tr}(\nabla_x s_{\theta}(x)) + \frac{1}{2}\vert\vert s_{\theta}(x)\vert\vert_2^2 \right]
