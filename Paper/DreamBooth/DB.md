@@ -13,7 +13,7 @@
 1. 使用image-text pairs finetune 低分辨率的 text-to-image 模型，其中text prompts 需要包含unique identifier。同时，使用 class-specific prior preservation loss 来利用模型上的语义先验信息并且鼓励模型产生多样的属于text prompt 的结果。学习universal feature 跟 specific feature
 2. fine-tune SR 模型 by 低分辨率图（模型生成）和高分辨率图（数据集），增强保真度和细节。
 
-## Representing the Subject with a Rare-token Identifier
+
 
 
 
