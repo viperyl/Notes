@@ -1,3 +1,13 @@
+# 0. Stable diffusion
+
+![](./Img/Screenshot 2022-09-11 at 10-28-37 2112.10752.pdf.png)
+
+
+
+先训练一个图片的auto-encoder 或 VAE $\large \mathcal{E}$。图片通过 $\large \mathcal{E}$ 后会得到一个尺寸较小的latent space representation $\large z$，然后我们在latent space 做 diffusion。
+
+给定输入$\large z$， 我们通过Diffusion 的正向过程给输入增加噪声，最终得到$\large z_T$。  
+
 # 1. Score
 
 生成模型的目标是给定一个、
