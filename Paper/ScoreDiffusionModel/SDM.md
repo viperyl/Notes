@@ -27,20 +27,25 @@ $$
 
 当$\large\epsilon \rightarrow 0$ 和$\large T\rightarrow \infty$ 时 $\large\bar{\bold{x}}_t$ 等于 $\large p(\bold{x})$。$\large \bar{\bold{x}}_T$可以被在某种限制条件下的$\large p(\bold{x})$ 的采样。通常，若$\epsilon > 0, T< \infty$，则需要使用 Metropolis-Hastings 来纠正上式的错误，这个误差一般被忽略。在SDM中当 $\large\epsilon$ 的值小且 $\large T$ 较大的时候我们可忽略误差
 
-采样仅取决于score function $\large \nabla_x \log p(\bold{x})$， 因此，为得到 $\large p_{\text{data}}(\bold{x})$ 的样本我们train $\large s_\theta(\bold{x}) \approx \nabla_x \log p_{\text{data}}(\bold{x})$ 并且使用Langevin dynamics $\large s_\theta(\bold{x})$
+采样仅取决于score function $\large \nabla_x \log p(\bold{x})$， 因此，为得到 $\large p_{\text{data}}(\bold{x})$ 的样本，我们需要train $\large s_\theta(\bold{x}) \approx \nabla_x \log p_{\text{data}}(\bold{x})$ ，然后使用Langevin dynamics 采样$\large s_\theta(\bold{x})$ 来得到samples。
 
 ## 1.3 Score Matching
 
-Score Matching 最早用于学习非标准化的统计模型基于 从未知数据分布采集而来的I.I.D 样本。 使用Score Matching，我们可以train一个score network $\large s_{\theta}(x)$ 来估计$\large \nabla_x \log p_{data}(x)$ 而无需train 模型来先估计 $\large p_{data}(x)$。
+Score Matching 最早用于学习未归一化的统计模型基于未知数据分布采集而来的I.I.D 样本。 使用Score Matching，我们可以train一个score network $\large s_{\theta}(x)$ 来估计$\large \nabla_x \log p_{data}(x)$ 这样就而无需train 模型来先估计 $\large p_{data}(x)$。我们所需要优化的模型如下：
+$$
+\Large
+\frac{1}{2}\mathbb{E}_{p_{data}(\bold{x})}\left[\vert\vert s_{\theta}(\bold{x}) - \nabla_x \log p_{data}(\bold{x})\vert\vert_2^2 \right]
+$$
+上式的优化等同于下式的优化
 $$
 \Large
 \mathbb{E}_{p_{data}(\bold{x})} \left[  \text{tr}(\nabla_x s_{\theta}(x)) + \frac{1}{2}\vert\vert s_{\theta}(x)\vert\vert_2^2 \right]
 $$
 
+其中$\large \nabla_x s_{\theta}(x)$ 表示 $\large s_{\theta}(x)$的 Jacobian matrix。然而高维度下的 $\large \text{tr}$ 很难计算，导致模型很难scale
 
 
-
-## 1.4
+## 1.4 Denoising Score Matching
 
 
 
