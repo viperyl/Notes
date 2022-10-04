@@ -16,7 +16,7 @@ $\Large x_0\sim q(x)$
 
 ### Forward
 
-前向过程不含参数
+前向过程不含参数，**迭代计算**如下
 $$
 \Large
 \begin{equation}
@@ -33,19 +33,23 @@ $$
 
 
 
+当 $\Large T\rightarrow \infty$ 的时候，结果等同于  Isotropic Gaussian Distribution
 
 
-Assume $\Large \alpha_t = \sqrt{1-\beta_t}$, $\Large \hat{\alpha}_t = \prod\alpha_i$
+
+**解析解如下**
+
+Let $\Large \alpha_t = 1 - \beta_t, \bar{\alpha_t}= \prod\limits_{i=1}^{T}\alpha_i$
 $$
 \Large
 \begin{align}
-\bold{x}_t &= \sqrt{\alpha_t}\bold{x_{t-1}} \\
-&= \sqrt{\alpha_t}
+\bold{x}_t &= \sqrt{1-\beta_t}\bold{x}_{t-1} + \sqrt{\beta_t}\bold{z}_{t-1}\\
+&= \sqrt{\alpha_t}\bold{x}_{t-1} + \sqrt{1-\alpha_t}\bold{z}_{t-1}\\
+&= \sqrt{\alpha_t\alpha_{t-1}}\bold{x}_{t-2} + (\sqrt{\alpha_t}\sqrt{1-\alpha_{t-1}}\bold{z}_{t-2} + \sqrt{1-\alpha_t}\bold{z}_{t-1})\\
+&= \sqrt{\alpha_t\alpha_{t-1}}\bold{x}_{t-2} + \sqrt{1-\alpha_{t-1}}\bold{\bar{z}}_{t-2}\\
+&= \sqrt{\bar{\alpha}_t}\bold{x}_0 + \sqrt{1-\bar{a}_t} \bold{z}
 \end{align}
 $$
-
-
-
 
 
 
