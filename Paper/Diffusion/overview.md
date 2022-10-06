@@ -39,14 +39,14 @@ $$
 
 **解析解如下**
 
-Let $\Large \alpha_t = 1 - \beta_t, \bar{\alpha_t}= \prod\limits_{i=1}^{T}\alpha_i$
+Let $\Large \alpha_t = 1 - \beta_t, \bar{\alpha_t}= \prod\limits_{i=1}^{T}\alpha_i, z\sim\mathcal{N}(0, \bold{I})$
 $$
 \Large
 \begin{align}
 \bold{x}_t &= \sqrt{1-\beta_t}\bold{x}_{t-1} + \sqrt{\beta_t}\bold{z}_{t-1}\\
 &= \sqrt{\alpha_t}\bold{x}_{t-1} + \sqrt{1-\alpha_t}\bold{z}_{t-1}\\
 &= \sqrt{\alpha_t\alpha_{t-1}}\bold{x}_{t-2} + (\sqrt{\alpha_t}\sqrt{1-\alpha_{t-1}}\bold{z}_{t-2} + \sqrt{1-\alpha_t}\bold{z}_{t-1})\\
-&= \sqrt{\alpha_t\alpha_{t-1}}\bold{x}_{t-2} + \sqrt{1-\alpha_{t-1}}\bold{\bar{z}}_{t-2}\\
+&= \sqrt{\alpha_t\alpha_{t-1}}\bold{x}_{t-2} + \sqrt{1-\alpha_t\alpha_{t-1}}\bold{\bar{z}}_{t-2}\\
 &= \sqrt{\bar{\alpha}_t}\bold{x}_0 + \sqrt{1-\bar{a}_t} \bold{z}
 \end{align}
 $$
