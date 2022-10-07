@@ -47,9 +47,24 @@ $$
 &= \sqrt{\alpha_t}\bold{x}_{t-1} + \sqrt{1-\alpha_t}\bold{z}_{t-1}\\
 &= \sqrt{\alpha_t\alpha_{t-1}}\bold{x}_{t-2} + (\sqrt{\alpha_t}\sqrt{1-\alpha_{t-1}}\bold{z}_{t-2} + \sqrt{1-\alpha_t}\bold{z}_{t-1})\\
 &= \sqrt{\alpha_t\alpha_{t-1}}\bold{x}_{t-2} + \sqrt{1-\alpha_t\alpha_{t-1}}\bold{\bar{z}}_{t-2}\\
-&= \sqrt{\bar{\alpha}_t}\bold{x}_0 + \sqrt{1-\bar{a}_t} \bold{z}
+&= \sqrt{\bar{\alpha}_t}\bold{x}_0 + \sqrt{1-\bar{a}_t} \bold{z}\\
+q(\bold{x}_t\vert \bold{x}_0) &= \mathcal{N}\left(\bold{x}_t \Bigg\vert \sqrt{\bar{\alpha}_t}\bold{x}_0, (1-\bar{\alpha}_t)\bold{I} \right)
 \end{align}
 $$
+
+Usually, we can afford a larger update step when the sample gets  noisier, so
+$$
+\Large
+\begin{align}
+\beta_1 < \beta_2 < \cdots < \beta_T \\
+\bar{\alpha}_1 > \bar{\alpha}_2 > \cdots > \bar{\alpha}_T
+\end{align}
+$$
+
+
+### Backward
+
+
 
 
 
