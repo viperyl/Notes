@@ -1,4 +1,4 @@
-# ConvLSTM (many to one)
+# ConvLSTM (20 to 1)
 
 ##  Exp 1
 
@@ -53,9 +53,31 @@ Loss: MSELoss with sum reduction
 
 
 
+## Exp 3
+
+### Model Structure
+
+```
+Image Shape: (256, 256)
+Num of Layer: 3
+Parameter number:  38,490,049
+```
+
+### Training config
+
+```
+Optimizer: Adam
+Epochs: 20
+Loss: MSELoss with sum reduction
+```
+
+### Result (Weired)
+
+![](./files/f.png)
 
 
 
+Looks like model collapse? But the nozzle and bottom circles are perfectly predicted.
 
 
 
