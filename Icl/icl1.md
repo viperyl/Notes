@@ -55,6 +55,10 @@ Loss: MSELoss with sum reduction
 
 
 
+
+
+
+
 # ConvLSTM (many to many)
 
 ## Exp 1
@@ -64,16 +68,38 @@ Loss: MSELoss with sum reduction
 ```
 Image Shape: (256, 256)
 Num of Layer: 3
-Parameter number:  
+Parameter number:  10,178,497
 ```
 
 ### Training config
 
 ```
 Optimizer: Adam
-Epochs: 100
+Epochs: 20
 Loss: MSELoss with sum reduction
 ```
+
+## Result
+
+**Input**
+
+![](./files/c.png)
+
+**Target**
+
+![](./files/d.png)
+
+
+
+**Output**
+
+![](./files/e.png)
+
+
+
+
+
+
 
 
 
