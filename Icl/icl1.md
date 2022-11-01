@@ -81,7 +81,7 @@ Looks like model collapse? But the nozzle and bottom circles are perfectly predi
 
 
 
-# ConvLSTM (many to many)
+# ConvLSTM (20 to 20)
 
 ## Exp 1
 
@@ -101,7 +101,7 @@ Epochs: 20
 Loss: MSELoss with sum reduction
 ```
 
-## Result
+### Result
 
 **Input**
 
@@ -121,7 +121,33 @@ Loss: MSELoss with sum reduction
 
 
 
+## Exp 2
 
+### Model Structure
+
+```
+Image Shape: (256, 256)
+Num of Layer: 3
+Parameter number:  10,178,497
+```
+
+### Training config
+
+```
+Optimizer: Adam
+Epochs: 20
+Loss: MSELoss with sum reduction
+```
+
+### Metric
+
+```
+Training Loss:661.65 
+Validation Loss:617.19
+SSIM: 
+PSNR: 
+
+```
 
 
 
@@ -132,7 +158,7 @@ Loss: MSELoss with sum reduction
 
 # Next stage
 1. Apply `SSIM`, `PSNR` and `VMAF` to determine the quality of the predicated video.
-2. Split video by different initial conditon, and test the performance
+2. Split video by different initial condition, and test the performance
 3. Check paper related to video predcition or motion prediciton.
 4. Introduce of spatio-temporal correlation features
 5. A refined dataset production
