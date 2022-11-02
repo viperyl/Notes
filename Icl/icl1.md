@@ -139,7 +139,7 @@ Epochs: 120
 Loss: MSELoss with sum reduction
 ```
 
-### Metric
+### Result
 
 ```
 Training Loss:661.65 
@@ -188,6 +188,14 @@ Parameter number:  10,178,497
 Optimizer: Adam
 Epochs: 100
 Loss: MSELoss with sum reduction
+```
+
+
+
+### Result
+
+```
+
 
 SSIM: 
 0.770	0.755	0.740	0.732	0.712
@@ -197,8 +205,6 @@ PSNR:
 ```
 
 
-
-### Result
 
 ![](./files/h2.png)
 
