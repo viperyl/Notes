@@ -174,9 +174,35 @@ Lib Not Work
 
 ## Exp 1
 
+### Model Structure
+
+```
+Image Shape: (128, 128)
+Num of Layer: 3
+Parameter number:  10,178,497
+```
+
+### Training config
+
+```
+Optimizer: Adam
+Epochs: 100
+Loss: MSELoss with sum reduction
+
+SSIM: 
+0.770	0.755	0.740	0.732	0.712
+
+PSNR:
+18.414	17.760	17.707	17.965	18.347
+```
 
 
 
+### Result
+
+![](./files/h2.png)
+
+Still not works for many to many task
 
 
 
