@@ -135,7 +135,7 @@ Parameter number:  10,178,497
 
 ```
 Optimizer: Adam
-Epochs: 20
+Epochs: 120
 Loss: MSELoss with sum reduction
 ```
 
@@ -145,9 +145,34 @@ Loss: MSELoss with sum reduction
 Training Loss:661.65 
 Validation Loss:617.19
 SSIM: 
+0.779	0.764	0.761	0.762	0.777	
+
+0.794	0.806	0.798	0.790	0.792	
+
+0.790	0.785	0.780	0.774	0.777	
+
+0.794	0.795	0.774	0.767	0.768	
+
 PSNR: 
+18.546	18.312	18.421	18.850	19.351	
+
+19.513	19.529	19.408	19.278	19.182	
+
+19.369	19.133	18.857	18.883	19.314	
+
+19.556	19.509	19.340	19.218	19.408	
+
+VMAF:
+
+Lib Not Work
 
 ```
+
+![](./files/h1.png)
+
+# ConvLSTM (5 to 5)
+
+## Exp 1
 
 
 
