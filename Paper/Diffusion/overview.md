@@ -62,7 +62,9 @@ $$
 $$
 
 
-### Backward
+### Reverse process
+
+逆过程是从高斯噪声中恢复原始数据，
 
 
 
@@ -83,6 +85,8 @@ $$
 
 \end{equation}
 ```
+
+
 
 
 
