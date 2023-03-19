@@ -11,7 +11,12 @@ Investigate the entanglement of the  representation of  word images and natural 
 # Work
 
 1. CLIP如何理解 `Text` 和对应的 `visual meaning`
-2. 
+
+
+
+# Exp
+
+1. Visual representation task
 
 
 
